@@ -1,5 +1,12 @@
 package com.pengu.lostthaumaturgy.net.machine;
 
+import com.pengu.hammercore.HammerCore;
+import com.pengu.hammercore.net.packetAPI.iPacket;
+import com.pengu.hammercore.net.packetAPI.iPacketListener;
+import com.pengu.hammercore.proxy.ParticleProxy_Client;
+import com.pengu.lostthaumaturgy.client.fx.FXWisp;
+import com.pengu.lostthaumaturgy.core.Info;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.SoundCategory;
@@ -9,14 +16,7 @@ import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import com.pengu.hammercore.HammerCore;
-import com.pengu.hammercore.net.packetAPI.IPacket;
-import com.pengu.hammercore.net.packetAPI.IPacketListener;
-import com.pengu.hammercore.proxy.ParticleProxy_Client;
-import com.pengu.lostthaumaturgy.client.fx.FXWisp;
-import com.pengu.lostthaumaturgy.core.Info;
-
-public class PacketDuplicatorFinish implements IPacket, IPacketListener<PacketDuplicatorFinish, IPacket>
+public class PacketDuplicatorFinish implements iPacket, iPacketListener<PacketDuplicatorFinish, iPacket>
 {
 	public BlockPos pos;
 	
@@ -42,7 +42,7 @@ public class PacketDuplicatorFinish implements IPacket, IPacketListener<PacketDu
 	}
 	
 	@Override
-	public IPacket onArrived(PacketDuplicatorFinish packet, MessageContext context)
+	public iPacket onArrived(PacketDuplicatorFinish packet, MessageContext context)
 	{
 		if(context.side == Side.CLIENT)
 			packet.executeClient();

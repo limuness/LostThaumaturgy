@@ -10,7 +10,7 @@ import net.minecraftforge.common.capabilities.Capability;
 import com.pengu.hammercore.common.utils.WorldUtil;
 import com.pengu.hammercore.tile.TileSyncableTickable;
 
-public class TileVisUser extends TileSyncableTickable implements IConnection
+public class TileVisUser extends TileSyncableTickable implements iConnection
 {
 	public int visSuction = 0;
 	public int taintSuction = 0;
@@ -32,7 +32,7 @@ public class TileVisUser extends TileSyncableTickable implements IConnection
 		this.setVisSuction(50);
 		for(EnumFacing facing : EnumFacing.VALUES)
 		{
-			IConnection ic = ConnectionManager.getConnection(getLocation(), facing);
+			iConnection ic = ConnectionManager.getConnection(getLocation(), facing);
 			if(!getConnectable(facing) || (ic == null || !ic.isVisConduit() && !ic.isVisSource() || ic.getPureVis() < amount))
 				continue;
 			ic.setPureVis(ic.getPureVis() - amount);
@@ -50,7 +50,7 @@ public class TileVisUser extends TileSyncableTickable implements IConnection
 			BlockPos loc = pos.offset(facing);
 			if(!this.getConnectable(facing))
 				continue;
-			IConnection ic = WorldUtil.cast(world.getTileEntity(loc), IConnection.class);
+			iConnection ic = WorldUtil.cast(world.getTileEntity(loc), iConnection.class);
 			if(ic != null && (ic.isVisConduit() || ic.isVisSource()))
 			{
 				float sucked = Math.min(amount - gatheredVis, ic.getPureVis());
@@ -74,7 +74,7 @@ public class TileVisUser extends TileSyncableTickable implements IConnection
 			BlockPos loc = pos.offset(facing);
 			if(!this.getConnectable(facing))
 				continue;
-			IConnection ic = WorldUtil.cast(world.getTileEntity(loc), IConnection.class);
+			iConnection ic = WorldUtil.cast(world.getTileEntity(loc), iConnection.class);
 			if(ic != null && (ic.isVisConduit() || ic.isVisSource()))
 			{
 				float sucked = Math.min(amount - gatheredVis, ic.getTaintedVis());

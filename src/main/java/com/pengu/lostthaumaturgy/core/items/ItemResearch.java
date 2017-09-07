@@ -4,6 +4,17 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
 
+import com.pengu.hammercore.HammerCore;
+import com.pengu.hammercore.common.items.iTooltipInjector;
+import com.pengu.lostthaumaturgy.LostThaumaturgy;
+import com.pengu.lostthaumaturgy.api.items.iNotCloneable;
+import com.pengu.lostthaumaturgy.api.research.ResearchCategories;
+import com.pengu.lostthaumaturgy.api.research.ResearchItem;
+import com.pengu.lostthaumaturgy.api.research.ResearchManager;
+import com.pengu.lostthaumaturgy.api.research.ResearchSystem;
+import com.pengu.lostthaumaturgy.core.Info;
+import com.pengu.lostthaumaturgy.init.ItemsLT;
+
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
@@ -17,18 +28,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.world.World;
 
-import com.pengu.hammercore.HammerCore;
-import com.pengu.hammercore.common.items.ITooltipInjector;
-import com.pengu.lostthaumaturgy.LostThaumaturgy;
-import com.pengu.lostthaumaturgy.api.items.INotCloneable;
-import com.pengu.lostthaumaturgy.api.research.ResearchCategories;
-import com.pengu.lostthaumaturgy.api.research.ResearchItem;
-import com.pengu.lostthaumaturgy.api.research.ResearchManager;
-import com.pengu.lostthaumaturgy.api.research.ResearchSystem;
-import com.pengu.lostthaumaturgy.core.Info;
-import com.pengu.lostthaumaturgy.init.ItemsLT;
-
-public class ItemResearch extends Item implements ITooltipInjector, INotCloneable
+public class ItemResearch extends Item implements iTooltipInjector, iNotCloneable
 {
 	public final String[] names = { "fragment", "theory", "discovery" };
 	

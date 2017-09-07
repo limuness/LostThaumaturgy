@@ -1,8 +1,8 @@
 package com.pengu.lostthaumaturgy.intr.hc;
 
-import com.pengu.hammercore.api.mhb.IRayCubeRegistry;
-import com.pengu.hammercore.api.mhb.IRayRegistry;
 import com.pengu.hammercore.api.mhb.RaytracePlugin;
+import com.pengu.hammercore.api.mhb.iRayCubeRegistry;
+import com.pengu.hammercore.api.mhb.iRayRegistry;
 import com.pengu.lostthaumaturgy.core.block.BlockAdvancedVisValve;
 import com.pengu.lostthaumaturgy.core.block.BlockConduit;
 import com.pengu.lostthaumaturgy.core.block.BlockPressurizedConduit;
@@ -11,10 +11,10 @@ import com.pengu.lostthaumaturgy.core.block.wood.silverwood.BlockSilverwoodCondu
 import com.pengu.lostthaumaturgy.init.BlocksLT;
 
 @RaytracePlugin
-public class LTRaytracePlugin implements IRayRegistry
+public class LTRaytracePlugin implements iRayRegistry
 {
 	@Override
-	public void registerCubes(IRayCubeRegistry cube)
+	public void registerCubes(iRayCubeRegistry cube)
 	{
 		cube.bindBlockCubeManager((BlockConduit) BlocksLT.CONDUIT, (BlockConduit) BlocksLT.CONDUIT);
 		cube.bindBlockCubeManager((BlockSilverwoodConduit) BlocksLT.CONDUIT_SILVERWOOD, (BlockSilverwoodConduit) BlocksLT.CONDUIT_SILVERWOOD);

@@ -1,5 +1,11 @@
 package com.pengu.lostthaumaturgy.core.items;
 
+import com.pengu.hammercore.common.items.MultiVariantItem;
+import com.pengu.hammercore.utils.iGetter;
+import com.pengu.lostthaumaturgy.LostThaumaturgy;
+import com.pengu.lostthaumaturgy.core.Info;
+import com.pengu.lostthaumaturgy.init.ItemsLT;
+
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -8,16 +14,8 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.oredict.OreDictionary;
 
-import com.pengu.hammercore.common.items.MultiVariantItem;
-import com.pengu.hammercore.utils.IGetter;
-import com.pengu.hammercore.utils.IRegisterListener;
-import com.pengu.lostthaumaturgy.LostThaumaturgy;
-import com.pengu.lostthaumaturgy.core.Info;
-import com.pengu.lostthaumaturgy.init.ItemsLT;
-
-public class ItemGolemPlacer extends MultiVariantItem implements IRegisterListener
+public class ItemGolemPlacer extends MultiVariantItem
 {
 	public static final ItemGolemPlacer PLACER = new ItemGolemPlacer();
 	
@@ -57,16 +55,6 @@ public class ItemGolemPlacer extends MultiVariantItem implements IRegisterListen
 		return EnumGolemType.values()[dmg % EnumGolemType.values().length].hasEffect;
 	}
 	
-	@Override
-	public void onRegistered()
-	{
-		for(EnumGolemType type : EnumGolemType.values())
-			if(type.oredict != null)
-				for(String name : type.oredict)
-					if(!name.isEmpty())
-						OreDictionary.registerOre(name, type.stack());
-	}
-	
 	public boolean spawnCreature(World world, double x, double y, double z, EnumFacing side, ItemStack stack, EntityPlayer player)
 	{
 		// EntityGolemBase golem = new EntityGolemBase(world);
@@ -85,7 +73,7 @@ public class ItemGolemPlacer extends MultiVariantItem implements IRegisterListen
 		return false;
 	}
 	
-	public enum EnumGolemType implements IGetter<ItemStack>
+	public enum EnumGolemType implements iGetter<ItemStack>
 	{
 		STRAW_GOLEM, //
 		WOOD_GOLEM, //
@@ -97,51 +85,19 @@ public class ItemGolemPlacer extends MultiVariantItem implements IRegisterListen
 		THAUMIUM_GOLEM, //
 		VOID_GOLEM;
 		
-		private final String oredict[];
 		public final String mod;
 		public final CreativeTabs tab;
 		public boolean hasEffect = false;
 		
 		EnumGolemType()
 		{
-			this.oredict = null;
 			this.tab = LostThaumaturgy.tab;
 			this.mod = Info.MOD_ID;
-		}
-		
-		EnumGolemType(String... oredict)
-		{
-			this.oredict = oredict;
-			this.tab = LostThaumaturgy.tab;
-			this.mod = Info.MOD_ID;
-		}
-		
-		EnumGolemType(String mod, CreativeTabs tab, String... oredict)
-		{
-			this.oredict = oredict;
-			this.mod = mod;
-			this.tab = tab;
 		}
 		
 		public void setHasEffect(boolean hasEffect)
 		{
 			this.hasEffect = hasEffect;
-		}
-		
-		public boolean isEqualByOredict(ItemStack stack)
-		{
-			if(oredict == null || stack == null)
-				return false;
-			if(stack.isItemEqual(stack(stack.getCount())))
-				return true;
-			int[] ids = OreDictionary.getOreIDs(stack);
-			for(int id : ids)
-			{
-				String dict = OreDictionary.getOreName(id);
-				if(dict.equals(oredict))
-					return true;
-			}
-			return false;
 		}
 		
 		public int getDamage()

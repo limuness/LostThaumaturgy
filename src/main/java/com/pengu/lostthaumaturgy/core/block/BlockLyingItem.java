@@ -19,14 +19,14 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 
-import com.pengu.hammercore.api.ITileBlock;
+import com.pengu.hammercore.api.iTileBlock;
 import com.pengu.hammercore.common.utils.WorldUtil;
 import com.pengu.lostthaumaturgy.api.event.LyingItemPickedUpEvent;
 import com.pengu.lostthaumaturgy.core.block.def.BlockRendered;
 import com.pengu.lostthaumaturgy.core.tile.TileLyingItem;
 import com.pengu.lostthaumaturgy.init.BlocksLT;
 
-public class BlockLyingItem extends BlockRendered implements ITileEntityProvider, ITileBlock<TileLyingItem>
+public class BlockLyingItem extends BlockRendered implements ITileEntityProvider, iTileBlock<TileLyingItem>
 {
 	public BlockLyingItem()
 	{

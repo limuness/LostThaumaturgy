@@ -1,12 +1,8 @@
 package com.pengu.lostthaumaturgy.client.render.item;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.item.ItemStack;
-
 import org.lwjgl.opengl.GL11;
 
-import com.pengu.hammercore.client.render.item.IItemRender;
+import com.pengu.hammercore.client.render.item.iItemRender;
 import com.pengu.hammercore.client.render.vertex.SimpleBlockRendering;
 import com.pengu.hammercore.client.utils.RenderBlocks;
 import com.pengu.lostthaumaturgy.api.wand.EnumCapLocation;
@@ -16,7 +12,11 @@ import com.pengu.lostthaumaturgy.core.Info;
 import com.pengu.lostthaumaturgy.core.items.ItemWand;
 import com.pengu.lostthaumaturgy.proxy.ClientProxy;
 
-public class RenderItemWand implements IItemRender
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.texture.TextureAtlasSprite;
+import net.minecraft.item.ItemStack;
+
+public class RenderItemWand implements iItemRender
 {
 	@Override
 	public void renderItem(ItemStack stack)

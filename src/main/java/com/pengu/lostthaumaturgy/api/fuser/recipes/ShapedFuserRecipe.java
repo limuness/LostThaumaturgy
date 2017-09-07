@@ -7,6 +7,16 @@ import java.util.List;
 
 import javax.annotation.Nonnull;
 
+import com.pengu.hammercore.HammerCore;
+import com.pengu.hammercore.utils.iGetter;
+import com.pengu.lostthaumaturgy.api.fuser.FuserInventory;
+import com.pengu.lostthaumaturgy.api.fuser.iFuserRecipe;
+import com.pengu.lostthaumaturgy.api.research.ResearchItem;
+import com.pengu.lostthaumaturgy.api.research.ResearchSystem;
+import com.pengu.lostthaumaturgy.core.items.ItemResearch;
+import com.pengu.lostthaumaturgy.core.items.ItemResearch.EnumResearchItemType;
+import com.pengu.lostthaumaturgy.core.items.ItemWand;
+
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -16,17 +26,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 
-import com.pengu.hammercore.HammerCore;
-import com.pengu.hammercore.utils.IGetter;
-import com.pengu.lostthaumaturgy.api.fuser.FuserInventory;
-import com.pengu.lostthaumaturgy.api.fuser.IFuserRecipe;
-import com.pengu.lostthaumaturgy.api.research.ResearchItem;
-import com.pengu.lostthaumaturgy.api.research.ResearchSystem;
-import com.pengu.lostthaumaturgy.core.items.ItemResearch;
-import com.pengu.lostthaumaturgy.core.items.ItemWand;
-import com.pengu.lostthaumaturgy.core.items.ItemResearch.EnumResearchItemType;
-
-public class ShapedFuserRecipe implements IFuserRecipe
+public class ShapedFuserRecipe implements iFuserRecipe
 {
 	@Nonnull
 	protected ItemStack output = ItemStack.EMPTY;
@@ -131,9 +131,9 @@ public class ShapedFuserRecipe implements IFuserRecipe
 			} else if(in instanceof String)
 			{
 				itemMap.put(chr, OreDictionary.getOres((String) in));
-			} else if(in instanceof IGetter && ((IGetter) in).get() instanceof ItemStack)
+			} else if(in instanceof iGetter && ((iGetter) in).get() instanceof ItemStack)
 			{
-				itemMap.put(chr, ((IGetter<ItemStack>) in).get());
+				itemMap.put(chr, ((iGetter<ItemStack>) in).get());
 			} else
 			{
 				String ret = "Invalid shaped fuser recipe: ";
@@ -154,7 +154,6 @@ public class ShapedFuserRecipe implements IFuserRecipe
 		}
 	}
 	
-	@SuppressWarnings("unchecked")
 	protected boolean checkMatch(FuserInventory inv, int startX, int startY, boolean mirror)
 	{
 		for(int x = 0; x < 3; x++)

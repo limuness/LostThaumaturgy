@@ -25,9 +25,9 @@ configFile.withReader {
     project.ext.config = new ConfigSlurper().parse prop
 }
 
-version = "${config.minecraft_version}-${config.mod_version}"
+version = "${config.mod_version}"
 group = "com.pengu.lostthaumaturgy"
-archivesBaseName = "LostThaumaturgy"
+archivesBaseName = "LostThaumaturgy-${config.minecraft_version}"
 
 sourceCompatibility = targetCompatibility = "1.8"
 compileJava {
@@ -51,7 +51,7 @@ repositories {
 }
 
 dependencies {
-	deobfCompile "apengu:HammerCore:1.12-1.9.4.0:deobf"
+	deobfCompile "apengu:HammerCore:${config.minecraft_version}-${config.hammercore_version}:deobf"
 }
 
 processResources {

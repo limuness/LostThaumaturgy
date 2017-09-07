@@ -2,6 +2,11 @@ package com.pengu.lostthaumaturgy.core.items;
 
 import java.util.List;
 
+import com.pengu.hammercore.api.iProcess;
+import com.pengu.hammercore.raytracer.RayTracer;
+import com.pengu.lostthaumaturgy.core.block.BlockLyingItem;
+import com.pengu.lostthaumaturgy.core.tile.TileLyingItem;
+
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -14,12 +19,6 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-
-import com.pengu.hammercore.HammerCore;
-import com.pengu.hammercore.api.IUpdatable;
-import com.pengu.hammercore.raytracer.RayTracer;
-import com.pengu.lostthaumaturgy.core.block.BlockLyingItem;
-import com.pengu.lostthaumaturgy.core.tile.TileLyingItem;
 
 public class ItemWandOfItemFreeze extends Item
 {
@@ -60,7 +59,7 @@ public class ItemWandOfItemFreeze extends Item
 				EntityItem item = items.get(0);
 				UpdatableProcess e = new UpdatableProcess();
 				e.item = item;
-				HammerCore.updatables.add(e);
+				e.start();
 			}
 			
 			playerIn.getHeldItem(handIn).damageItem(20, playerIn);
@@ -70,7 +69,7 @@ public class ItemWandOfItemFreeze extends Item
 		return new ActionResult<ItemStack>(EnumActionResult.FAIL, playerIn.getHeldItem(handIn));
 	}
 	
-	private static class UpdatableProcess implements IUpdatable
+	private static class UpdatableProcess implements iProcess
 	{
 		public int ticksExisted = 0;
 		public EntityItem item;

@@ -1,5 +1,13 @@
 package com.pengu.lostthaumaturgy.core.block;
 
+import com.pengu.hammercore.api.iTileBlock;
+import com.pengu.hammercore.common.utils.WorldUtil;
+import com.pengu.hammercore.core.gui.GuiManager;
+import com.pengu.hammercore.tile.TileSyncable;
+import com.pengu.lostthaumaturgy.core.Info;
+import com.pengu.lostthaumaturgy.core.block.def.BlockRendered;
+import com.pengu.lostthaumaturgy.core.tile.TileWandConstructor;
+
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -14,15 +22,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-import com.pengu.hammercore.api.ITileBlock;
-import com.pengu.hammercore.common.utils.WorldUtil;
-import com.pengu.hammercore.gui.GuiManager;
-import com.pengu.hammercore.tile.TileSyncable;
-import com.pengu.lostthaumaturgy.core.Info;
-import com.pengu.lostthaumaturgy.core.block.def.BlockRendered;
-import com.pengu.lostthaumaturgy.core.tile.TileWandConstructor;
-
-public class BlockWandConstructor extends BlockRendered implements ITileBlock<TileWandConstructor>, ITileEntityProvider
+public class BlockWandConstructor extends BlockRendered implements iTileBlock<TileWandConstructor>, ITileEntityProvider
 {
 	public static final AxisAlignedBB CONSTRUCTOR_AABB = new AxisAlignedBB(0, 0, 0, 1, 11 / 16D, 1);
 	

@@ -12,12 +12,12 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-import com.pengu.hammercore.api.ITileBlock;
+import com.pengu.hammercore.api.iTileBlock;
 import com.pengu.lostthaumaturgy.core.Info;
 import com.pengu.lostthaumaturgy.core.block.def.BlockRendered;
 import com.pengu.lostthaumaturgy.core.tile.TileVisFilter;
 
-public class BlockVisFilter extends BlockRendered implements ITileBlock<TileVisFilter>, ITileEntityProvider
+public class BlockVisFilter extends BlockRendered implements iTileBlock<TileVisFilter>, ITileEntityProvider
 {
 	public BlockVisFilter()
 	{

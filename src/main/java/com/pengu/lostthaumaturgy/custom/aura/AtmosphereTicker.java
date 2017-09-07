@@ -49,7 +49,7 @@ import com.pengu.lostthaumaturgy.LTConfigs;
 import com.pengu.lostthaumaturgy.LostThaumaturgy;
 import com.pengu.lostthaumaturgy.api.event.AuraEvent;
 import com.pengu.lostthaumaturgy.api.research.ResearchSystem;
-import com.pengu.lostthaumaturgy.api.tiles.IConnection;
+import com.pengu.lostthaumaturgy.api.tiles.iConnection;
 import com.pengu.lostthaumaturgy.core.Info;
 import com.pengu.lostthaumaturgy.custom.aura.api.AtmosphereAttachments;
 import com.pengu.lostthaumaturgy.custom.aura.taint.TaintRegistry;
@@ -823,9 +823,9 @@ public class AtmosphereTicker
 	
 	public static void spillTaint(World world, BlockPos pos)
 	{
-		IConnection ic;
+		iConnection ic;
 		TileEntity tc = world.getTileEntity(pos);
-		if(tc != null && tc instanceof IConnection && (ic = (IConnection) tc).getTaintedVis() > 0.0f)
+		if(tc != null && tc instanceof iConnection && (ic = (iConnection) tc).getTaintedVis() > 0.0f)
 		{
 			int at = (int) Math.ceil(ic.getTaintedVis() * 3);
 			Chunk c = world.getChunkFromBlockCoords(pos);

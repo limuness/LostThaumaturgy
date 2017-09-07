@@ -14,14 +14,14 @@ import net.minecraftforge.common.MinecraftForge;
 
 import com.pengu.lostthaumaturgy.LostThaumaturgy;
 import com.pengu.lostthaumaturgy.api.event.ReloadRegisteredCrucibleRecipesEvent;
-import com.pengu.lostthaumaturgy.api.match.IMatcher;
+import com.pengu.lostthaumaturgy.api.match.iMatcher;
 import com.pengu.lostthaumaturgy.api.match.MatcherItemStack;
 import com.pengu.lostthaumaturgy.api.match.MatcherOreDict;
 
 public class RecipesCrucible
 {
-	private static final Map<IMatcher<ItemStack>, Float> registered = new HashMap<>();
-	private static final Map<IMatcher<ItemStack>, Float> mapped = new HashMap<>();
+	private static final Map<iMatcher<ItemStack>, Float> registered = new HashMap<>();
+	private static final Map<iMatcher<ItemStack>, Float> mapped = new HashMap<>();
 	
 	public static void registerNewSmelting(ItemStack container, float value)
 	{
@@ -38,7 +38,7 @@ public class RecipesCrucible
 		registerNewSmelting(new MatcherOreDict(od), value);
 	}
 	
-	public static void registerNewSmelting(IMatcher<ItemStack> container, float value)
+	public static void registerNewSmelting(iMatcher<ItemStack> container, float value)
 	{
 		if(getSmeltingValue(container) == 0F)
 			registered.put(container, value);
@@ -208,11 +208,11 @@ public class RecipesCrucible
 		return getSmeltingValue(new MatcherOreDict(container));
 	}
 	
-	public static float getSmeltingValue(IMatcher<ItemStack> container)
+	public static float getSmeltingValue(iMatcher<ItemStack> container)
 	{
 		float min = 0;
 		
-		for(IMatcher<ItemStack> e : mapped.keySet())
+		for(iMatcher<ItemStack> e : mapped.keySet())
 		{
 			boolean match = e.matches(container.defaultInstance());
 			if(match)

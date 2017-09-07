@@ -53,8 +53,8 @@ import com.pengu.hammercore.color.Color;
 import com.pengu.hammercore.math.MathHelper;
 import com.pengu.hammercore.proxy.ParticleProxy_Client;
 import com.pengu.lostthaumaturgy.LostThaumaturgy;
-import com.pengu.lostthaumaturgy.api.items.IGoggles;
-import com.pengu.lostthaumaturgy.api.tiles.IUpgradable;
+import com.pengu.lostthaumaturgy.api.items.iGoggles;
+import com.pengu.lostthaumaturgy.api.tiles.iUpgradable;
 import com.pengu.lostthaumaturgy.api.wand.WandRegistry;
 import com.pengu.lostthaumaturgy.client.ClientAtmosphereChunk;
 import com.pengu.lostthaumaturgy.client.HudDetector;
@@ -417,7 +417,7 @@ public class ClientProxy extends CommonProxy
 		
 		if(evt.getType() == ElementType.ALL)
 		{
-			IGoggles goggles = ItemGogglesRevealing.getWearing(mc.player);
+			iGoggles goggles = ItemGogglesRevealing.getWearing(mc.player);
 			if(goggles != null)
 			{
 				int t = goggles.getRevealType();
@@ -435,9 +435,9 @@ public class ClientProxy extends CommonProxy
 			for(ItemStack item : handStacks)
 			{
 				RayTraceResult res = mc.objectMouseOver;
-				if(!item.isEmpty() && item.getItem() == ItemsLT.WAND_REVERSAL && res != null && res.typeOfHit == Type.BLOCK && mc.world.getTileEntity(res.getBlockPos()) instanceof IUpgradable)
+				if(!item.isEmpty() && item.getItem() == ItemsLT.WAND_REVERSAL && res != null && res.typeOfHit == Type.BLOCK && mc.world.getTileEntity(res.getBlockPos()) instanceof iUpgradable)
 				{
-					IUpgradable tet = (IUpgradable) mc.world.getTileEntity(res.getBlockPos());
+					iUpgradable tet = (iUpgradable) mc.world.getTileEntity(res.getBlockPos());
 					
 					int last = -1;
 					int[] u = tet.getUpgrades();
@@ -453,9 +453,9 @@ public class ClientProxy extends CommonProxy
 					}
 				}
 				
-				if(!item.isEmpty() && item.getItem() instanceof ItemUpgrade && res != null && res.typeOfHit == Type.BLOCK && mc.world.getTileEntity(res.getBlockPos()) instanceof IUpgradable)
+				if(!item.isEmpty() && item.getItem() instanceof ItemUpgrade && res != null && res.typeOfHit == Type.BLOCK && mc.world.getTileEntity(res.getBlockPos()) instanceof iUpgradable)
 				{
-					IUpgradable tet = (IUpgradable) mc.world.getTileEntity(res.getBlockPos());
+					iUpgradable tet = (iUpgradable) mc.world.getTileEntity(res.getBlockPos());
 					
 					int id = ItemUpgrade.idFromItem((ItemUpgrade) item.getItem());
 					

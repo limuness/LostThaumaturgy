@@ -1,14 +1,14 @@
 package com.pengu.lostthaumaturgy.net;
 
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
-
-import com.pengu.hammercore.net.packetAPI.IPacket;
-import com.pengu.hammercore.net.packetAPI.IPacketListener;
+import com.pengu.hammercore.net.packetAPI.iPacket;
+import com.pengu.hammercore.net.packetAPI.iPacketListener;
 import com.pengu.lostthaumaturgy.LostThaumaturgy;
 import com.pengu.lostthaumaturgy.core.emote.EmoteData;
 
-public class PacketEmote implements IPacket, IPacketListener<PacketEmote, IPacket>
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
+
+public class PacketEmote implements iPacket, iPacketListener<PacketEmote, iPacket>
 {
 	protected EmoteData data;
 	
@@ -22,7 +22,7 @@ public class PacketEmote implements IPacket, IPacketListener<PacketEmote, IPacke
 	}
 	
 	@Override
-	public IPacket onArrived(PacketEmote packet, MessageContext context)
+	public iPacket onArrived(PacketEmote packet, MessageContext context)
 	{
 		LostThaumaturgy.proxy.spawnEmote(packet.data, context);
 		return null;

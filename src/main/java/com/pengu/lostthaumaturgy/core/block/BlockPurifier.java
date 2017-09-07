@@ -15,10 +15,10 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-import com.pengu.hammercore.api.ITileBlock;
+import com.pengu.hammercore.api.iTileBlock;
 import com.pengu.lostthaumaturgy.core.tile.TilePurifier;
 
-public class BlockPurifier extends Block implements ITileEntityProvider, ITileBlock<TilePurifier>
+public class BlockPurifier extends Block implements ITileEntityProvider, iTileBlock<TilePurifier>
 {
 	public static final PropertyEnum<Axis> PROPERTY_AXIS = PropertyEnum.create("axis", Axis.class);
 	

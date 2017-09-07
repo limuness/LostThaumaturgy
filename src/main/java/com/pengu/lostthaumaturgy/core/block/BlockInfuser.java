@@ -1,5 +1,12 @@
 package com.pengu.lostthaumaturgy.core.block;
 
+import com.pengu.hammercore.api.iTileBlock;
+import com.pengu.hammercore.common.utils.WorldUtil;
+import com.pengu.hammercore.core.gui.GuiManager;
+import com.pengu.lostthaumaturgy.core.Info;
+import com.pengu.lostthaumaturgy.core.block.def.BlockRendered;
+import com.pengu.lostthaumaturgy.core.tile.TileInfuser;
+
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -12,14 +19,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-import com.pengu.hammercore.api.ITileBlock;
-import com.pengu.hammercore.common.utils.WorldUtil;
-import com.pengu.hammercore.gui.GuiManager;
-import com.pengu.lostthaumaturgy.core.Info;
-import com.pengu.lostthaumaturgy.core.block.def.BlockRendered;
-import com.pengu.lostthaumaturgy.core.tile.TileInfuser;
-
-public class BlockInfuser extends BlockRendered implements ITileBlock<TileInfuser>, ITileEntityProvider
+public class BlockInfuser extends BlockRendered implements iTileBlock<TileInfuser>, ITileEntityProvider
 {
 	public BlockInfuser()
 	{

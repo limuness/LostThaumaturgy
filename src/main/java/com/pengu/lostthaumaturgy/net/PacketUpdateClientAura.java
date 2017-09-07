@@ -1,18 +1,18 @@
 package com.pengu.lostthaumaturgy.net;
 
+import com.pengu.hammercore.net.packetAPI.iPacket;
+import com.pengu.hammercore.net.packetAPI.iPacketListener;
+import com.pengu.lostthaumaturgy.LostThaumaturgy;
+import com.pengu.lostthaumaturgy.custom.aura.AtmosphereChunk;
+import com.pengu.lostthaumaturgy.custom.aura.AtmosphereTicker;
+
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.common.util.Constants.NBT;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
-import com.pengu.hammercore.net.packetAPI.IPacket;
-import com.pengu.hammercore.net.packetAPI.IPacketListener;
-import com.pengu.lostthaumaturgy.LostThaumaturgy;
-import com.pengu.lostthaumaturgy.custom.aura.AtmosphereChunk;
-import com.pengu.lostthaumaturgy.custom.aura.AtmosphereTicker;
-
-public class PacketUpdateClientAura implements IPacket, IPacketListener<PacketUpdateClientAura, IPacket>
+public class PacketUpdateClientAura implements iPacket, iPacketListener<PacketUpdateClientAura, iPacket>
 {
 	public static BlockPos closestMonolith;
 	
@@ -48,7 +48,7 @@ public class PacketUpdateClientAura implements IPacket, IPacketListener<PacketUp
 	}
 	
 	@Override
-	public IPacket onArrived(PacketUpdateClientAura packet, MessageContext context)
+	public iPacket onArrived(PacketUpdateClientAura packet, MessageContext context)
 	{
 		LostThaumaturgy.proxy.updateClientAuraChunk(packet.chunk);
 		closestMonolith = packet.monolith;

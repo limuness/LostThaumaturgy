@@ -138,11 +138,8 @@ public class TESRCrystal extends TESR<TileCrystalOre>
 		blend.captureState();
 		blend.on();
 		
-		GLRenderState norm = GLRenderState.NORMALIZE;
-		norm.captureState();
 		
 		GL11.glPushMatrix();
-		norm.on();
 		GL11.glEnable(32826);
 		GL11.glBlendFunc(770, 771);
 		Tessellator tessellator = Tessellator.getInstance();
@@ -162,7 +159,6 @@ public class TESRCrystal extends TESR<TileCrystalOre>
 		GL11.glDisable(32826);
 		GL11.glPopMatrix();
 		blend.reset();
-		norm.reset();
 		GL11.glColor4f(1, 1, 1, 1);
 	}
 }

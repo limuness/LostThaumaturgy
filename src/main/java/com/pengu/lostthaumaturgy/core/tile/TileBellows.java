@@ -9,10 +9,10 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 
 import com.pengu.hammercore.tile.TileSyncableTickable;
-import com.pengu.lostthaumaturgy.api.tiles.IBellowBoostable;
-import com.pengu.lostthaumaturgy.api.tiles.IConnection;
+import com.pengu.lostthaumaturgy.api.tiles.iBellowBoostable;
+import com.pengu.lostthaumaturgy.api.tiles.iConnection;
 
-public class TileBellows extends TileSyncableTickable implements IConnection
+public class TileBellows extends TileSyncableTickable implements iConnection
 {
 	public float scale = 1;
 	boolean direction = false;
@@ -47,7 +47,7 @@ public class TileBellows extends TileSyncableTickable implements IConnection
 		
 		EnumFacing baseFace = EnumFacing.VALUES[(orientation + 2) % EnumFacing.VALUES.length];
 		TileEntity te = world.getTileEntity(pos.offset(baseFace.getOpposite()));
-		if(te instanceof IBellowBoostable && ((IBellowBoostable) te).canBeBoosted(baseFace))
+		if(te instanceof iBellowBoostable && ((iBellowBoostable) te).canBeBoosted(baseFace))
 			return true;
 		if(te != null && (te instanceof TileCrucible ||
 		// te instanceof TileArcaneFurnace ||

@@ -16,7 +16,7 @@ import net.minecraftforge.oredict.OreDictionary;
 
 import com.google.common.base.Predicate;
 import com.pengu.lostthaumaturgy.api.RecipesInfuser;
-import com.pengu.lostthaumaturgy.api.tiles.IInfuser;
+import com.pengu.lostthaumaturgy.api.tiles.iInfuser;
 import com.pengu.lostthaumaturgy.core.items.ItemMultiMaterial.EnumMultiMaterialType;
 
 public class InfuserLT

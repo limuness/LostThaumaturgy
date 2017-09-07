@@ -10,13 +10,13 @@ import net.minecraft.item.ItemStack;
 import org.lwjgl.opengl.GL11;
 
 import com.pengu.hammercore.client.utils.RenderUtil;
-import com.pengu.lostthaumaturgy.api.fuser.IFuserRecipe;
+import com.pengu.lostthaumaturgy.api.fuser.iFuserRecipe;
 
 public class FuserRecipeWrapper implements IRecipeWrapper
 {
-	public final IFuserRecipe recipe;
+	public final iFuserRecipe recipe;
 	
-	public FuserRecipeWrapper(IFuserRecipe recipe)
+	public FuserRecipeWrapper(iFuserRecipe recipe)
 	{
 		this.recipe = recipe;
 	}

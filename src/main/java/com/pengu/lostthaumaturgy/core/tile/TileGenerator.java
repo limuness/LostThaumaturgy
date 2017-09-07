@@ -1,5 +1,21 @@
 package com.pengu.lostthaumaturgy.core.tile;
 
+import com.pengu.hammercore.HammerCore;
+import com.pengu.hammercore.common.capabilities.CapabilityEJ;
+import com.pengu.hammercore.core.gui.container.ContainerEmpty;
+import com.pengu.hammercore.energy.iPowerStorage;
+import com.pengu.hammercore.net.HCNetwork;
+import com.pengu.hammercore.utils.WorldLocation;
+import com.pengu.lostthaumaturgy.api.tiles.TileVisUser;
+import com.pengu.lostthaumaturgy.api.tiles.iUpgradable;
+import com.pengu.lostthaumaturgy.client.gui.GuiGenerator;
+import com.pengu.lostthaumaturgy.core.Info;
+import com.pengu.lostthaumaturgy.core.items.ItemUpgrade;
+import com.pengu.lostthaumaturgy.custom.aura.AtmosphereChunk;
+import com.pengu.lostthaumaturgy.custom.aura.AtmosphereTicker;
+import com.pengu.lostthaumaturgy.init.ItemsLT;
+import com.pengu.lostthaumaturgy.net.zap.PacketSpawnGeneratorZap;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -12,23 +28,7 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.energy.CapabilityEnergy;
 import net.minecraftforge.energy.IEnergyStorage;
 
-import com.pengu.hammercore.HammerCore;
-import com.pengu.hammercore.common.capabilities.CapabilityEJ;
-import com.pengu.hammercore.energy.IPowerStorage;
-import com.pengu.hammercore.gui.container.ContainerEmpty;
-import com.pengu.hammercore.net.HCNetwork;
-import com.pengu.hammercore.utils.WorldLocation;
-import com.pengu.lostthaumaturgy.api.tiles.IUpgradable;
-import com.pengu.lostthaumaturgy.api.tiles.TileVisUser;
-import com.pengu.lostthaumaturgy.client.gui.GuiGenerator;
-import com.pengu.lostthaumaturgy.core.Info;
-import com.pengu.lostthaumaturgy.core.items.ItemUpgrade;
-import com.pengu.lostthaumaturgy.custom.aura.AtmosphereChunk;
-import com.pengu.lostthaumaturgy.custom.aura.AtmosphereTicker;
-import com.pengu.lostthaumaturgy.init.ItemsLT;
-import com.pengu.lostthaumaturgy.net.zap.PacketSpawnGeneratorZap;
-
-public class TileGenerator extends TileVisUser implements IEnergyStorage, IPowerStorage, IUpgradable
+public class TileGenerator extends TileVisUser implements IEnergyStorage, iPowerStorage, iUpgradable
 {
 	private int genloop = 0;
 	public float rotation = -1;
@@ -111,7 +111,7 @@ public class TileGenerator extends TileVisUser implements IEnergyStorage, IPower
 								HCNetwork.getManager("particles").sendToAllAround(new PacketSpawnGeneratorZap(fromPos(pos), fromPos(l.getPos())), getSyncPoint(64));
 						} else if(tile.hasCapability(CapabilityEJ.ENERGY, f.getOpposite()))
 						{
-							IPowerStorage storage = tile.getCapability(CapabilityEJ.ENERGY, f.getOpposite());
+							iPowerStorage storage = tile.getCapability(CapabilityEJ.ENERGY, f.getOpposite());
 							emitPower = extractEnergy(storage.receiveEnergy(extractEnergy(limit, true), false), false) > 0;
 							if(emitPower && world.rand.nextInt(9) == 0)
 								HCNetwork.getManager("particles").sendToAllAround(new PacketSpawnGeneratorZap(fromPos(pos), fromPos(l.getPos())), getSyncPoint(64));

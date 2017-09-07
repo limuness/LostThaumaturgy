@@ -2,17 +2,17 @@ package com.pengu.lostthaumaturgy.net;
 
 import java.util.ArrayList;
 
+import com.pengu.hammercore.net.packetAPI.iPacket;
+import com.pengu.hammercore.net.packetAPI.iPacketListener;
+import com.pengu.lostthaumaturgy.api.research.client.ClientResearchData;
+
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.nbt.NBTTagString;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import net.minecraftforge.fml.relauncher.Side;
 
-import com.pengu.hammercore.net.packetAPI.IPacket;
-import com.pengu.hammercore.net.packetAPI.IPacketListener;
-import com.pengu.lostthaumaturgy.api.research.client.ClientResearchData;
-
-public class PacketUpdateClientRD implements IPacket, IPacketListener<PacketUpdateClientRD, IPacket>
+public class PacketUpdateClientRD implements iPacket, iPacketListener<PacketUpdateClientRD, iPacket>
 {
 	public NBTTagCompound nbt;
 	
@@ -31,7 +31,7 @@ public class PacketUpdateClientRD implements IPacket, IPacketListener<PacketUpda
 	}
 	
 	@Override
-	public IPacket onArrived(PacketUpdateClientRD packet, MessageContext context)
+	public iPacket onArrived(PacketUpdateClientRD packet, MessageContext context)
 	{
 		if(context.side == Side.CLIENT)
 			ClientResearchData.fromNBT(packet.nbt);

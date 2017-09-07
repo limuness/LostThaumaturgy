@@ -2,7 +2,7 @@ package com.pengu.lostthaumaturgy.api.items;
 
 import net.minecraft.entity.player.EntityPlayer;
 
-public interface IGoggles
+public interface iGoggles
 {
 	/**
 	 * Return a number between 1 and 3. <br>

@@ -9,7 +9,7 @@ import net.minecraft.util.NonNullList;
 import com.pengu.hammercore.net.HCNetwork;
 import com.pengu.hammercore.utils.WorldLocation;
 import com.pengu.lostthaumaturgy.api.fuser.FuserInventory;
-import com.pengu.lostthaumaturgy.api.fuser.IFuserRecipe;
+import com.pengu.lostthaumaturgy.api.fuser.iFuserRecipe;
 import com.pengu.lostthaumaturgy.core.items.ItemWand;
 import com.pengu.lostthaumaturgy.net.wisp.PacketFXWisp2;
 
@@ -24,7 +24,7 @@ public class SlotFuserOutput extends SlotOutput
 	public boolean canTakeStack(EntityPlayer player)
 	{
 		FuserInventory inv = (FuserInventory) inventory;
-		IFuserRecipe recipe = inv.findRecipe(player);
+		iFuserRecipe recipe = inv.findRecipe(player);
 		if(recipe != null)
 		{
 			ItemStack wand = inv.wandInv.getStackInSlot(0);
@@ -41,7 +41,7 @@ public class SlotFuserOutput extends SlotOutput
 	public ItemStack onTake(EntityPlayer player, ItemStack stack)
 	{
 		FuserInventory inv = (FuserInventory) inventory;
-		IFuserRecipe recipe = inv.findRecipe(player);
+		iFuserRecipe recipe = inv.findRecipe(player);
 		for(int i = 0; i < inv.craftingInv.getSizeInventory(); ++i)
 			inv.craftingInv.getStackInSlot(i).shrink(1);
 		NonNullList<ItemStack> remainings = recipe.getRemainingItems(inv, player);

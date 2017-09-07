@@ -2,20 +2,21 @@ package com.pengu.lostthaumaturgy.intr.hc.rts;
 
 import java.util.function.Predicate;
 
+import com.google.common.base.Predicates;
+import com.pengu.hammercore.recipeAPI.iRecipeType;
+import com.pengu.hammercore.recipeAPI.iRecipeType.RecipeParseException;
+import com.pengu.lostthaumaturgy.api.RecipesInfuser;
+import com.pengu.lostthaumaturgy.api.RecipesInfuser.InfuserList;
+import com.pengu.lostthaumaturgy.api.RecipesInfuser.RecipeInfuserDummy;
+import com.pengu.lostthaumaturgy.api.tiles.iInfuser;
+import com.pengu.lostthaumaturgy.core.Info;
+
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraftforge.common.util.Constants.NBT;
 
-import com.google.common.base.Predicates;
-import com.pengu.hammercore.recipeAPI.IRecipeType;
-import com.pengu.lostthaumaturgy.api.RecipesInfuser;
-import com.pengu.lostthaumaturgy.api.RecipesInfuser.InfuserList;
-import com.pengu.lostthaumaturgy.api.RecipesInfuser.RecipeInfuserDummy;
-import com.pengu.lostthaumaturgy.api.tiles.IInfuser;
-import com.pengu.lostthaumaturgy.core.Info;
-
-public class RecipeTypeInfuser implements IRecipeType<RecipeInfuserDummy>
+public class RecipeTypeInfuser implements iRecipeType<RecipeInfuserDummy>
 {
 	
 	@Override
@@ -39,7 +40,7 @@ public class RecipeTypeInfuser implements IRecipeType<RecipeInfuserDummy>
 		int cost = Math.max(json.getInteger("cost"), 1);
 		
 		NBTTagList conds = json.getTagList("conditions", NBT.TAG_COMPOUND);
-		Predicate<IInfuser> predicate = Predicates.alwaysTrue();
+		Predicate<iInfuser> predicate = Predicates.alwaysTrue();
 		
 		if(conds != null && !conds.hasNoTags())
 			for(int i = 0; i < conds.tagCount(); ++i)

@@ -12,6 +12,16 @@ import java.net.Socket;
 import java.net.URL;
 import java.nio.file.Files;
 
+import org.apache.commons.lang3.ArrayUtils;
+import org.lwjgl.opengl.GL11;
+
+import com.pengu.hammercore.client.utils.RenderUtil;
+import com.pengu.hammercore.common.utils.IOUtils;
+import com.pengu.hammercore.core.gui.GuiCentered;
+import com.pengu.hammercore.math.MathHelper;
+import com.pengu.lostthaumaturgy.LostThaumaturgy;
+import com.pengu.lostthaumaturgy.core.Info;
+
 import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
@@ -20,16 +30,6 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextFormatting;
-
-import org.apache.commons.lang3.ArrayUtils;
-import org.lwjgl.opengl.GL11;
-
-import com.pengu.hammercore.client.utils.RenderUtil;
-import com.pengu.hammercore.common.utils.IOUtils;
-import com.pengu.hammercore.gui.GuiCentered;
-import com.pengu.hammercore.math.MathHelper;
-import com.pengu.lostthaumaturgy.LostThaumaturgy;
-import com.pengu.lostthaumaturgy.core.Info;
 
 public class GuiInteractive extends GuiCentered
 {

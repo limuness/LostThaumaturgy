@@ -8,13 +8,13 @@ import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-import com.pengu.hammercore.api.ITileBlock;
+import com.pengu.hammercore.api.iTileBlock;
 import com.pengu.hammercore.common.utils.WorldUtil;
 import com.pengu.lostthaumaturgy.core.Info;
 import com.pengu.lostthaumaturgy.core.block.def.BlockRendered;
 import com.pengu.lostthaumaturgy.core.tile.TilePenguCobbleGen;
 
-public class BlockPenguCobbleGen extends BlockRendered implements ITileBlock<TilePenguCobbleGen>, ITileEntityProvider
+public class BlockPenguCobbleGen extends BlockRendered implements iTileBlock<TilePenguCobbleGen>, ITileEntityProvider
 {
 	public BlockPenguCobbleGen()
 	{

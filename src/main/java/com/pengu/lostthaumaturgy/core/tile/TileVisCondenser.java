@@ -3,6 +3,24 @@ package com.pengu.lostthaumaturgy.core.tile;
 import java.util.ArrayList;
 import java.util.Map;
 
+import com.pengu.hammercore.asm.WorldHooks;
+import com.pengu.hammercore.common.inventory.InventoryNonTile;
+import com.pengu.hammercore.net.HCNetwork;
+import com.pengu.hammercore.tile.TileSyncableTickable;
+import com.pengu.hammercore.tile.iTileDroppable;
+import com.pengu.lostthaumaturgy.LostThaumaturgy;
+import com.pengu.lostthaumaturgy.api.tiles.ConnectionManager;
+import com.pengu.lostthaumaturgy.api.tiles.iConnection;
+import com.pengu.lostthaumaturgy.api.tiles.iUpgradable;
+import com.pengu.lostthaumaturgy.client.gui.GuiVisCondenser;
+import com.pengu.lostthaumaturgy.core.items.ItemMultiMaterial.EnumMultiMaterialType;
+import com.pengu.lostthaumaturgy.core.items.ItemUpgrade;
+import com.pengu.lostthaumaturgy.custom.aura.AtmosphereChunk;
+import com.pengu.lostthaumaturgy.custom.aura.AtmosphereTicker;
+import com.pengu.lostthaumaturgy.init.ItemsLT;
+import com.pengu.lostthaumaturgy.inventory.ContainerVisCondenser;
+import com.pengu.lostthaumaturgy.net.wisp.PacketFXWisp_TileVisCondenser_tick;
+
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ISidedInventory;
@@ -15,25 +33,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
-import com.pengu.hammercore.asm.WorldHooks;
-import com.pengu.hammercore.common.inventory.InventoryNonTile;
-import com.pengu.hammercore.net.HCNetwork;
-import com.pengu.hammercore.tile.ITileDroppable;
-import com.pengu.hammercore.tile.TileSyncableTickable;
-import com.pengu.lostthaumaturgy.LostThaumaturgy;
-import com.pengu.lostthaumaturgy.api.tiles.ConnectionManager;
-import com.pengu.lostthaumaturgy.api.tiles.IConnection;
-import com.pengu.lostthaumaturgy.api.tiles.IUpgradable;
-import com.pengu.lostthaumaturgy.client.gui.GuiVisCondenser;
-import com.pengu.lostthaumaturgy.core.items.ItemUpgrade;
-import com.pengu.lostthaumaturgy.core.items.ItemMultiMaterial.EnumMultiMaterialType;
-import com.pengu.lostthaumaturgy.custom.aura.AtmosphereChunk;
-import com.pengu.lostthaumaturgy.custom.aura.AtmosphereTicker;
-import com.pengu.lostthaumaturgy.init.ItemsLT;
-import com.pengu.lostthaumaturgy.inventory.ContainerVisCondenser;
-import com.pengu.lostthaumaturgy.net.wisp.PacketFXWisp_TileVisCondenser_tick;
-
-public class TileVisCondenser extends TileSyncableTickable implements IConnection, IUpgradable, ISidedInventory, ITileDroppable
+public class TileVisCondenser extends TileSyncableTickable implements iConnection, iUpgradable, ISidedInventory, iTileDroppable
 {
 	public float angle;
 	public float speed;
@@ -263,10 +263,10 @@ public class TileVisCondenser extends TileSyncableTickable implements IConnectio
 	
 	protected void equalizeWithNeighbours()
 	{
-		ArrayList<IConnection> neighbours = new ArrayList<IConnection>();
+		ArrayList<iConnection> neighbours = new ArrayList<iConnection>();
 		for(EnumFacing facing : EnumFacing.VALUES)
 		{
-			IConnection conn = ConnectionManager.getConnection(loc, facing);
+			iConnection conn = ConnectionManager.getConnection(loc, facing);
 			if(conn == null || !getConnectable(facing) || conn instanceof TileVisCondenser)
 				continue;
 			neighbours.add(conn);

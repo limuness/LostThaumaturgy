@@ -5,31 +5,26 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
+import org.lwjgl.opengl.GL11;
+
+import com.pengu.hammercore.client.utils.RenderUtil;
+import com.pengu.lostthaumaturgy.api.RecipesInfuser;
+import com.pengu.lostthaumaturgy.api.research.ResearchItem;
+import com.pengu.lostthaumaturgy.api.research.ResearchPredicate;
+import com.pengu.lostthaumaturgy.api.tiles.iInfuser;
+import com.pengu.lostthaumaturgy.core.Info;
+import com.pengu.lostthaumaturgy.core.items.ItemResearch;
+import com.pengu.lostthaumaturgy.core.items.ItemResearch.EnumResearchItemType;
+import com.pengu.lostthaumaturgy.core.items.ItemUpgrade;
+import com.pengu.lostthaumaturgy.core.tile.TileInfuserDark;
+import com.pengu.lostthaumaturgy.inventory.ContainerInfuserDark;
+
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.util.ITooltipFlag.TooltipFlags;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.translation.I18n;
-
-import org.lwjgl.opengl.GL11;
-
-import com.pengu.hammercore.bookAPI.BookCategory;
-import com.pengu.hammercore.bookAPI.BookEntry;
-import com.pengu.hammercore.client.utils.RenderUtil;
-import com.pengu.hammercore.gui.book.GuiBook;
-import com.pengu.hammercore.gui.book.GuiBookCategory;
-import com.pengu.hammercore.gui.book.GuiBookEntry;
-import com.pengu.lostthaumaturgy.api.RecipesInfuser;
-import com.pengu.lostthaumaturgy.api.research.ResearchItem;
-import com.pengu.lostthaumaturgy.api.research.ResearchPredicate;
-import com.pengu.lostthaumaturgy.api.tiles.IInfuser;
-import com.pengu.lostthaumaturgy.core.Info;
-import com.pengu.lostthaumaturgy.core.items.ItemResearch;
-import com.pengu.lostthaumaturgy.core.items.ItemUpgrade;
-import com.pengu.lostthaumaturgy.core.items.ItemResearch.EnumResearchItemType;
-import com.pengu.lostthaumaturgy.core.tile.TileInfuserDark;
-import com.pengu.lostthaumaturgy.inventory.ContainerInfuserDark;
 
 public class GuiInfuserDark extends GuiContainer
 {
@@ -118,7 +113,7 @@ public class GuiInfuserDark extends GuiContainer
 				currentDiscoveries = null;
 			} else
 			{
-				Predicate<IInfuser> predicate = RecipesInfuser.getPredicate(tile.entry);
+				Predicate<iInfuser> predicate = RecipesInfuser.getPredicate(tile.entry);
 				if(predicate instanceof ResearchPredicate)
 				{
 					ResearchPredicate pred = (ResearchPredicate) predicate;

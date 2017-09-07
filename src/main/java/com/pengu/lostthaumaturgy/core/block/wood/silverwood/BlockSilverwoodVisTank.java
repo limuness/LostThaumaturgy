@@ -11,14 +11,14 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-import com.pengu.hammercore.api.ITileBlock;
+import com.pengu.hammercore.api.iTileBlock;
 import com.pengu.hammercore.common.utils.WorldUtil;
 import com.pengu.lostthaumaturgy.core.Info;
 import com.pengu.lostthaumaturgy.core.block.def.BlockRendered;
 import com.pengu.lostthaumaturgy.core.tile.TileSilverwoodVisTank;
 import com.pengu.lostthaumaturgy.core.tile.TileVisTank;
 
-public class BlockSilverwoodVisTank extends BlockRendered implements ITileBlock<TileSilverwoodVisTank>, ITileEntityProvider
+public class BlockSilverwoodVisTank extends BlockRendered implements iTileBlock<TileSilverwoodVisTank>, ITileEntityProvider
 {
 	public BlockSilverwoodVisTank()
 	{

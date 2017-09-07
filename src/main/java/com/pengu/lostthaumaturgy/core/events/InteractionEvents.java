@@ -39,8 +39,8 @@ import com.pengu.hammercore.utils.RoundRobinList;
 import com.pengu.hammercore.utils.WorldLocation;
 import com.pengu.lostthaumaturgy.LTConfigs;
 import com.pengu.lostthaumaturgy.api.event.TaintedSoilEvent;
-import com.pengu.lostthaumaturgy.api.items.ISpeedBoots;
-import com.pengu.lostthaumaturgy.api.tiles.IUpgradable;
+import com.pengu.lostthaumaturgy.api.items.iSpeedBoots;
+import com.pengu.lostthaumaturgy.api.tiles.iUpgradable;
 import com.pengu.lostthaumaturgy.core.Info;
 import com.pengu.lostthaumaturgy.core.emote.EmoteManager;
 import com.pengu.lostthaumaturgy.core.emote.EmoteManager.DefaultEmotes;
@@ -67,7 +67,7 @@ public class InteractionEvents
 		if(!held.isEmpty())
 		{
 			ItemUpgrade item = WorldUtil.cast(held.getItem(), ItemUpgrade.class);
-			IUpgradable tile = WorldUtil.cast(world.getTileEntity(pos), IUpgradable.class);
+			iUpgradable tile = WorldUtil.cast(world.getTileEntity(pos), iUpgradable.class);
 			
 			if(item != null && tile != null)
 			{
@@ -110,9 +110,9 @@ public class InteractionEvents
 		WorldLocation loc = new WorldLocation(e.getWorld(), e.getPos());
 		TileEntity tile = loc.getTile();
 		
-		if(tile instanceof IUpgradable)
+		if(tile instanceof iUpgradable)
 		{
-			IUpgradable upgradable = (IUpgradable) tile;
+			iUpgradable upgradable = (iUpgradable) tile;
 			while(upgradable.getInstalledUpgradeCount() > 0)
 				upgradable.dropUpgrade(e.getPlayer());
 		}
@@ -175,9 +175,9 @@ public class InteractionEvents
 		float newSpeed = speed;
 		
 		ItemStack stack = player.getItemStackFromSlot(EntityEquipmentSlot.FEET);
-		if(stack.getItem() instanceof ISpeedBoots)
+		if(stack.getItem() instanceof iSpeedBoots)
 		{
-			ISpeedBoots boots = (ISpeedBoots) stack.getItem();
+			iSpeedBoots boots = (iSpeedBoots) stack.getItem();
 			newSpeed += boots.getWalkBoost(stack);
 			player.stepHeight = player.isSneaking() ? .5F : boots.getStepAssist(stack);
 		} else
@@ -214,9 +214,9 @@ public class InteractionEvents
 		{
 			EntityLivingBase base = (EntityLivingBase) evt.getEntity();
 			ItemStack stack = base.getItemStackFromSlot(EntityEquipmentSlot.FEET);
-			if(stack.getItem() instanceof ISpeedBoots)
+			if(stack.getItem() instanceof iSpeedBoots)
 			{
-				ISpeedBoots boots = (ISpeedBoots) stack.getItem();
+				iSpeedBoots boots = (iSpeedBoots) stack.getItem();
 				evt.getEntity().motionY *= 1F + boots.getJumpMod(stack) * (evt.getEntity().isSneaking() ? .5F : 1F);
 			}
 		}
@@ -230,9 +230,9 @@ public class InteractionEvents
 			EntityLivingBase base = (EntityLivingBase) evt.getEntity();
 			{
 				ItemStack stack = base.getItemStackFromSlot(EntityEquipmentSlot.FEET);
-				if(stack.getItem() instanceof ISpeedBoots)
+				if(stack.getItem() instanceof iSpeedBoots)
 				{
-					ISpeedBoots boots = (ISpeedBoots) stack.getItem();
+					iSpeedBoots boots = (iSpeedBoots) stack.getItem();
 					if(evt.getDistance() >= 5.5)
 						stack.damageItem(1, base);
 					evt.setDamageMultiplier(evt.getDamageMultiplier() / (1 + boots.getJumpMod(stack) * 2));

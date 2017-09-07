@@ -7,16 +7,16 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
 
 import com.pengu.hammercore.utils.WorldLocation;
-import com.pengu.lostthaumaturgy.api.items.IRepairable;
+import com.pengu.lostthaumaturgy.api.items.iRepairable;
 import com.pengu.lostthaumaturgy.init.ItemMaterialsLT;
 
-public class DefaultRepairGetter implements ICustomRepairable
+public class DefaultRepairGetter implements iCustomRepairable
 {
 	@Override
 	public float getVisCost(ItemStack stack, WorldLocation loc)
 	{
-		if(stack.getItem() instanceof IRepairable)
-			return ((IRepairable) stack.getItem()).getRestoreCost(stack, loc);
+		if(stack.getItem() instanceof iRepairable)
+			return ((iRepairable) stack.getItem()).getRestoreCost(stack, loc);
 		if(stack.getItem() instanceof ItemTool)
 		{
 			ItemTool tool = (ItemTool) stack.getItem();
@@ -72,7 +72,7 @@ public class DefaultRepairGetter implements ICustomRepairable
 	{
 		if(!stack.getItem().isDamageable())
 			return false;
-		return ICustomRepairable.super.attempRepair(stack, loc);
+		return iCustomRepairable.super.attempRepair(stack, loc);
 	}
 	
 	@Override
@@ -80,6 +80,6 @@ public class DefaultRepairGetter implements ICustomRepairable
 	{
 		if(!stack.getItem().isDamageable())
 			return false;
-		return ICustomRepairable.super.canRepair(stack, loc);
+		return iCustomRepairable.super.canRepair(stack, loc);
 	}
 }

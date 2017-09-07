@@ -1,5 +1,13 @@
 package com.pengu.lostthaumaturgy.core.block;
 
+import com.pengu.hammercore.api.iTileBlock;
+import com.pengu.hammercore.common.utils.WorldUtil;
+import com.pengu.hammercore.core.gui.GuiManager;
+import com.pengu.hammercore.tile.TileSyncable;
+import com.pengu.lostthaumaturgy.core.Info;
+import com.pengu.lostthaumaturgy.core.block.def.BlockRendered;
+import com.pengu.lostthaumaturgy.core.tile.TileGenerator;
+
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -15,15 +23,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-import com.pengu.hammercore.api.ITileBlock;
-import com.pengu.hammercore.common.utils.WorldUtil;
-import com.pengu.hammercore.gui.GuiManager;
-import com.pengu.hammercore.tile.TileSyncable;
-import com.pengu.lostthaumaturgy.core.Info;
-import com.pengu.lostthaumaturgy.core.block.def.BlockRendered;
-import com.pengu.lostthaumaturgy.core.tile.TileGenerator;
-
-public class BlockGenerator extends BlockRendered implements ITileEntityProvider, ITileBlock<TileGenerator>
+public class BlockGenerator extends BlockRendered implements ITileEntityProvider, iTileBlock<TileGenerator>
 {
 	public BlockGenerator()
 	{

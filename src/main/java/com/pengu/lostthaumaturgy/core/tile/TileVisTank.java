@@ -13,11 +13,11 @@ import com.pengu.hammercore.HammerCore;
 import com.pengu.hammercore.tile.TileSyncableTickable;
 import com.pengu.lostthaumaturgy.api.tiles.CapabilityVisConnection;
 import com.pengu.lostthaumaturgy.api.tiles.ConnectionManager;
-import com.pengu.lostthaumaturgy.api.tiles.IConnection;
+import com.pengu.lostthaumaturgy.api.tiles.iConnection;
 import com.pengu.lostthaumaturgy.core.Info;
 import com.pengu.lostthaumaturgy.custom.aura.AtmosphereTicker;
 
-public class TileVisTank extends TileSyncableTickable implements IConnection, Predicate<EnumFacing>
+public class TileVisTank extends TileSyncableTickable implements iConnection, Predicate<EnumFacing>
 {
 	public float pureVis = 0.0f;
 	public float taintedVis = 0.0f;
@@ -119,7 +119,7 @@ public class TileVisTank extends TileSyncableTickable implements IConnection, Pr
 		for(EnumFacing facing : EnumFacing.VALUES)
 		{
 			TileEntity te = world.getTileEntity(pos.offset(facing));
-			IConnection ent = ConnectionManager.getConnection(loc, facing);
+			iConnection ent = ConnectionManager.getConnection(loc, facing);
 			if(!getConnectable(facing) || ent == null)
 				continue;
 			if(!ent.getConnectable(facing.getOpposite()) || te instanceof TileVisTank || stackpureVis + stacktaintedVis >= stackmaxVis || getVisSuction(null) <= ent.getVisSuction(pos) && getTaintSuction(null) <= ent.getTaintSuction(pos))
@@ -314,7 +314,7 @@ public class TileVisTank extends TileSyncableTickable implements IConnection, Pr
 		BlockPos tpos = pos.offset(input);
 		if(world.isBlockLoaded(tpos))
 		{
-			IConnection c2 = ConnectionManager.getConnection(loc, input);
+			iConnection c2 = ConnectionManager.getConnection(loc, input);
 			if(c2 instanceof TileVisTank)
 				return false;
 			if(c2 == null || !c2.getConnectable(input.getOpposite()))

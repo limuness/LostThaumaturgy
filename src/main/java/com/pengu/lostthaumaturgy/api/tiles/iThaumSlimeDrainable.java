@@ -10,7 +10,7 @@ import com.pengu.hammercore.utils.ListUtils;
 import com.pengu.hammercore.utils.WorldLocation;
 import com.pengu.lostthaumaturgy.core.entity.EntityThaumSlime;
 
-public interface IThaumSlimeDrainable
+public interface iThaumSlimeDrainable
 {
 	default void attractSlimeToTile(int rad, WorldLocation location, int maxSlimes)
 	{

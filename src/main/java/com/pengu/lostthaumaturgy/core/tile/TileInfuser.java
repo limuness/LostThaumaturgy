@@ -22,9 +22,9 @@ import com.pengu.hammercore.common.inventory.InventoryNonTile;
 import com.pengu.hammercore.common.utils.WorldUtil;
 import com.pengu.hammercore.net.HCNetwork;
 import com.pengu.lostthaumaturgy.api.RecipesInfuser;
-import com.pengu.lostthaumaturgy.api.tiles.IConnection;
-import com.pengu.lostthaumaturgy.api.tiles.IInfuser;
-import com.pengu.lostthaumaturgy.api.tiles.IUpgradable;
+import com.pengu.lostthaumaturgy.api.tiles.iConnection;
+import com.pengu.lostthaumaturgy.api.tiles.iInfuser;
+import com.pengu.lostthaumaturgy.api.tiles.iUpgradable;
 import com.pengu.lostthaumaturgy.api.tiles.TileVisUser;
 import com.pengu.lostthaumaturgy.client.gui.GuiInfuser;
 import com.pengu.lostthaumaturgy.core.Info;
@@ -35,7 +35,7 @@ import com.pengu.lostthaumaturgy.init.ItemsLT;
 import com.pengu.lostthaumaturgy.inventory.ContainerInfuser;
 import com.pengu.lostthaumaturgy.net.PacketSmallGreenFlameFX;
 
-public class TileInfuser extends TileVisUser implements ISidedInventory, IUpgradable, IInfuser
+public class TileInfuser extends TileVisUser implements ISidedInventory, iUpgradable, iInfuser
 {
 	protected static final ItemStack[] boreItemStacks = null;
 	public InventoryNonTile infuserItemStacks = new InventoryNonTile(8);
@@ -496,7 +496,7 @@ public class TileInfuser extends TileVisUser implements ISidedInventory, IUpgrad
 		BlockPos tpos = pos.offset(to);
 		if(world.isBlockLoaded(tpos))
 		{
-			IConnection c = WorldUtil.cast(world.getTileEntity(tpos), IConnection.class);
+			iConnection c = WorldUtil.cast(world.getTileEntity(tpos), iConnection.class);
 			if(c != null)
 				return c.getConnectable(to.getOpposite());
 		}

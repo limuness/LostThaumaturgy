@@ -10,7 +10,7 @@ import net.minecraft.world.World;
 import com.pengu.hammercore.common.utils.WorldUtil;
 import com.pengu.lostthaumaturgy.core.items.ItemUpgrade;
 
-public interface IUpgradable
+public interface iUpgradable
 {
 	int[] getUpgrades();
 	

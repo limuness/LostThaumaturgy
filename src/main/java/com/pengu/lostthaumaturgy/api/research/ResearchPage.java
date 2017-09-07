@@ -15,8 +15,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import com.pengu.lostthaumaturgy.api.RecipesInfuser;
 import com.pengu.lostthaumaturgy.api.RecipesInfuser.DarkInfuserRecipe;
 import com.pengu.lostthaumaturgy.api.RecipesInfuser.InfuserRecipe;
-import com.pengu.lostthaumaturgy.api.fuser.IFuserRecipe;
-import com.pengu.lostthaumaturgy.api.research.client.IRenderExtension;
+import com.pengu.lostthaumaturgy.api.fuser.iFuserRecipe;
+import com.pengu.lostthaumaturgy.api.research.client.iRenderExtension;
 
 public class ResearchPage
 {
@@ -116,7 +116,7 @@ public class ResearchPage
 		this.recipe = recipe;
 	}
 	
-	public ResearchPage(IFuserRecipe[] recipe)
+	public ResearchPage(iFuserRecipe[] recipe)
 	{
 		this.text = null;
 		this.research = null;
@@ -149,7 +149,7 @@ public class ResearchPage
 		this.recipe = recipe;
 	}
 	
-	public ResearchPage(IFuserRecipe recipe)
+	public ResearchPage(iFuserRecipe recipe)
 	{
 		this.text = null;
 		this.research = null;
@@ -254,7 +254,7 @@ public class ResearchPage
 		}
 		
 		@SideOnly(Side.CLIENT)
-		public IRenderExtension getRender()
+		public iRenderExtension getRender()
 		{
 			if(renderClass == null || renderClass.isEmpty())
 				return null;
@@ -263,13 +263,13 @@ public class ResearchPage
 			{
 				try
 				{
-					render = (IRenderExtension) Class.forName(renderClass).newInstance();
+					render = (iRenderExtension) Class.forName(renderClass).newInstance();
 				} catch(Throwable err)
 				{
 				}
 			}
 			
-			return (IRenderExtension) render;
+			return (iRenderExtension) render;
 		}
 	}
 }

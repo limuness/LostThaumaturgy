@@ -2,6 +2,11 @@ package com.pengu.lostthaumaturgy.net.wisp;
 
 import java.util.Random;
 
+import com.pengu.hammercore.net.packetAPI.iPacket;
+import com.pengu.hammercore.net.packetAPI.iPacketListener;
+import com.pengu.hammercore.proxy.ParticleProxy_Client;
+import com.pengu.lostthaumaturgy.client.fx.FXWisp;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -9,12 +14,7 @@ import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import com.pengu.hammercore.net.packetAPI.IPacket;
-import com.pengu.hammercore.net.packetAPI.IPacketListener;
-import com.pengu.hammercore.proxy.ParticleProxy_Client;
-import com.pengu.lostthaumaturgy.client.fx.FXWisp;
-
-public class PacketAreaWisp implements IPacket, IPacketListener<PacketAreaWisp, IPacket>
+public class PacketAreaWisp implements iPacket, iPacketListener<PacketAreaWisp, iPacket>
 {
 	AxisAlignedBB aabb;
 	float partialTicks;
@@ -56,7 +56,7 @@ public class PacketAreaWisp implements IPacket, IPacketListener<PacketAreaWisp, 
 	}
 	
 	@Override
-	public IPacket onArrived(PacketAreaWisp packet, MessageContext context)
+	public iPacket onArrived(PacketAreaWisp packet, MessageContext context)
 	{
 		if(context.side == Side.CLIENT)
 			packet.client();

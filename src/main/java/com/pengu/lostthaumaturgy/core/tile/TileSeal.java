@@ -1,5 +1,17 @@
 package com.pengu.lostthaumaturgy.core.tile;
 
+import com.pengu.hammercore.common.EnumRotation;
+import com.pengu.hammercore.common.utils.WorldUtil;
+import com.pengu.hammercore.net.utils.NetPropertyItemStack;
+import com.pengu.hammercore.net.utils.NetPropertyString;
+import com.pengu.hammercore.tile.TileSyncableTickable;
+import com.pengu.hammercore.tile.iTileDroppable;
+import com.pengu.lostthaumaturgy.api.seal.ItemSealSymbol;
+import com.pengu.lostthaumaturgy.api.seal.SealCombination;
+import com.pengu.lostthaumaturgy.api.seal.SealInstance;
+import com.pengu.lostthaumaturgy.api.seal.SealManager;
+import com.pengu.lostthaumaturgy.init.BlocksLT;
+
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -10,19 +22,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-import com.pengu.hammercore.common.EnumRotation;
-import com.pengu.hammercore.common.utils.WorldUtil;
-import com.pengu.hammercore.net.utils.NetPropertyItemStack;
-import com.pengu.hammercore.net.utils.NetPropertyString;
-import com.pengu.hammercore.tile.ITileDroppable;
-import com.pengu.hammercore.tile.TileSyncableTickable;
-import com.pengu.lostthaumaturgy.api.seal.ItemSealSymbol;
-import com.pengu.lostthaumaturgy.api.seal.SealCombination;
-import com.pengu.lostthaumaturgy.api.seal.SealInstance;
-import com.pengu.lostthaumaturgy.api.seal.SealManager;
-import com.pengu.lostthaumaturgy.init.BlocksLT;
-
-public class TileSeal extends TileSyncableTickable implements ITileDroppable
+public class TileSeal extends TileSyncableTickable implements iTileDroppable
 {
 	public final NetPropertyItemStack stack;
 	private final NetPropertyString[] slots = new NetPropertyString[3];

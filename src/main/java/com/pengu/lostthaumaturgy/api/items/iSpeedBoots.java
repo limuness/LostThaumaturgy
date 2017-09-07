@@ -2,7 +2,7 @@ package com.pengu.lostthaumaturgy.api.items;
 
 import net.minecraft.item.ItemStack;
 
-public interface ISpeedBoots
+public interface iSpeedBoots
 {
 	float getWalkBoost(ItemStack boots);
 	

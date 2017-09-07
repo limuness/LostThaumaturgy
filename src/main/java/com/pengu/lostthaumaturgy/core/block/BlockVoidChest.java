@@ -1,5 +1,13 @@
 package com.pengu.lostthaumaturgy.core.block;
 
+import com.pengu.hammercore.HammerCore;
+import com.pengu.hammercore.api.iTileBlock;
+import com.pengu.hammercore.common.utils.WorldUtil;
+import com.pengu.hammercore.core.gui.GuiManager;
+import com.pengu.hammercore.tile.TileSyncable;
+import com.pengu.lostthaumaturgy.core.Info;
+import com.pengu.lostthaumaturgy.core.tile.TileVoidChest;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
@@ -14,15 +22,7 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-import com.pengu.hammercore.HammerCore;
-import com.pengu.hammercore.api.ITileBlock;
-import com.pengu.hammercore.common.utils.WorldUtil;
-import com.pengu.hammercore.gui.GuiManager;
-import com.pengu.hammercore.tile.TileSyncable;
-import com.pengu.lostthaumaturgy.core.Info;
-import com.pengu.lostthaumaturgy.core.tile.TileVoidChest;
-
-public class BlockVoidChest extends Block implements ITileBlock<TileVoidChest>, ITileEntityProvider
+public class BlockVoidChest extends Block implements iTileBlock<TileVoidChest>, ITileEntityProvider
 {
 	public BlockVoidChest()
 	{

@@ -1,30 +1,30 @@
 package com.pengu.lostthaumaturgy.api.tiles;
 
+import com.pengu.hammercore.api.handlers.iHandlerProvider;
+import com.pengu.hammercore.utils.WorldLocation;
+
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-import com.pengu.hammercore.api.handlers.IHandlerProvider;
-import com.pengu.hammercore.utils.WorldLocation;
-
 public class ConnectionManager
 {
-	public static IConnection getConnection(World world, BlockPos pos, EnumFacing facing)
+	public static iConnection getConnection(World world, BlockPos pos, EnumFacing facing)
 	{
 		TileEntity tile = world.getTileEntity(pos.offset(facing));
 		if(tile != null)
 		{
-			IConnection c = null;
+			iConnection c = null;
 			if(tile.hasCapability(CapabilityVisConnection.VIS, facing.getOpposite()))
 				c = tile.getCapability(CapabilityVisConnection.VIS, facing.getOpposite());
-			else if(tile instanceof IConnection)
-				c = (IConnection) tile;
-			else if(tile instanceof IHandlerProvider)
+			else if(tile instanceof iConnection)
+				c = (iConnection) tile;
+			else if(tile instanceof iHandlerProvider)
 			{
-				IHandlerProvider prov = (IHandlerProvider) tile;
-				if(prov.hasHandler(facing.getOpposite(), IConnection.class))
-					return prov.getHandler(facing.getOpposite(), IConnection.class);
+				iHandlerProvider prov = (iHandlerProvider) tile;
+				if(prov.hasHandler(facing.getOpposite(), iConnection.class))
+					return prov.getHandler(facing.getOpposite(), iConnection.class);
 			}
 			if(c != null && c.getConnectable(facing.getOpposite()))
 				return c;
@@ -32,7 +32,7 @@ public class ConnectionManager
 		return null;
 	}
 	
-	public static IConnection getConnection(WorldLocation loc, EnumFacing facing)
+	public static iConnection getConnection(WorldLocation loc, EnumFacing facing)
 	{
 		return getConnection(loc.getWorld(), loc.getPos(), facing);
 	}

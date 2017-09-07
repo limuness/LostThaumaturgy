@@ -25,7 +25,7 @@ public class RecipesFuser
 {
 	private static final RecipesFuser INSTANCE = new RecipesFuser();
 	
-	private final List<IFuserRecipe> recipes = Lists.<IFuserRecipe> newArrayList();
+	private final List<iFuserRecipe> recipes = Lists.<iFuserRecipe> newArrayList();
 	
 	/**
 	 * Constructs a new instance with all vanilla recipes pre-registered.
@@ -128,7 +128,7 @@ public class RecipesFuser
 	/**
 	 * Adds a custom recipe that can handle other factors like moon phase, etc.
 	 */
-	public void addRecipe(IFuserRecipe recipe)
+	public void addRecipe(iFuserRecipe recipe)
 	{
 		if(Loader.instance().hasReachedState(LoaderState.POSTINITIALIZATION))
 			throw new RuntimeException("Unable to register recipes after init phase! Please move your registration code to init!");
@@ -139,7 +139,7 @@ public class RecipesFuser
 	 * Retrieves a list with all recipes registered. You can remove any recipe
 	 * if you feel like tweaking the gameplay.
 	 */
-	public List<IFuserRecipe> getRecipes()
+	public List<iFuserRecipe> getRecipes()
 	{
 		return recipes;
 	}

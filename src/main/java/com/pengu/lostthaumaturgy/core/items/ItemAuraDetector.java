@@ -18,7 +18,7 @@ import net.minecraft.world.World;
 import com.pengu.hammercore.HammerCore;
 import com.pengu.hammercore.common.utils.ChatUtil;
 import com.pengu.hammercore.common.utils.WorldUtil;
-import com.pengu.lostthaumaturgy.api.tiles.IConnection;
+import com.pengu.lostthaumaturgy.api.tiles.iConnection;
 import com.pengu.lostthaumaturgy.core.Info;
 
 public class ItemAuraDetector extends Item
@@ -79,7 +79,7 @@ public class ItemAuraDetector extends Item
 		if(player.getHeldItem(hand).getItemDamage() == 2)
 			return EnumActionResult.FAIL;
 		
-		IConnection conn = WorldUtil.cast(worldIn.getTileEntity(pos), IConnection.class);
+		iConnection conn = WorldUtil.cast(worldIn.getTileEntity(pos), iConnection.class);
 		if(conn != null)
 		{
 			player.swingArm(hand);

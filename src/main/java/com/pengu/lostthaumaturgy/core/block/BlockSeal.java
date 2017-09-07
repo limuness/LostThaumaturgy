@@ -3,10 +3,24 @@ package com.pengu.lostthaumaturgy.core.block;
 import java.util.Arrays;
 import java.util.List;
 
+import com.pengu.hammercore.HammerCore;
+import com.pengu.hammercore.api.iTileBlock;
+import com.pengu.hammercore.common.EnumRotation;
+import com.pengu.hammercore.common.utils.WorldUtil;
+import com.pengu.hammercore.net.HCNetwork;
+import com.pengu.hammercore.utils.WorldLocation;
+import com.pengu.lostthaumaturgy.api.seal.ItemSealSymbol;
+import com.pengu.lostthaumaturgy.api.seal.SealInstance;
+import com.pengu.lostthaumaturgy.core.Info;
+import com.pengu.lostthaumaturgy.core.block.def.BlockRendered;
+import com.pengu.lostthaumaturgy.core.tile.TileSeal;
+import com.pengu.lostthaumaturgy.init.ItemsLT;
+
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -21,26 +35,12 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import com.pengu.hammercore.HammerCore;
-import com.pengu.hammercore.api.ITileBlock;
-import com.pengu.hammercore.common.EnumRotation;
-import com.pengu.hammercore.common.utils.WorldUtil;
-import com.pengu.hammercore.net.HCNetwork;
-import com.pengu.hammercore.utils.WorldLocation;
-import com.pengu.lostthaumaturgy.api.seal.ItemSealSymbol;
-import com.pengu.lostthaumaturgy.api.seal.SealInstance;
-import com.pengu.lostthaumaturgy.core.Info;
-import com.pengu.lostthaumaturgy.core.block.def.BlockRendered;
-import com.pengu.lostthaumaturgy.core.tile.TileSeal;
-import com.pengu.lostthaumaturgy.init.ItemsLT;
-
-public class BlockSeal extends BlockRendered implements ITileEntityProvider, ITileBlock<TileSeal>
+public class BlockSeal extends BlockRendered implements ITileEntityProvider, iTileBlock<TileSeal>
 {
 	public BlockSeal()
 	{
@@ -177,7 +177,7 @@ public class BlockSeal extends BlockRendered implements ITileEntityProvider, ITi
 				if(rgb.length >= 3)
 					col = "#" + Integer.toHexString((rgb[0] << 16) | (rgb[1] << 8) | rgb[2]);
 			}
-			tooltip.add(I18n.translateToLocal(getUnlocalizedName() + ".desc").replace("$col", col.toUpperCase()));
+			tooltip.add(I18n.format(getUnlocalizedName() + ".desc").replace("$col", col.toUpperCase()));
 		}
 	}
 	

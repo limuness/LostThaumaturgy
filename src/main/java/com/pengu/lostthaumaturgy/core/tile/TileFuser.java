@@ -2,6 +2,22 @@ package com.pengu.lostthaumaturgy.core.tile;
 
 import java.util.Map;
 
+import org.apache.commons.lang3.ArrayUtils;
+
+import com.pengu.hammercore.common.utils.ChatUtil;
+import com.pengu.hammercore.common.utils.WorldUtil;
+import com.pengu.hammercore.net.HCNetwork;
+import com.pengu.hammercore.net.utils.NetPropertyVec3i;
+import com.pengu.hammercore.tile.TileSyncableTickable;
+import com.pengu.hammercore.tile.iTileDroppable;
+import com.pengu.hammercore.utils.WorldLocation;
+import com.pengu.lostthaumaturgy.api.fuser.FuserInventory;
+import com.pengu.lostthaumaturgy.api.fuser.iFuserRecipe;
+import com.pengu.lostthaumaturgy.client.gui.GuiFuser;
+import com.pengu.lostthaumaturgy.init.BlocksLT;
+import com.pengu.lostthaumaturgy.inventory.ContainerFuser;
+import com.pengu.lostthaumaturgy.net.wisp.PacketFXWisp2;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.item.ItemStack;
@@ -15,23 +31,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.PlayerEvent.NameFormat;
 import net.minecraftforge.oredict.OreDictionary;
 
-import org.apache.commons.lang3.ArrayUtils;
-
-import com.pengu.hammercore.common.utils.ChatUtil;
-import com.pengu.hammercore.common.utils.WorldUtil;
-import com.pengu.hammercore.net.HCNetwork;
-import com.pengu.hammercore.net.utils.NetPropertyVec3i;
-import com.pengu.hammercore.tile.ITileDroppable;
-import com.pengu.hammercore.tile.TileSyncableTickable;
-import com.pengu.hammercore.utils.WorldLocation;
-import com.pengu.lostthaumaturgy.api.fuser.FuserInventory;
-import com.pengu.lostthaumaturgy.api.fuser.IFuserRecipe;
-import com.pengu.lostthaumaturgy.client.gui.GuiFuser;
-import com.pengu.lostthaumaturgy.init.BlocksLT;
-import com.pengu.lostthaumaturgy.inventory.ContainerFuser;
-import com.pengu.lostthaumaturgy.net.wisp.PacketFXWisp2;
-
-public class TileFuser extends TileSyncableTickable implements ITileDroppable
+public class TileFuser extends TileSyncableTickable implements iTileDroppable
 {
 	public EntityPlayer craftingPlayer;
 	public final FuserInventory inventory = new FuserInventory();
@@ -132,7 +132,7 @@ public class TileFuser extends TileSyncableTickable implements ITileDroppable
 					}
 				}
 			
-			IFuserRecipe recipe = craftingPlayer != null ? inventory.findRecipe(craftingPlayer) : null;
+			iFuserRecipe recipe = craftingPlayer != null ? inventory.findRecipe(craftingPlayer) : null;
 			ItemStack result = recipe != null ? recipe.getCraftResult(inventory, craftingPlayer).copy() : ItemStack.EMPTY;
 			if(!OreDictionary.itemMatches(result, inventory.outputInv.getStackInSlot(0), true))
 				inventory.outputInv.setInventorySlotContents(0, result);
@@ -152,7 +152,7 @@ public class TileFuser extends TileSyncableTickable implements ITileDroppable
 				for(int i = 0; i < 9; ++i)
 					if(!inventory.craftingInv.getStackInSlot(i).isEmpty())
 						slots = ArrayUtils.add(slots, i);
-				
+					
 				if(slots.length == 0)
 					break part;
 				
@@ -184,7 +184,7 @@ public class TileFuser extends TileSyncableTickable implements ITileDroppable
 					x2 = pos.getX() + 1.5;
 					z2 = pos.getZ() + 1;
 				break;
-				
+			
 				case 6:
 					x2 = pos.getX() + .5;
 					z2 = pos.getZ() + 1.5;
@@ -197,7 +197,7 @@ public class TileFuser extends TileSyncableTickable implements ITileDroppable
 					x2 = pos.getX() + 1.5;
 					z2 = pos.getZ() + 1.5;
 				break;
-				
+			
 				default:
 				break part;
 				}
@@ -227,7 +227,7 @@ public class TileFuser extends TileSyncableTickable implements ITileDroppable
 	@Override
 	public void createDrop(EntityPlayer player, World world, BlockPos pos)
 	{
-		if(gui == this || (bound.get() != null && bound.equals(pos)))
+		if(gui == this || (bound.get() != null && bound.get().equals(pos)))
 			inventory.drop(world, pos);
 	}
 }

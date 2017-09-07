@@ -1,5 +1,13 @@
 package com.pengu.lostthaumaturgy.intr.hc.rts;
 
+import com.pengu.hammercore.recipeAPI.iRecipeType;
+import com.pengu.hammercore.recipeAPI.iRecipeType.RecipeParseException;
+import com.pengu.lostthaumaturgy.api.RecipesCrucible;
+import com.pengu.lostthaumaturgy.api.match.MatcherItemStack;
+import com.pengu.lostthaumaturgy.api.match.MatcherOreDict;
+import com.pengu.lostthaumaturgy.core.Info;
+import com.pengu.lostthaumaturgy.intr.hc.rts.RecipeTypeCrucible.CrucibleRecipe;
+
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTBase;
@@ -9,14 +17,7 @@ import net.minecraft.nbt.NBTTagFloat;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.oredict.OreDictionary;
 
-import com.pengu.hammercore.recipeAPI.IRecipeType;
-import com.pengu.lostthaumaturgy.api.RecipesCrucible;
-import com.pengu.lostthaumaturgy.api.match.MatcherItemStack;
-import com.pengu.lostthaumaturgy.api.match.MatcherOreDict;
-import com.pengu.lostthaumaturgy.core.Info;
-import com.pengu.lostthaumaturgy.intr.hc.rts.RecipeTypeCrucible.CrucibleRecipe;
-
-public class RecipeTypeCrucible implements IRecipeType<CrucibleRecipe>
+public class RecipeTypeCrucible implements iRecipeType<CrucibleRecipe>
 {
 	@Override
 	public void addRecipe(CrucibleRecipe recipe)

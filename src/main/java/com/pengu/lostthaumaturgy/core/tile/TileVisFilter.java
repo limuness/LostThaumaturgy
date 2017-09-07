@@ -6,14 +6,14 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumFacing.Axis;
 
 import com.pengu.hammercore.net.HCNetwork;
-import com.pengu.lostthaumaturgy.api.tiles.IUpgradable;
+import com.pengu.lostthaumaturgy.api.tiles.iUpgradable;
 import com.pengu.lostthaumaturgy.core.items.ItemUpgrade;
 import com.pengu.lostthaumaturgy.custom.aura.AtmosphereChunk;
 import com.pengu.lostthaumaturgy.custom.aura.AtmosphereTicker;
 import com.pengu.lostthaumaturgy.init.ItemsLT;
 import com.pengu.lostthaumaturgy.net.wisp.PacketFXWisp2;
 
-public class TileVisFilter extends TileConduit implements IUpgradable
+public class TileVisFilter extends TileConduit implements iUpgradable
 {
 	public short taintedStore;
 	public short visStore;

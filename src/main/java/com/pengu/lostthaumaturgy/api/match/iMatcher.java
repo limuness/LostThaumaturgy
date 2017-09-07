@@ -1,6 +1,6 @@
 package com.pengu.lostthaumaturgy.api.match;
 
-public interface IMatcher<T>
+public interface iMatcher<T>
 {
 	T defaultInstance();
 	

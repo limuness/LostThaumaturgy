@@ -6,6 +6,16 @@ import java.util.List;
 
 import javax.annotation.Nonnull;
 
+import com.pengu.hammercore.HammerCore;
+import com.pengu.hammercore.utils.iGetter;
+import com.pengu.lostthaumaturgy.api.fuser.FuserInventory;
+import com.pengu.lostthaumaturgy.api.fuser.iFuserRecipe;
+import com.pengu.lostthaumaturgy.api.research.ResearchItem;
+import com.pengu.lostthaumaturgy.api.research.ResearchSystem;
+import com.pengu.lostthaumaturgy.core.items.ItemResearch;
+import com.pengu.lostthaumaturgy.core.items.ItemResearch.EnumResearchItemType;
+import com.pengu.lostthaumaturgy.core.items.ItemWand;
+
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -15,17 +25,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 
-import com.pengu.hammercore.HammerCore;
-import com.pengu.hammercore.utils.IGetter;
-import com.pengu.lostthaumaturgy.api.fuser.FuserInventory;
-import com.pengu.lostthaumaturgy.api.fuser.IFuserRecipe;
-import com.pengu.lostthaumaturgy.api.research.ResearchItem;
-import com.pengu.lostthaumaturgy.api.research.ResearchSystem;
-import com.pengu.lostthaumaturgy.core.items.ItemResearch;
-import com.pengu.lostthaumaturgy.core.items.ItemWand;
-import com.pengu.lostthaumaturgy.core.items.ItemResearch.EnumResearchItemType;
-
-public class ShapelessFuserRecipe implements IFuserRecipe
+public class ShapelessFuserRecipe implements iFuserRecipe
 {
 	@Nonnull
 	protected ItemStack output = ItemStack.EMPTY;
@@ -73,9 +73,9 @@ public class ShapelessFuserRecipe implements IFuserRecipe
 			} else if(in instanceof String)
 			{
 				input.add(OreDictionary.getOres((String) in));
-			} else if(in instanceof IGetter && ((IGetter) in).get() instanceof ItemStack)
+			} else if(in instanceof iGetter && ((iGetter) in).get() instanceof ItemStack)
 			{
-				input.add(((IGetter<ItemStack>) in).get());
+				input.add(((iGetter<ItemStack>) in).get());
 			} else
 			{
 				String ret = "Invalid shapeless fuser recipe: ";

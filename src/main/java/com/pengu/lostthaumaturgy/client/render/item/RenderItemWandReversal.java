@@ -1,24 +1,24 @@
 package com.pengu.lostthaumaturgy.client.render.item;
 
+import org.lwjgl.opengl.GL11;
+
+import com.pengu.hammercore.client.render.item.iItemRender;
+import com.pengu.hammercore.color.Color;
+import com.pengu.lostthaumaturgy.client.model.ModelCrystal;
+import com.pengu.lostthaumaturgy.client.model.ModelWandReversal;
+import com.pengu.lostthaumaturgy.core.Info;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
 
-import org.lwjgl.opengl.GL11;
-
-import com.pengu.hammercore.client.render.item.IItemRender;
-import com.pengu.hammercore.color.Color;
-import com.pengu.lostthaumaturgy.client.model.ModelCrystal;
-import com.pengu.lostthaumaturgy.client.model.ModelWandReversal;
-import com.pengu.lostthaumaturgy.core.Info;
-
-public class RenderItemWandReversal implements IItemRender
+public class RenderItemWandReversal implements iItemRender
 {
 	private final ModelWandReversal model = new ModelWandReversal();
 	private final ResourceLocation//
-	        texture = new ResourceLocation(Info.MOD_ID, "textures/models/wand_reversal.png"), //
+	texture = new ResourceLocation(Info.MOD_ID, "textures/models/wand_reversal.png"), //
 	        texture1 = new ResourceLocation(Info.MOD_ID, "textures/models/crystal.png");
 	private final ModelCrystal crystal = new ModelCrystal();
 	

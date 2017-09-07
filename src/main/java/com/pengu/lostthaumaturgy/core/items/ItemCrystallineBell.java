@@ -15,13 +15,13 @@ import net.minecraft.world.World;
 
 import com.pengu.hammercore.HammerCore;
 import com.pengu.hammercore.common.utils.WorldUtil;
-import com.pengu.lostthaumaturgy.api.items.IVisRepairable;
+import com.pengu.lostthaumaturgy.api.items.iVisRepairable;
 import com.pengu.lostthaumaturgy.core.block.BlockOreCrystal;
 import com.pengu.lostthaumaturgy.core.tile.TileCrystalOre;
 import com.pengu.lostthaumaturgy.custom.aura.AtmosphereChunk;
 import com.pengu.lostthaumaturgy.custom.aura.AtmosphereTicker;
 
-public class ItemCrystallineBell extends Item implements IVisRepairable
+public class ItemCrystallineBell extends Item implements iVisRepairable
 {
 	public ItemCrystallineBell()
 	{

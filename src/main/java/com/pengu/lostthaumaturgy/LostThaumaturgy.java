@@ -6,34 +6,10 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.function.Predicate;
 
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.EnumCreatureType;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.Biome.SpawnListEntry;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.Mod.EventHandler;
-import net.minecraftforge.fml.common.Mod.Instance;
-import net.minecraftforge.fml.common.ProgressManager;
-import net.minecraftforge.fml.common.ProgressManager.ProgressBar;
-import net.minecraftforge.fml.common.SidedProxy;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLInterModComms;
-import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLServerStartedEvent;
-import net.minecraftforge.fml.common.event.FMLServerStoppedEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.registry.GameRegistry;
-
 import com.google.common.base.Predicates;
+import com.pengu.hammercore.common.SimpleRegistration;
 import com.pengu.hammercore.common.blocks.tesseract.TileTesseract;
 import com.pengu.hammercore.common.utils.WrappedLog;
-import com.pengu.hammercore.init.SimpleRegistration;
 import com.pengu.hammercore.world.WorldGenRegistry;
 import com.pengu.lostthaumaturgy.api.RecipesCrucible;
 import com.pengu.lostthaumaturgy.api.RecipesInfuser;
@@ -70,6 +46,30 @@ import com.pengu.lostthaumaturgy.init.SoundEventsLT;
 import com.pengu.lostthaumaturgy.init.WandsLT;
 import com.pengu.lostthaumaturgy.proxy.CommonProxy;
 
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EnumCreatureType;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.Biome.SpawnListEntry;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.Mod.EventHandler;
+import net.minecraftforge.fml.common.Mod.Instance;
+import net.minecraftforge.fml.common.ProgressManager;
+import net.minecraftforge.fml.common.ProgressManager.ProgressBar;
+import net.minecraftforge.fml.common.SidedProxy;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLInterModComms;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLServerStartedEvent;
+import net.minecraftforge.fml.common.event.FMLServerStoppedEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.registry.GameRegistry;
+
 @Mod(modid = Info.MOD_ID, name = Info.MOD_NAME, version = Info.MOD_VERSION, dependencies = "required-after:hammercore", guiFactory = "com.pengu.lostthaumaturgy.client.cfg.GuiFactoryLT")
 public class LostThaumaturgy
 {
@@ -82,8 +82,7 @@ public class LostThaumaturgy
 	public static CommonProxy proxy;
 	
 	public static final CreativeTabs //
-	        tab = new CreativeTabLT(),
-	        tab_researches = new CreativeTabResearches();
+	tab = new CreativeTabLT(), tab_researches = new CreativeTabResearches();
 	
 	public static final WrappedLog LOG = new WrappedLog(Info.MOD_NAME);
 	
@@ -198,7 +197,7 @@ public class LostThaumaturgy
 		List<Predicate<ItemStack>> stacks = new ArrayList<>();
 		stacks.add(Predicates.alwaysFalse());
 		InfuserList list = RecipesInfuser.listRecipes();
-		list.stream().filter(dummy -> !dummy.isDark() && !(dummy.getCondition() instanceof ResearchPredicate)).forEach(dummy -> 
+		list.stream().filter(dummy -> !dummy.isDark() && !(dummy.getCondition() instanceof ResearchPredicate)).forEach(dummy ->
 		{
 			if(!stacks.get(0).test(dummy.getResult()))
 			{

@@ -1,5 +1,19 @@
 package com.pengu.lostthaumaturgy.core.tile;
 
+import com.pengu.hammercore.HammerCore;
+import com.pengu.hammercore.common.inventory.InventoryNonTile;
+import com.pengu.hammercore.net.utils.NetPropertyNumber;
+import com.pengu.hammercore.tile.iTileDroppable;
+import com.pengu.lostthaumaturgy.api.tiles.TileVisUser;
+import com.pengu.lostthaumaturgy.api.tiles.iUpgradable;
+import com.pengu.lostthaumaturgy.client.gui.GuiCrystallizer;
+import com.pengu.lostthaumaturgy.core.Info;
+import com.pengu.lostthaumaturgy.core.items.ItemMultiMaterial.EnumMultiMaterialType;
+import com.pengu.lostthaumaturgy.custom.aura.AtmosphereChunk;
+import com.pengu.lostthaumaturgy.custom.aura.AtmosphereTicker;
+import com.pengu.lostthaumaturgy.init.ItemsLT;
+import com.pengu.lostthaumaturgy.inventory.ContainerCrystallizer;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
@@ -9,21 +23,7 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-import com.pengu.hammercore.HammerCore;
-import com.pengu.hammercore.common.inventory.InventoryNonTile;
-import com.pengu.hammercore.net.utils.NetPropertyNumber;
-import com.pengu.hammercore.tile.ITileDroppable;
-import com.pengu.lostthaumaturgy.api.tiles.IUpgradable;
-import com.pengu.lostthaumaturgy.api.tiles.TileVisUser;
-import com.pengu.lostthaumaturgy.client.gui.GuiCrystallizer;
-import com.pengu.lostthaumaturgy.core.Info;
-import com.pengu.lostthaumaturgy.core.items.ItemMultiMaterial.EnumMultiMaterialType;
-import com.pengu.lostthaumaturgy.custom.aura.AtmosphereChunk;
-import com.pengu.lostthaumaturgy.custom.aura.AtmosphereTicker;
-import com.pengu.lostthaumaturgy.init.ItemsLT;
-import com.pengu.lostthaumaturgy.inventory.ContainerCrystallizer;
-
-public class TileCrystallizer extends TileVisUser implements IUpgradable, ISidedInventory, ITileDroppable
+public class TileCrystallizer extends TileVisUser implements iUpgradable, ISidedInventory, iTileDroppable
 {
 	public InventoryNonTile inventory = new InventoryNonTile(10);
 	private int[] upgrades = new int[] { -1 };

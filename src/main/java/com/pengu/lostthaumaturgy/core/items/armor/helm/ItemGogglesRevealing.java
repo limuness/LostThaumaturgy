@@ -7,11 +7,11 @@ import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 
-import com.pengu.lostthaumaturgy.api.items.IGoggles;
+import com.pengu.lostthaumaturgy.api.items.iGoggles;
 import com.pengu.lostthaumaturgy.core.Info;
 import com.pengu.lostthaumaturgy.init.ItemMaterialsLT;
 
-public class ItemGogglesRevealing extends ItemArmor implements IGoggles
+public class ItemGogglesRevealing extends ItemArmor implements iGoggles
 {
 	public ItemGogglesRevealing()
 	{
@@ -43,12 +43,12 @@ public class ItemGogglesRevealing extends ItemArmor implements IGoggles
 		return EnumRarity.RARE;
 	}
 	
-	public static IGoggles getWearing(EntityPlayer player)
+	public static iGoggles getWearing(EntityPlayer player)
 	{
 		ItemStack stack = player.inventory.armorInventory.get(3);
-		if(stack.getItem() instanceof IGoggles)
+		if(stack.getItem() instanceof iGoggles)
 		{
-			IGoggles g = (IGoggles) stack.getItem();
+			iGoggles g = (iGoggles) stack.getItem();
 			if(g.canReveal(player))
 				return g;
 		}

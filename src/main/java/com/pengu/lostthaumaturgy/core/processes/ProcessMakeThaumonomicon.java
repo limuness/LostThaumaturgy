@@ -4,6 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import com.pengu.hammercore.HammerCore;
+import com.pengu.hammercore.api.iProcess;
+import com.pengu.hammercore.common.utils.WorldUtil;
+import com.pengu.hammercore.net.HCNetwork;
+import com.pengu.hammercore.utils.WorldLocation;
+import com.pengu.lostthaumaturgy.init.ItemsLT;
+import com.pengu.lostthaumaturgy.net.wisp.PacketFXWisp1;
+import com.pengu.lostthaumaturgy.net.wisp.PacketFXWisp2;
+
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
@@ -12,16 +21,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
 
-import com.pengu.hammercore.HammerCore;
-import com.pengu.hammercore.api.IUpdatable;
-import com.pengu.hammercore.common.utils.WorldUtil;
-import com.pengu.hammercore.net.HCNetwork;
-import com.pengu.hammercore.utils.WorldLocation;
-import com.pengu.lostthaumaturgy.init.ItemsLT;
-import com.pengu.lostthaumaturgy.net.wisp.PacketFXWisp1;
-import com.pengu.lostthaumaturgy.net.wisp.PacketFXWisp2;
-
-public class ProcessMakeThaumonomicon implements IUpdatable
+public class ProcessMakeThaumonomicon implements iProcess
 {
 	private static List<ProcessMakeThaumonomicon> ps = new ArrayList<>();
 	
@@ -40,7 +40,7 @@ public class ProcessMakeThaumonomicon implements IUpdatable
 		
 		ProcessMakeThaumonomicon t;
 		ps.add(t = new ProcessMakeThaumonomicon(pos, hitFace, hx, hy, hz));
-		HammerCore.updatables.add(t);
+		t.start();
 		
 		return true;
 	}
@@ -137,7 +137,7 @@ public class ProcessMakeThaumonomicon implements IUpdatable
 			for(int i = 0; i < 16; ++i)
 			{
 				int segm = (i % 4) + 1;
-				float y =  prog;
+				float y = prog;
 				
 				if(segm == 1)
 					cx += 1;
@@ -198,7 +198,7 @@ public class ProcessMakeThaumonomicon implements IUpdatable
 			for(Vec3d p : points)
 				if(rand.nextInt(20) == 0)
 					HCNetwork.manager.sendToAllAround(new PacketFXWisp1(p.x, p.y, p.z, .3F, pos.getWorld().rand.nextInt(5)), point);
-		
+				
 		++ticksExisted;
 		if(!isAlive())
 		{

@@ -10,7 +10,7 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
 import com.pengu.hammercore.color.Color;
-import com.pengu.lostthaumaturgy.api.fuser.IFuserRecipe;
+import com.pengu.lostthaumaturgy.api.fuser.iFuserRecipe;
 import com.pengu.lostthaumaturgy.core.Info;
 import com.pengu.lostthaumaturgy.core.items.ItemWand;
 import com.pengu.lostthaumaturgy.core.tile.TileFuser;
@@ -65,7 +65,7 @@ public class GuiFuser extends GuiContainer
 		
 		if(!tile.inventory.outputInv.getStackInSlot(0).isEmpty())
 		{
-			IFuserRecipe rec = tile.inventory.findRecipe(mc.player);
+			iFuserRecipe rec = tile.inventory.findRecipe(mc.player);
 			
 			ItemStack wand = tile.inventory.wandInv.getStackInSlot(0);
 			float cost = !wand.isEmpty() && wand.getItem() instanceof ItemWand ? ItemWand.getVisUsage(wand) : 12000F;

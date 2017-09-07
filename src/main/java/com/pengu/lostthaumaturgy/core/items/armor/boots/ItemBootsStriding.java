@@ -6,11 +6,11 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 
-import com.pengu.lostthaumaturgy.api.items.ISpeedBoots;
+import com.pengu.lostthaumaturgy.api.items.iSpeedBoots;
 import com.pengu.lostthaumaturgy.core.Info;
 import com.pengu.lostthaumaturgy.init.ItemMaterialsLT;
 
-public class ItemBootsStriding extends ItemArmor implements ISpeedBoots
+public class ItemBootsStriding extends ItemArmor implements iSpeedBoots
 {
 	public ItemBootsStriding()
 	{

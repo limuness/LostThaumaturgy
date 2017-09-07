@@ -29,7 +29,6 @@ public class TESRCrystallizer extends TESR<TileCrystallizer>
 	
 	private void drawCrystal(double x, double y, double z, float a1, float a2, float b)
 	{
-		GLRenderState.NORMALIZE.on();
 		GLRenderState.BLEND.on();
 		GL11.glPushMatrix();
 		GL11.glEnable(32826);

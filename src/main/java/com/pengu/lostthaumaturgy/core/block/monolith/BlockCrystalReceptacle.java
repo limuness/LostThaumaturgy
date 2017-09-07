@@ -1,5 +1,13 @@
 package com.pengu.lostthaumaturgy.core.block.monolith;
 
+import com.pengu.hammercore.HammerCore;
+import com.pengu.hammercore.api.iTileBlock;
+import com.pengu.hammercore.common.utils.WorldUtil;
+import com.pengu.lostthaumaturgy.core.Info;
+import com.pengu.lostthaumaturgy.core.block.def.BlockRendered;
+import com.pengu.lostthaumaturgy.core.items.ItemMultiMaterial.EnumMultiMaterialType;
+import com.pengu.lostthaumaturgy.core.tile.monolith.TileCrystalReceptacle;
+
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -16,15 +24,7 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-import com.pengu.hammercore.HammerCore;
-import com.pengu.hammercore.api.ITileBlock;
-import com.pengu.hammercore.common.utils.WorldUtil;
-import com.pengu.lostthaumaturgy.core.Info;
-import com.pengu.lostthaumaturgy.core.block.def.BlockRendered;
-import com.pengu.lostthaumaturgy.core.items.ItemMultiMaterial.EnumMultiMaterialType;
-import com.pengu.lostthaumaturgy.core.tile.monolith.TileCrystalReceptacle;
-
-public class BlockCrystalReceptacle extends BlockRendered implements ITileEntityProvider, ITileBlock<TileCrystalReceptacle>
+public class BlockCrystalReceptacle extends BlockRendered implements ITileEntityProvider, iTileBlock<TileCrystalReceptacle>
 {
 	public BlockCrystalReceptacle()
 	{

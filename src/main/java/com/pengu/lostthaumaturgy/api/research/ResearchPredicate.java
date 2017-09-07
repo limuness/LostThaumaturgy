@@ -7,11 +7,11 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 
 import com.google.common.base.Predicate;
-import com.pengu.lostthaumaturgy.api.tiles.IInfuser;
+import com.pengu.lostthaumaturgy.api.tiles.iInfuser;
 import com.pengu.lostthaumaturgy.core.items.ItemResearch;
 import com.pengu.lostthaumaturgy.core.items.ItemResearch.EnumResearchItemType;
 
-public class ResearchPredicate implements Predicate<IInfuser>
+public class ResearchPredicate implements Predicate<iInfuser>
 {
 	private ResearchItem[] researches;
 	
@@ -44,7 +44,7 @@ public class ResearchPredicate implements Predicate<IInfuser>
 	}
 	
 	@Override
-	public boolean apply(IInfuser input)
+	public boolean apply(iInfuser input)
 	{
 		if(input == null)
 			return false;

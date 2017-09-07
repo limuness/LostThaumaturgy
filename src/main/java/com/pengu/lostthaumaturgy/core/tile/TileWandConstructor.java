@@ -1,15 +1,9 @@
 package com.pengu.lostthaumaturgy.core.tile;
 
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
-
 import com.pengu.hammercore.HammerCore;
 import com.pengu.hammercore.common.inventory.InventoryNonTile;
 import com.pengu.hammercore.net.utils.NetPropertyNumber;
-import com.pengu.hammercore.tile.ITileDroppable;
+import com.pengu.hammercore.tile.iTileDroppable;
 import com.pengu.lostthaumaturgy.api.tiles.TileVisUser;
 import com.pengu.lostthaumaturgy.api.wand.WandCap;
 import com.pengu.lostthaumaturgy.api.wand.WandRegistry;
@@ -19,7 +13,13 @@ import com.pengu.lostthaumaturgy.core.Info;
 import com.pengu.lostthaumaturgy.core.items.ItemWand;
 import com.pengu.lostthaumaturgy.inventory.ContainerWandConstructor;
 
-public class TileWandConstructor extends TileVisUser implements ITileDroppable
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.SoundCategory;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
+
+public class TileWandConstructor extends TileVisUser implements iTileDroppable
 {
 	public final InventoryNonTile inventory = new InventoryNonTile(4);
 	public final NetPropertyNumber<Integer> totalCost;

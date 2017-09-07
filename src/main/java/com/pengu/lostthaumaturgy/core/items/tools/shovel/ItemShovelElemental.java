@@ -22,7 +22,7 @@ import net.minecraft.world.World;
 import com.pengu.hammercore.net.HCNetwork;
 import com.pengu.hammercore.raytracer.RayTracer;
 import com.pengu.hammercore.utils.WorldLocation;
-import com.pengu.lostthaumaturgy.api.blocks.ITaintedBlock;
+import com.pengu.lostthaumaturgy.api.blocks.iTaintedBlock;
 import com.pengu.lostthaumaturgy.init.ItemMaterialsLT;
 import com.pengu.lostthaumaturgy.net.wisp.PacketFXWisp1;
 
@@ -111,7 +111,7 @@ public class ItemShovelElemental extends ItemSpade
 	public float getStrVsBlock(ItemStack stack, IBlockState state)
 	{
 		float str = super.getStrVsBlock(stack, state);
-		if(state.getBlock() instanceof ITaintedBlock)
+		if(state.getBlock() instanceof iTaintedBlock)
 			str *= 15F;
 		return str;
 	}

@@ -2,6 +2,11 @@ package com.pengu.lostthaumaturgy.net.wisp;
 
 import java.util.Random;
 
+import com.pengu.hammercore.net.packetAPI.iPacket;
+import com.pengu.hammercore.net.packetAPI.iPacketListener;
+import com.pengu.hammercore.proxy.ParticleProxy_Client;
+import com.pengu.lostthaumaturgy.client.fx.FXWisp;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.BlockPos;
@@ -9,12 +14,7 @@ import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import com.pengu.hammercore.net.packetAPI.IPacket;
-import com.pengu.hammercore.net.packetAPI.IPacketListener;
-import com.pengu.hammercore.proxy.ParticleProxy_Client;
-import com.pengu.lostthaumaturgy.client.fx.FXWisp;
-
-public class PacketMonolithWisp implements IPacket, IPacketListener<PacketMonolithWisp, IPacket>
+public class PacketMonolithWisp implements iPacket, iPacketListener<PacketMonolithWisp, iPacket>
 {
 	public BlockPos pos;
 	
@@ -40,7 +40,7 @@ public class PacketMonolithWisp implements IPacket, IPacketListener<PacketMonoli
 	}
 	
 	@Override
-	public IPacket onArrived(PacketMonolithWisp packet, MessageContext context)
+	public iPacket onArrived(PacketMonolithWisp packet, MessageContext context)
 	{
 		if(context.side == Side.CLIENT)
 		{

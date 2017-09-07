@@ -24,7 +24,7 @@ import com.pengu.hammercore.client.render.tesr.TESR;
 import com.pengu.hammercore.client.utils.RenderBlocks;
 import com.pengu.hammercore.common.utils.WorldUtil;
 import com.pengu.lostthaumaturgy.api.tiles.ConnectionManager;
-import com.pengu.lostthaumaturgy.api.tiles.IConnection;
+import com.pengu.lostthaumaturgy.api.tiles.iConnection;
 import com.pengu.lostthaumaturgy.api.tiles.TileVisUser;
 import com.pengu.lostthaumaturgy.client.render.shared.LiquidVisRenderer;
 import com.pengu.lostthaumaturgy.core.Info;
@@ -410,7 +410,7 @@ public class TESRConduit<T extends TileConduit> extends TESR<T> implements Predi
 			
 			for(EnumFacing f : EnumFacing.VALUES)
 			{
-				IConnection ic = ConnectionManager.getConnection(world, pos, f);
+				iConnection ic = ConnectionManager.getConnection(world, pos, f);
 				if(ic == null || !ic.getConnectable(f.getOpposite()))
 					continue;
 				

@@ -22,9 +22,9 @@ public class FuserInventory implements IInventory
 	public final InventoryNonTile wandInv = new InventoryNonTile(1);
 	public final InventoryNonTile outputInv = new InventoryNonTile(1);
 	
-	public IFuserRecipe findRecipe(EntityPlayer player)
+	public iFuserRecipe findRecipe(EntityPlayer player)
 	{
-		Iterator<IFuserRecipe> it = RecipesFuser.getInstance().getRecipes().stream().filter(t -> t.matches(this, player)).iterator();
+		Iterator<iFuserRecipe> it = RecipesFuser.getInstance().getRecipes().stream().filter(t -> t.matches(this, player)).iterator();
 		if(it.hasNext())
 			return it.next();
 		return null;

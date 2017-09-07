@@ -1,24 +1,24 @@
 package com.pengu.lostthaumaturgy.client.render.item;
 
+import org.lwjgl.opengl.GL11;
+
+import com.pengu.hammercore.client.render.item.iItemRender;
+import com.pengu.hammercore.color.Color;
+import com.pengu.lostthaumaturgy.client.model.ModelCrystal;
+import com.pengu.lostthaumaturgy.client.model.ModelWandOfItemFreeze;
+import com.pengu.lostthaumaturgy.core.Info;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
 
-import org.lwjgl.opengl.GL11;
-
-import com.pengu.hammercore.client.render.item.IItemRender;
-import com.pengu.hammercore.color.Color;
-import com.pengu.lostthaumaturgy.client.model.ModelCrystal;
-import com.pengu.lostthaumaturgy.client.model.ModelWandOfItemFreeze;
-import com.pengu.lostthaumaturgy.core.Info;
-
-public class RenderItemWandOfItemFreeze implements IItemRender
+public class RenderItemWandOfItemFreeze implements iItemRender
 {
 	private final ModelWandOfItemFreeze model = new ModelWandOfItemFreeze();
 	private final ResourceLocation//
-	        texture = new ResourceLocation(Info.MOD_ID, "textures/models/wand_item_freeze.png"), //
+	texture = new ResourceLocation(Info.MOD_ID, "textures/models/wand_item_freeze.png"), //
 	        texture1 = new ResourceLocation(Info.MOD_ID, "textures/models/crystal.png");
 	private final ModelCrystal crystal = new ModelCrystal();
 	

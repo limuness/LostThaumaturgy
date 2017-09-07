@@ -7,6 +7,18 @@ import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
+import com.pengu.hammercore.api.iTileBlock;
+import com.pengu.hammercore.common.utils.WorldUtil;
+import com.pengu.hammercore.proxy.ParticleProxy_Client;
+import com.pengu.hammercore.utils.iGetter;
+import com.pengu.lostthaumaturgy.LTConfigs;
+import com.pengu.lostthaumaturgy.client.fx.FXWisp;
+import com.pengu.lostthaumaturgy.core.Info;
+import com.pengu.lostthaumaturgy.core.block.def.BlockRendered;
+import com.pengu.lostthaumaturgy.core.tile.TileCrystalOre;
+import com.pengu.lostthaumaturgy.custom.aura.AtmosphereChunk;
+import com.pengu.lostthaumaturgy.custom.aura.AtmosphereTicker;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
@@ -26,26 +38,14 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import com.pengu.hammercore.api.ITileBlock;
-import com.pengu.hammercore.common.utils.WorldUtil;
-import com.pengu.hammercore.proxy.ParticleProxy_Client;
-import com.pengu.hammercore.utils.IGetter;
-import com.pengu.lostthaumaturgy.LTConfigs;
-import com.pengu.lostthaumaturgy.client.fx.FXWisp;
-import com.pengu.lostthaumaturgy.core.Info;
-import com.pengu.lostthaumaturgy.core.block.def.BlockRendered;
-import com.pengu.lostthaumaturgy.core.tile.TileCrystalOre;
-import com.pengu.lostthaumaturgy.custom.aura.AtmosphereChunk;
-import com.pengu.lostthaumaturgy.custom.aura.AtmosphereTicker;
-
-public class BlockOreCrystal extends BlockRendered implements ITileBlock<TileCrystalOre>, ITileEntityProvider
+public class BlockOreCrystal extends BlockRendered implements iTileBlock<TileCrystalOre>, ITileEntityProvider
 {
-	protected IGetter<ItemStack> crystal;
+	protected iGetter<ItemStack> crystal;
 	protected boolean goodVibesOnGrowth = false;
 	protected int crystalColor = 0;
 	public boolean generatesInWorld = true;
 	
-	public static class Getter<T> implements IGetter<T>
+	public static class Getter<T> implements iGetter<T>
 	{
 		public T inst;
 		
@@ -66,7 +66,7 @@ public class BlockOreCrystal extends BlockRendered implements ITileBlock<TileCry
 	/** Used to register and perform rendering. DO NOT MODIFY THIS SET! */
 	public static final Set<BlockOreCrystal> crystals = new HashSet<>();
 	
-	public BlockOreCrystal(IGetter<ItemStack> crystalStack, String crystalName, boolean goodVibesOnGrowth, int crystalColor)
+	public BlockOreCrystal(iGetter<ItemStack> crystalStack, String crystalName, boolean goodVibesOnGrowth, int crystalColor)
 	{
 		super(Material.GLASS);
 		crystals.add(this);

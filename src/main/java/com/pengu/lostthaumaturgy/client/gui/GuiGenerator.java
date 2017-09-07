@@ -1,17 +1,17 @@
 package com.pengu.lostthaumaturgy.client.gui;
 
+import org.lwjgl.opengl.GL11;
+
+import com.pengu.hammercore.client.utils.RenderUtil;
+import com.pengu.hammercore.core.gui.container.ContainerEmpty;
+import com.pengu.lostthaumaturgy.core.Info;
+import com.pengu.lostthaumaturgy.core.items.ItemUpgrade;
+import com.pengu.lostthaumaturgy.core.tile.TileGenerator;
+
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.util.ITooltipFlag.TooltipFlags;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-
-import org.lwjgl.opengl.GL11;
-
-import com.pengu.hammercore.client.utils.RenderUtil;
-import com.pengu.hammercore.gui.container.ContainerEmpty;
-import com.pengu.lostthaumaturgy.core.Info;
-import com.pengu.lostthaumaturgy.core.items.ItemUpgrade;
-import com.pengu.lostthaumaturgy.core.tile.TileGenerator;
 
 public class GuiGenerator extends GuiContainer
 {

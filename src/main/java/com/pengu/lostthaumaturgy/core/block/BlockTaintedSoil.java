@@ -24,11 +24,11 @@ import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.BlockSnapshot;
 
-import com.pengu.hammercore.api.ITileBlock;
+import com.pengu.hammercore.api.iTileBlock;
 import com.pengu.hammercore.common.utils.WorldUtil;
 import com.pengu.hammercore.utils.WorldLocation;
 import com.pengu.lostthaumaturgy.LTConfigs;
-import com.pengu.lostthaumaturgy.api.blocks.ITaintedBlock;
+import com.pengu.lostthaumaturgy.api.blocks.iTaintedBlock;
 import com.pengu.lostthaumaturgy.api.event.TaintedSoilEvent;
 import com.pengu.lostthaumaturgy.api.event.TaintedSoilEvent.GetDrops;
 import com.pengu.lostthaumaturgy.core.tile.TileTaintedSoil;
@@ -37,7 +37,7 @@ import com.pengu.lostthaumaturgy.custom.aura.AtmosphereTicker;
 import com.pengu.lostthaumaturgy.custom.aura.taint.TaintRegistry;
 import com.pengu.lostthaumaturgy.init.BlocksLT;
 
-public class BlockTaintedSoil extends Block implements ITileEntityProvider, ITileBlock<TileTaintedSoil>, ITaintedBlock
+public class BlockTaintedSoil extends Block implements ITileEntityProvider, iTileBlock<TileTaintedSoil>, iTaintedBlock
 {
 	public BlockTaintedSoil()
 	{

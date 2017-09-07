@@ -2,20 +2,20 @@ package com.pengu.lostthaumaturgy.net;
 
 import java.util.UUID;
 
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.text.TextComponentTranslation;
-import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
-import net.minecraftforge.fml.relauncher.Side;
-
 import com.pengu.hammercore.common.utils.WorldUtil;
-import com.pengu.hammercore.net.packetAPI.IPacket;
-import com.pengu.hammercore.net.packetAPI.IPacketListener;
+import com.pengu.hammercore.net.packetAPI.iPacket;
+import com.pengu.hammercore.net.packetAPI.iPacketListener;
 import com.pengu.lostthaumaturgy.core.Info;
 import com.pengu.lostthaumaturgy.core.emote.EmoteManager;
 import com.pengu.lostthaumaturgy.core.emote.EmoteManager.DefaultEmotes;
 import com.pengu.lostthaumaturgy.core.entity.EntityTravelingTrunk;
 
-public class PacketTrunkToggleSit implements IPacket, IPacketListener<PacketTrunkToggleSit, IPacket>
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
+import net.minecraftforge.fml.relauncher.Side;
+
+public class PacketTrunkToggleSit implements iPacket, iPacketListener<PacketTrunkToggleSit, iPacket>
 {
 	public UUID uuid;
 	
@@ -41,7 +41,7 @@ public class PacketTrunkToggleSit implements IPacket, IPacketListener<PacketTrun
 	}
 	
 	@Override
-	public IPacket onArrived(PacketTrunkToggleSit packet, MessageContext context)
+	public iPacket onArrived(PacketTrunkToggleSit packet, MessageContext context)
 	{
 		if(context.side == Side.SERVER)
 		{

@@ -12,15 +12,15 @@ import net.minecraftforge.common.capabilities.CapabilityManager;
 
 public class CapabilityVisConnection
 {
-	@CapabilityInject(IConnection.class)
-	public static Capability<IConnection> VIS = null;
+	@CapabilityInject(iConnection.class)
+	public static Capability<iConnection> VIS = null;
 	
 	public static void register()
 	{
-		CapabilityManager.INSTANCE.register(IConnection.class, new IStorage<IConnection>()
+		CapabilityManager.INSTANCE.register(iConnection.class, new IStorage<iConnection>()
 		{
 			@Override
-			public NBTBase writeNBT(Capability<IConnection> capability, IConnection instance, EnumFacing side)
+			public NBTBase writeNBT(Capability<iConnection> capability, iConnection instance, EnumFacing side)
 			{
 				NBTTagCompound c = new NBTTagCompound();
 				c.setFloat("PureVis", instance.getPureVis());
@@ -30,7 +30,7 @@ public class CapabilityVisConnection
 			}
 			
 			@Override
-			public void readNBT(Capability<IConnection> capability, IConnection instance, EnumFacing side, NBTBase nbt)
+			public void readNBT(Capability<iConnection> capability, iConnection instance, EnumFacing side, NBTBase nbt)
 			{
 				if(nbt instanceof NBTTagCompound)
 				{
@@ -38,10 +38,10 @@ public class CapabilityVisConnection
 					instance.setTaintedVis(((NBTTagCompound) nbt).getFloat("TaintedVis"));
 				}
 			}
-		}, new Callable<IConnection>()
+		}, new Callable<iConnection>()
 		{
 			@Override
-			public IConnection call() throws Exception
+			public iConnection call() throws Exception
 			{
 				return null;
 			}

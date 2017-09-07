@@ -52,16 +52,14 @@ public class TESRBellows extends TESR<TileBellows>
 	
 	public void renderEntityAt(TileBellows bellows, double x, double y, double z, float scale)
 	{
-		GLRenderState blend = GLRenderState.BLEND, normalize = GLRenderState.NORMALIZE;
+		GLRenderState blend = GLRenderState.BLEND;
 		
 		blend.captureState();
-		normalize.captureState();
 		
 		float tscale = .125F + scale * .875F;
 		bindTexture(curr_texture);
 		
 		blend.on();
-		normalize.on();
 		
 		GL11.glPushMatrix();
 		GL11.glEnable(32826);
@@ -90,7 +88,6 @@ public class TESRBellows extends TESR<TileBellows>
 		GL11.glDisable(32826);
 		GL11.glPopMatrix();
 		blend.reset();
-		normalize.reset();
 		GL11.glColor4f(1, 1, 1, 1);
 	}
 }

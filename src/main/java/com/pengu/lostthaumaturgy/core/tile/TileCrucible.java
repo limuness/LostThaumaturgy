@@ -21,15 +21,15 @@ import com.pengu.hammercore.utils.WorldLocation;
 import com.pengu.lostthaumaturgy.api.RecipesCrucible;
 import com.pengu.lostthaumaturgy.api.tiles.CapabilityVisConnection;
 import com.pengu.lostthaumaturgy.api.tiles.ConnectionManager;
-import com.pengu.lostthaumaturgy.api.tiles.IConnection;
-import com.pengu.lostthaumaturgy.api.tiles.IThaumSlimeDrainable;
+import com.pengu.lostthaumaturgy.api.tiles.iConnection;
+import com.pengu.lostthaumaturgy.api.tiles.iThaumSlimeDrainable;
 import com.pengu.lostthaumaturgy.core.Info;
 import com.pengu.lostthaumaturgy.core.entity.EntityThaumSlime;
 import com.pengu.lostthaumaturgy.custom.aura.AtmosphereChunk;
 import com.pengu.lostthaumaturgy.custom.aura.AtmosphereTicker;
 import com.pengu.lostthaumaturgy.net.wisp.PacketFXWisp2;
 
-public class TileCrucible extends TileSyncableTickable implements IConnection, IThaumSlimeDrainable
+public class TileCrucible extends TileSyncableTickable implements iConnection, iThaumSlimeDrainable
 {
 	public int smeltDelay;
 	public float pureVis = 0;
@@ -283,7 +283,7 @@ public class TileCrucible extends TileSyncableTickable implements IConnection, I
 		BlockPos tpos = pos.offset(to);
 		if(world.isBlockLoaded(tpos))
 		{
-			IConnection c = ConnectionManager.getConnection(loc, to);
+			iConnection c = ConnectionManager.getConnection(loc, to);
 			if(c != null)
 				return c.getConnectable(to.getOpposite());
 		}

@@ -1,5 +1,11 @@
 package com.pengu.lostthaumaturgy.core.block.monolith;
 
+import com.pengu.hammercore.api.iTileBlock;
+import com.pengu.hammercore.common.utils.WorldUtil;
+import com.pengu.lostthaumaturgy.core.Info;
+import com.pengu.lostthaumaturgy.core.block.def.BlockRendered;
+import com.pengu.lostthaumaturgy.core.tile.monolith.TileMonolith;
+
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -15,13 +21,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-import com.pengu.hammercore.api.ITileBlock;
-import com.pengu.hammercore.common.utils.WorldUtil;
-import com.pengu.lostthaumaturgy.core.Info;
-import com.pengu.lostthaumaturgy.core.block.def.BlockRendered;
-import com.pengu.lostthaumaturgy.core.tile.monolith.TileMonolith;
-
-public class BlockMonolith extends BlockRendered implements ITileEntityProvider, ITileBlock<TileMonolith>
+public class BlockMonolith extends BlockRendered implements ITileEntityProvider, iTileBlock<TileMonolith>
 {
 	public BlockMonolith()
 	{

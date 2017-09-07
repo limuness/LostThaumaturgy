@@ -24,7 +24,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
 
 import com.pengu.hammercore.HammerCore;
-import com.pengu.hammercore.api.ITileBlock;
+import com.pengu.hammercore.api.iTileBlock;
 import com.pengu.hammercore.common.utils.WorldUtil;
 import com.pengu.hammercore.net.HCNetwork;
 import com.pengu.hammercore.utils.ListUtils;
@@ -39,7 +39,7 @@ import com.pengu.lostthaumaturgy.custom.aura.AtmosphereTicker;
 import com.pengu.lostthaumaturgy.init.BlocksLT;
 import com.pengu.lostthaumaturgy.net.wisp.PacketAreaWisp;
 
-public class BlockExtraRoom extends BlockRendered implements ITileBlock<TileExtraRoom>, ITileEntityProvider
+public class BlockExtraRoom extends BlockRendered implements iTileBlock<TileExtraRoom>, ITileEntityProvider
 {
 	public BlockExtraRoom()
 	{

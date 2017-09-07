@@ -2,6 +2,18 @@ package com.pengu.lostthaumaturgy.core.tile.monolith;
 
 import java.util.List;
 
+import com.pengu.hammercore.HammerCore;
+import com.pengu.hammercore.common.utils.WorldUtil;
+import com.pengu.hammercore.net.HCNetwork;
+import com.pengu.hammercore.net.pkt.PacketSpawnSlowZap;
+import com.pengu.hammercore.tile.TileSyncable;
+import com.pengu.hammercore.tile.TileSyncableTickable;
+import com.pengu.hammercore.tile.iMalfunctionable;
+import com.pengu.lostthaumaturgy.core.Info;
+import com.pengu.lostthaumaturgy.custom.aura.AtmosphereChunk;
+import com.pengu.lostthaumaturgy.custom.aura.AtmosphereTicker;
+import com.pengu.lostthaumaturgy.net.wisp.PacketFXWisp2;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.MoverType;
 import net.minecraft.nbt.NBTTagCompound;
@@ -9,18 +21,6 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
-
-import com.pengu.hammercore.HammerCore;
-import com.pengu.hammercore.common.utils.WorldUtil;
-import com.pengu.hammercore.net.HCNetwork;
-import com.pengu.hammercore.net.pkt.PacketSpawnSlowZap;
-import com.pengu.hammercore.tile.IMalfunctionable;
-import com.pengu.hammercore.tile.TileSyncable;
-import com.pengu.hammercore.tile.TileSyncableTickable;
-import com.pengu.lostthaumaturgy.core.Info;
-import com.pengu.lostthaumaturgy.custom.aura.AtmosphereChunk;
-import com.pengu.lostthaumaturgy.custom.aura.AtmosphereTicker;
-import com.pengu.lostthaumaturgy.net.wisp.PacketFXWisp2;
 
 public class TileMonolith extends TileSyncableTickable
 {
@@ -95,8 +95,8 @@ public class TileMonolith extends TileSyncableTickable
 							continue;
 						
 						BlockPos pos = this.pos.add(x, y, z);
-						IMalfunctionable mal1 = WorldUtil.cast(world.getTileEntity(pos), IMalfunctionable.class);
-						IMalfunctionable mal2 = WorldUtil.cast(world.getBlockState(pos).getBlock(), IMalfunctionable.class);
+						iMalfunctionable mal1 = WorldUtil.cast(world.getTileEntity(pos), iMalfunctionable.class);
+						iMalfunctionable mal2 = WorldUtil.cast(world.getBlockState(pos).getBlock(), iMalfunctionable.class);
 						
 						int to = (int) Math.round(Math.sqrt(x * x + y * y + z * z));
 						if(to < 1 || rand.nextInt(to + 1) == 0)
@@ -118,7 +118,7 @@ public class TileMonolith extends TileSyncableTickable
 								HammerCore.particleProxy.spawnSlowZap(world, new Vec3d(pos), new Vec3d(this.pos), 0x310A5E, 50, .4F);
 						}
 					}
-		
+				
 		if(soundDelay == 0)
 		{
 			if(world.getBlockState(pos.down()).getBlock() != world.getBlockState(pos).getBlock())

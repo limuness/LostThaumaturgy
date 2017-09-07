@@ -11,7 +11,7 @@ import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public interface IFuserRecipe
+public interface iFuserRecipe
 {
 	/**
 	 * Used to check if this pattern matches. Also checks for wand and vis

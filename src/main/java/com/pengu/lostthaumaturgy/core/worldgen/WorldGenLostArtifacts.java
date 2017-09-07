@@ -8,19 +8,19 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Random;
 
+import com.pengu.hammercore.common.utils.ArrayEntry;
+import com.pengu.hammercore.utils.ListUtils;
+import com.pengu.hammercore.world.gen.iWorldGenFeature;
+import com.pengu.lostthaumaturgy.core.block.BlockLyingItem;
+import com.pengu.lostthaumaturgy.core.items.ItemMultiMaterial.EnumMultiMaterialType;
+
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
 import net.minecraft.world.World;
 
-import com.pengu.hammercore.common.utils.ArrayEntry;
-import com.pengu.hammercore.utils.ListUtils;
-import com.pengu.hammercore.world.gen.IWorldGenFeature;
-import com.pengu.lostthaumaturgy.core.block.BlockLyingItem;
-import com.pengu.lostthaumaturgy.core.items.ItemMultiMaterial.EnumMultiMaterialType;
-
-public class WorldGenLostArtifacts implements IWorldGenFeature
+public class WorldGenLostArtifacts implements iWorldGenFeature
 {
 	public static class DropMaker
 	{

@@ -1,17 +1,17 @@
 package com.pengu.lostthaumaturgy.net.wisp;
 
+import com.pengu.hammercore.net.packetAPI.iPacket;
+import com.pengu.hammercore.net.packetAPI.iPacketListener;
+import com.pengu.hammercore.proxy.ParticleProxy_Client;
+import com.pengu.lostthaumaturgy.client.fx.FXWisp;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import com.pengu.hammercore.net.packetAPI.IPacket;
-import com.pengu.hammercore.net.packetAPI.IPacketListener;
-import com.pengu.hammercore.proxy.ParticleProxy_Client;
-import com.pengu.lostthaumaturgy.client.fx.FXWisp;
-
-public class PacketFXWispColor implements IPacket, IPacketListener<PacketFXWispColor, IPacket>
+public class PacketFXWispColor implements iPacket, iPacketListener<PacketFXWispColor, iPacket>
 {
 	double x, y, z, tx, ty, tz;
 	float partialTicks;
@@ -34,7 +34,7 @@ public class PacketFXWispColor implements IPacket, IPacketListener<PacketFXWispC
 	}
 	
 	@Override
-	public IPacket onArrived(PacketFXWispColor packet, MessageContext context)
+	public iPacket onArrived(PacketFXWispColor packet, MessageContext context)
 	{
 		if(context.side == Side.CLIENT)
 			summon();

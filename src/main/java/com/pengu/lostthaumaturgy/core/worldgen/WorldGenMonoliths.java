@@ -2,6 +2,11 @@ package com.pengu.lostthaumaturgy.core.worldgen;
 
 import java.util.Random;
 
+import com.pengu.hammercore.utils.ChunkUtils;
+import com.pengu.hammercore.world.gen.iWorldGenFeature;
+import com.pengu.lostthaumaturgy.core.block.monolith.BlockMonolithOpener;
+import com.pengu.lostthaumaturgy.custom.aura.AtmosphereTicker;
+
 import net.minecraft.init.Biomes;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.EnumFacing;
@@ -10,12 +15,7 @@ import net.minecraft.util.math.ChunkPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 
-import com.pengu.hammercore.utils.ChunkUtils;
-import com.pengu.hammercore.world.gen.IWorldGenFeature;
-import com.pengu.lostthaumaturgy.core.block.monolith.BlockMonolithOpener;
-import com.pengu.lostthaumaturgy.custom.aura.AtmosphereTicker;
-
-public class WorldGenMonoliths implements IWorldGenFeature
+public class WorldGenMonoliths implements iWorldGenFeature
 {
 	@Override
 	public int getMaxChances(World world, ChunkPos chunk, Random rand)

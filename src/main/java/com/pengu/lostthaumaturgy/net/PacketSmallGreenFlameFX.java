@@ -1,5 +1,10 @@
 package com.pengu.lostthaumaturgy.net;
 
+import com.pengu.hammercore.net.packetAPI.iPacket;
+import com.pengu.hammercore.net.packetAPI.iPacketListener;
+import com.pengu.hammercore.proxy.ParticleProxy_Client;
+import com.pengu.lostthaumaturgy.client.fx.FXGreenFlame;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.Vec3d;
@@ -7,12 +12,7 @@ import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import com.pengu.hammercore.net.packetAPI.IPacket;
-import com.pengu.hammercore.net.packetAPI.IPacketListener;
-import com.pengu.hammercore.proxy.ParticleProxy_Client;
-import com.pengu.lostthaumaturgy.client.fx.FXGreenFlame;
-
-public class PacketSmallGreenFlameFX implements IPacket, IPacketListener<PacketSmallGreenFlameFX, IPacket>
+public class PacketSmallGreenFlameFX implements iPacket, iPacketListener<PacketSmallGreenFlameFX, iPacket>
 {
 	public Vec3d pos;
 	
@@ -40,7 +40,7 @@ public class PacketSmallGreenFlameFX implements IPacket, IPacketListener<PacketS
 	}
 	
 	@Override
-	public IPacket onArrived(PacketSmallGreenFlameFX packet, MessageContext context)
+	public iPacket onArrived(PacketSmallGreenFlameFX packet, MessageContext context)
 	{
 		if(context.side == Side.CLIENT)
 			packet.client();

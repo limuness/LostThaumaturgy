@@ -1,5 +1,13 @@
 package com.pengu.lostthaumaturgy.core.block;
 
+import com.pengu.hammercore.api.iTileBlock;
+import com.pengu.hammercore.api.mhb.iCubeManager;
+import com.pengu.hammercore.common.utils.WorldUtil;
+import com.pengu.hammercore.vec.Cuboid6;
+import com.pengu.lostthaumaturgy.core.Info;
+import com.pengu.lostthaumaturgy.core.block.def.BlockTraceableRendered;
+import com.pengu.lostthaumaturgy.core.tile.TileConduit;
+
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -11,15 +19,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-import com.pengu.hammercore.api.ITileBlock;
-import com.pengu.hammercore.api.mhb.ICubeManager;
-import com.pengu.hammercore.common.utils.WorldUtil;
-import com.pengu.hammercore.vec.Cuboid6;
-import com.pengu.lostthaumaturgy.core.Info;
-import com.pengu.lostthaumaturgy.core.block.def.BlockTraceableRendered;
-import com.pengu.lostthaumaturgy.core.tile.TileConduit;
-
-public class BlockConduit extends BlockTraceableRendered implements ITileEntityProvider, ITileBlock<TileConduit>, ICubeManager
+public class BlockConduit extends BlockTraceableRendered implements ITileEntityProvider, iTileBlock<TileConduit>, iCubeManager
 {
 	public BlockConduit()
 	{

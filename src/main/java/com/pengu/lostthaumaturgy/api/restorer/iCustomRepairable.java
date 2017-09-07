@@ -4,7 +4,7 @@ import net.minecraft.item.ItemStack;
 
 import com.pengu.hammercore.utils.WorldLocation;
 
-public interface ICustomRepairable
+public interface iCustomRepairable
 {
 	float getVisCost(ItemStack stack, WorldLocation loc);
 	

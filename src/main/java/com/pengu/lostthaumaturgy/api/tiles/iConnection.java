@@ -2,12 +2,12 @@ package com.pengu.lostthaumaturgy.api.tiles;
 
 import java.util.List;
 
+import com.pengu.hammercore.api.handlers.iTileHandler;
+
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 
-import com.pengu.hammercore.api.handlers.ITileHandler;
-
-public interface IConnection extends ITileHandler
+public interface iConnection extends iTileHandler
 {
 	boolean getConnectable(EnumFacing to);
 	

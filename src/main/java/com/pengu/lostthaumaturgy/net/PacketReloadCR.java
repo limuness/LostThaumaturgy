@@ -1,17 +1,17 @@
 package com.pengu.lostthaumaturgy.net;
 
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
-
-import com.pengu.hammercore.net.packetAPI.IPacket;
-import com.pengu.hammercore.net.packetAPI.IPacketListener;
+import com.pengu.hammercore.net.packetAPI.iPacket;
+import com.pengu.hammercore.net.packetAPI.iPacketListener;
 import com.pengu.lostthaumaturgy.LostThaumaturgy;
 import com.pengu.lostthaumaturgy.api.RecipesCrucible;
 
-public class PacketReloadCR implements IPacket, IPacketListener<PacketReloadCR, IPacket>
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
+
+public class PacketReloadCR implements iPacket, iPacketListener<PacketReloadCR, iPacket>
 {
 	@Override
-	public IPacket onArrived(PacketReloadCR packet, MessageContext context)
+	public iPacket onArrived(PacketReloadCR packet, MessageContext context)
 	{
 		LostThaumaturgy.LOG.info("Reloading crucible recipes, from server...");
 		RecipesCrucible.reloadRecipes();

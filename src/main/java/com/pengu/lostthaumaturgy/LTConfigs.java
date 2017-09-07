@@ -2,20 +2,20 @@ package com.pengu.lostthaumaturgy;
 
 import java.util.Objects;
 
-import net.minecraftforge.common.config.Configuration;
-
 import com.pengu.hammercore.cfg.HCModConfigurations;
-import com.pengu.hammercore.cfg.IConfigReloadListener;
+import com.pengu.hammercore.cfg.iConfigReloadListener;
 import com.pengu.hammercore.cfg.fields.ModConfigPropertyBool;
 import com.pengu.hammercore.cfg.fields.ModConfigPropertyFloat;
 import com.pengu.hammercore.cfg.fields.ModConfigPropertyInt;
 import com.pengu.hammercore.cfg.fields.ModConfigPropertyStringList;
-import com.pengu.hammercore.var.IVariable;
+import com.pengu.hammercore.var.iVariable;
 import com.pengu.hammercore.var.types.VariableString;
 import com.pengu.lostthaumaturgy.core.Info;
 
+import net.minecraftforge.common.config.Configuration;
+
 @HCModConfigurations(modid = Info.MOD_ID)
-public class LTConfigs implements IConfigReloadListener
+public class LTConfigs implements iConfigReloadListener
 {
 	@ModConfigPropertyBool(category = "Client", name = "Crucible Value Tooltip", defaultValue = true, comment = "Should we add tooltip with smelting value of an item in a crucible?")
 	public static boolean enableCrucibleValueTooltips;
@@ -41,9 +41,12 @@ public class LTConfigs implements IConfigReloadListener
 	@ModConfigPropertyBool(category = "Effects", name = "Damage", comment = "Should Lost Thaumatugy spawn Damage particles for players that is getting attacked?", defaultValue = true)
 	public static boolean effects_Damage;
 	
+	@ModConfigPropertyBool(category = "Crashes", name = "Automatic Crash Upload", comment = "Should Lost Thaumaturgy automatically report crashes that involve the mod? (We don't send your personal data, disable if you don't trust this mod)", defaultValue = true)
+	public static boolean sendCrashesToDiscord;
+	
 	public static Configuration cfgs;
 	
-	public static final IVariable<String> var_aura_max_str = new VariableString(Info.MOD_ID + ":aura");
+	public static final iVariable<String> var_aura_max_str = new VariableString(Info.MOD_ID + ":aura");
 	public static short sync_aura_max;
 	public static float sync_aura_rad_max;
 	

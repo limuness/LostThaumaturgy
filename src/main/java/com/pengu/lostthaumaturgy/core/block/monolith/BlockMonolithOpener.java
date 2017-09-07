@@ -9,13 +9,13 @@ import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-import com.pengu.hammercore.api.ITileBlock;
+import com.pengu.hammercore.api.iTileBlock;
 import com.pengu.lostthaumaturgy.core.Info;
 import com.pengu.lostthaumaturgy.core.block.def.BlockRendered;
 import com.pengu.lostthaumaturgy.core.tile.monolith.TileMonolithOpener;
 import com.pengu.lostthaumaturgy.init.BlocksLT;
 
-public class BlockMonolithOpener extends BlockRendered implements ITileEntityProvider, ITileBlock<TileMonolithOpener>
+public class BlockMonolithOpener extends BlockRendered implements ITileEntityProvider, iTileBlock<TileMonolithOpener>
 {
 	public BlockMonolithOpener()
 	{

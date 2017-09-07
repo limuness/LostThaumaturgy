@@ -4,23 +4,23 @@ import java.awt.Color;
 import java.util.Iterator;
 import java.util.Random;
 
-import net.minecraft.entity.item.EntityItem;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Vec3d;
-import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
-
 import com.pengu.hammercore.HammerCore;
 import com.pengu.hammercore.common.utils.WorldUtil;
 import com.pengu.hammercore.math.MathHelper;
 import com.pengu.hammercore.net.HCNetwork;
-import com.pengu.hammercore.tile.IMalfunctionable;
 import com.pengu.hammercore.tile.TileSyncable;
+import com.pengu.hammercore.tile.iMalfunctionable;
 import com.pengu.lostthaumaturgy.core.items.ItemWand;
 import com.pengu.lostthaumaturgy.custom.aura.AtmosphereChunk;
 import com.pengu.lostthaumaturgy.custom.aura.AtmosphereTicker;
 import com.pengu.lostthaumaturgy.net.wisp.PacketFXWisp2;
 import com.pengu.lostthaumaturgy.net.wisp.PacketFXWisp3;
+
+import net.minecraft.entity.item.EntityItem;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
+import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
 
 public class WandRod
 {
@@ -129,7 +129,7 @@ public class WandRod
 					while(positions.hasNext())
 					{
 						BlockPos next = positions.next();
-						IMalfunctionable mal = WorldUtil.cast(wand.world.getTileEntity(next), IMalfunctionable.class);
+						iMalfunctionable mal = WorldUtil.cast(wand.world.getTileEntity(next), iMalfunctionable.class);
 						if(mal != null)
 						{
 							mal.causeEntityMalfunction(wand);

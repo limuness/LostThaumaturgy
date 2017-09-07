@@ -12,12 +12,12 @@ import net.minecraft.util.EnumParticleTypes;
 
 import com.pengu.hammercore.common.inventory.InventoryNonTile;
 import com.pengu.hammercore.net.utils.NetPropertyItemStack;
-import com.pengu.lostthaumaturgy.api.tiles.IUpgradable;
+import com.pengu.lostthaumaturgy.api.tiles.iUpgradable;
 import com.pengu.lostthaumaturgy.api.tiles.TileVisUser;
 import com.pengu.lostthaumaturgy.core.items.ItemUpgrade;
 import com.pengu.lostthaumaturgy.init.ItemsLT;
 
-public class TilePenguCobbleGen extends TileVisUser implements IInventory, IUpgradable
+public class TilePenguCobbleGen extends TileVisUser implements IInventory, iUpgradable
 {
 	public final NetPropertyItemStack generated;
 	public final NetPropertyItemStack pickaxe;

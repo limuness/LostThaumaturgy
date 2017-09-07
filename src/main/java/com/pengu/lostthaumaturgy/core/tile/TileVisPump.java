@@ -2,18 +2,18 @@ package com.pengu.lostthaumaturgy.core.tile;
 
 import java.util.Map;
 
+import com.pengu.hammercore.common.utils.WorldUtil;
+import com.pengu.hammercore.tile.TileSyncableTickable;
+import com.pengu.hammercore.tile.iMalfunctionable;
+import com.pengu.lostthaumaturgy.api.tiles.ConnectionManager;
+import com.pengu.lostthaumaturgy.api.tiles.iConnection;
+
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 
-import com.pengu.hammercore.common.utils.WorldUtil;
-import com.pengu.hammercore.tile.IMalfunctionable;
-import com.pengu.hammercore.tile.TileSyncableTickable;
-import com.pengu.lostthaumaturgy.api.tiles.ConnectionManager;
-import com.pengu.lostthaumaturgy.api.tiles.IConnection;
-
-public class TileVisPump extends TileSyncableTickable implements IConnection, IMalfunctionable
+public class TileVisPump extends TileSyncableTickable implements iConnection, iMalfunctionable
 {
 	public int malfunctionTime = 0;
 	public float pureVis = 0.0f;
@@ -37,7 +37,7 @@ public class TileVisPump extends TileSyncableTickable implements IConnection, IM
 		if(world.isRemote)
 			return;
 		
-		IConnection c = ConnectionManager.getConnection(world, pos, orientation);
+		iConnection c = ConnectionManager.getConnection(world, pos, orientation);
 		
 		if(c == null || !getConnectable(orientation))
 			return;

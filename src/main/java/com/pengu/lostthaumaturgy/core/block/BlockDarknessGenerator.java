@@ -1,5 +1,13 @@
 package com.pengu.lostthaumaturgy.core.block;
 
+import com.pengu.hammercore.api.iTileBlock;
+import com.pengu.hammercore.common.utils.WorldUtil;
+import com.pengu.hammercore.core.gui.GuiManager;
+import com.pengu.hammercore.tile.TileSyncable;
+import com.pengu.lostthaumaturgy.core.Info;
+import com.pengu.lostthaumaturgy.core.block.def.BlockRendered;
+import com.pengu.lostthaumaturgy.core.tile.TileDarknessGenerator;
+
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -13,15 +21,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-import com.pengu.hammercore.api.ITileBlock;
-import com.pengu.hammercore.common.utils.WorldUtil;
-import com.pengu.hammercore.gui.GuiManager;
-import com.pengu.hammercore.tile.TileSyncable;
-import com.pengu.lostthaumaturgy.core.Info;
-import com.pengu.lostthaumaturgy.core.block.def.BlockRendered;
-import com.pengu.lostthaumaturgy.core.tile.TileDarknessGenerator;
-
-public class BlockDarknessGenerator extends BlockRendered implements ITileBlock<TileDarknessGenerator>, ITileEntityProvider
+public class BlockDarknessGenerator extends BlockRendered implements iTileBlock<TileDarknessGenerator>, ITileEntityProvider
 {
 	public BlockDarknessGenerator()
 	{

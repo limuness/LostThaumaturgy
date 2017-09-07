@@ -22,7 +22,7 @@ import org.lwjgl.opengl.GL11;
 import com.pengu.hammercore.client.GLRenderState;
 import com.pengu.hammercore.client.utils.RenderUtil;
 import com.pengu.lostthaumaturgy.LTConfigs;
-import com.pengu.lostthaumaturgy.api.tiles.IConnection;
+import com.pengu.lostthaumaturgy.api.tiles.iConnection;
 import com.pengu.lostthaumaturgy.core.Info;
 import com.pengu.lostthaumaturgy.custom.aura.AtmosphereChunk;
 
@@ -140,9 +140,9 @@ public class HudDetector extends Gui
 			this.fontRenderer.drawString(dtaint, 61, l - 14, 10057625);
 			
 			RayTraceResult res = mc.objectMouseOver;
-			if(res != null && res.typeOfHit == Type.BLOCK && w.getTileEntity(res.getBlockPos()) instanceof IConnection)
+			if(res != null && res.typeOfHit == Type.BLOCK && w.getTileEntity(res.getBlockPos()) instanceof iConnection)
 			{
-				IConnection tet = (IConnection) w.getTileEntity(res.getBlockPos());
+				iConnection tet = (iConnection) w.getTileEntity(res.getBlockPos());
 				tet.addTooltipToGoggles(tooltip);
 				
 				int capp = Math.round((float) Math.round(tet.getPureVis()) / tet.getMaxVis() * 100.0f);

@@ -10,9 +10,9 @@ import net.minecraft.util.math.Vec3d;
 
 import com.pengu.hammercore.common.inventory.InventoryNonTile;
 import com.pengu.hammercore.net.HCNetwork;
-import com.pengu.lostthaumaturgy.api.restorer.ICustomRepairable;
+import com.pengu.lostthaumaturgy.api.restorer.iCustomRepairable;
 import com.pengu.lostthaumaturgy.api.restorer.RestorerManager;
-import com.pengu.lostthaumaturgy.api.tiles.IUpgradable;
+import com.pengu.lostthaumaturgy.api.tiles.iUpgradable;
 import com.pengu.lostthaumaturgy.api.tiles.TileVisUser;
 import com.pengu.lostthaumaturgy.client.gui.GuiRepairer;
 import com.pengu.lostthaumaturgy.core.items.ItemUpgrade;
@@ -23,7 +23,7 @@ import com.pengu.lostthaumaturgy.init.SoundEventsLT;
 import com.pengu.lostthaumaturgy.inventory.ContainerRepairer;
 import com.pengu.lostthaumaturgy.net.PacketSmallGreenFlameFX;
 
-public class TileRepairer extends TileVisUser implements IUpgradable, ISidedInventory
+public class TileRepairer extends TileVisUser implements iUpgradable, ISidedInventory
 {
 	public final InventoryNonTile inventory = new InventoryNonTile(12);
 	public float sucked = 0;
@@ -68,7 +68,7 @@ public class TileRepairer extends TileVisUser implements IUpgradable, ISidedInve
 		for(int a = 0; a < 6; ++a)
 		{
 			ItemStack s = inventory.getStackInSlot(a);
-			ICustomRepairable cr = RestorerManager.findCustomRepairable(s.getItem());
+			iCustomRepairable cr = RestorerManager.findCustomRepairable(s.getItem());
 			boolean isVisRepair = cr.canRepair(s, loc);
 			if(!s.isEmpty() && (s.getItem().isRepairable() || isVisRepair))
 			{
@@ -154,7 +154,7 @@ public class TileRepairer extends TileVisUser implements IUpgradable, ISidedInve
 			ItemStack stack = inventory.getStackInSlot(i);
 			if(stack.isEmpty())
 				continue;
-			ICustomRepairable repairable = RestorerManager.findCustomRepairable(stack.getItem());
+			iCustomRepairable repairable = RestorerManager.findCustomRepairable(stack.getItem());
 			if(!repairable.canRepair(stack, getLocation()))
 			{
 				for(int j = 6; j < 12; ++j)

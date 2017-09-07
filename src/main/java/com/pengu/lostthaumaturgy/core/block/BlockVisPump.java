@@ -12,13 +12,13 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-import com.pengu.hammercore.api.ITileBlock;
+import com.pengu.hammercore.api.iTileBlock;
 import com.pengu.hammercore.common.utils.WorldUtil;
 import com.pengu.lostthaumaturgy.core.Info;
 import com.pengu.lostthaumaturgy.core.block.def.BlockRendered;
 import com.pengu.lostthaumaturgy.core.tile.TileVisPump;
 
-public class BlockVisPump extends BlockRendered implements ITileBlock<TileVisPump>, ITileEntityProvider
+public class BlockVisPump extends BlockRendered implements iTileBlock<TileVisPump>, ITileEntityProvider
 {
 	public BlockVisPump()
 	{

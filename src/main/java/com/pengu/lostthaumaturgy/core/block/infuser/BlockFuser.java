@@ -2,6 +2,16 @@ package com.pengu.lostthaumaturgy.core.block.infuser;
 
 import java.util.Random;
 
+import com.pengu.hammercore.api.iTileBlock;
+import com.pengu.hammercore.common.utils.WorldUtil;
+import com.pengu.hammercore.core.gui.GuiManager;
+import com.pengu.hammercore.tile.TileSyncable;
+import com.pengu.hammercore.utils.WorldLocation;
+import com.pengu.lostthaumaturgy.core.Info;
+import com.pengu.lostthaumaturgy.core.block.def.BlockRendered;
+import com.pengu.lostthaumaturgy.core.tile.TileFuser;
+import com.pengu.lostthaumaturgy.init.BlocksLT;
+
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -19,17 +29,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
-import com.pengu.hammercore.api.ITileBlock;
-import com.pengu.hammercore.common.utils.WorldUtil;
-import com.pengu.hammercore.gui.GuiManager;
-import com.pengu.hammercore.tile.TileSyncable;
-import com.pengu.hammercore.utils.WorldLocation;
-import com.pengu.lostthaumaturgy.core.Info;
-import com.pengu.lostthaumaturgy.core.block.def.BlockRendered;
-import com.pengu.lostthaumaturgy.core.tile.TileFuser;
-import com.pengu.lostthaumaturgy.init.BlocksLT;
-
-public class BlockFuser extends BlockRendered implements ITileEntityProvider, ITileBlock<TileFuser>
+public class BlockFuser extends BlockRendered implements ITileEntityProvider, iTileBlock<TileFuser>
 {
 	public BlockFuser()
 	{

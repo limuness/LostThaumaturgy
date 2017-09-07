@@ -13,7 +13,7 @@ import net.minecraftforge.oredict.OreDictionary;
 import com.google.common.base.Predicates;
 import com.pengu.lostthaumaturgy.api.research.ResearchItem;
 import com.pengu.lostthaumaturgy.api.research.ResearchPredicate;
-import com.pengu.lostthaumaturgy.api.tiles.IInfuser;
+import com.pengu.lostthaumaturgy.api.tiles.iInfuser;
 import com.pengu.lostthaumaturgy.core.items.ItemMultiMaterial.EnumMultiMaterialType;
 import com.pengu.lostthaumaturgy.core.items.ItemResearch.EnumResearchItemType;
 import com.pengu.lostthaumaturgy.init.ItemsLT;
@@ -24,14 +24,14 @@ public class RecipesInfuser
 	private static ArrayList<ItemStack[]> componentList = new ArrayList();
 	private static ArrayList<Integer> costList = new ArrayList();
 	private static ArrayList<Boolean> darkList = new ArrayList();
-	private static ArrayList<Predicate<IInfuser>> conditions = new ArrayList();
+	private static ArrayList<Predicate<iInfuser>> conditions = new ArrayList();
 	
 	public static void addInfusing(ItemStack result, int cost, ItemStack... components)
 	{
 		addInfusing(result, cost, false, components);
 	}
 	
-	public static void addInfusing(ItemStack result, int cost, Predicate<IInfuser> craftChecker, ItemStack... components)
+	public static void addInfusing(ItemStack result, int cost, Predicate<iInfuser> craftChecker, ItemStack... components)
 	{
 		addInfusing(result, cost, craftChecker, false, components);
 	}
@@ -41,22 +41,22 @@ public class RecipesInfuser
 		addInfusing(result, cost, true, components);
 	}
 	
-	public static void addDarkInfusing(ItemStack result, int cost, Predicate<IInfuser> craftChecker, ItemStack... components)
+	public static void addDarkInfusing(ItemStack result, int cost, Predicate<iInfuser> craftChecker, ItemStack... components)
 	{
 		addInfusing(result, cost, craftChecker, true, components);
 	}
 	
-	public static Predicate<IInfuser> createPredicateFromResearches(ResearchItem... researches)
+	public static Predicate<iInfuser> createPredicateFromResearches(ResearchItem... researches)
 	{
 		return new ResearchPredicate(researches);
 	}
 	
-	public static Predicate<IInfuser> createPredicateFromResearches(String... researches)
+	public static Predicate<iInfuser> createPredicateFromResearches(String... researches)
 	{
 		return new ResearchPredicate(researches);
 	}
 	
-	public static void addInfusing(ItemStack result, int cost, Predicate<IInfuser> craftChecker, boolean isdark, ItemStack... components)
+	public static void addInfusing(ItemStack result, int cost, Predicate<iInfuser> craftChecker, boolean isdark, ItemStack... components)
 	{
 		resultList.add(result);
 		componentList.add(components);
@@ -74,7 +74,7 @@ public class RecipesInfuser
 		conditions.add(Predicates.alwaysTrue());
 	}
 	
-	public static ItemStack getInfusingResult(Object[] components, IInfuser infuser)
+	public static ItemStack getInfusingResult(Object[] components, iInfuser infuser)
 	{
 		try
 		{
@@ -91,7 +91,7 @@ public class RecipesInfuser
 		}
 	}
 	
-	public static ItemStack getInfusingResult(Object[] components, boolean isdark, IInfuser infuser)
+	public static ItemStack getInfusingResult(Object[] components, boolean isdark, iInfuser infuser)
 	{
 		try
 		{
@@ -168,7 +168,7 @@ public class RecipesInfuser
 		return null;
 	}
 	
-	public static int getInfusingCost(Object[] components, boolean isdark, IInfuser infuser)
+	public static int getInfusingCost(Object[] components, boolean isdark, iInfuser infuser)
 	{
 		try
 		{
@@ -185,7 +185,7 @@ public class RecipesInfuser
 		}
 	}
 	
-	public static int getInfusingCost(Object[] components, IInfuser infuser)
+	public static int getInfusingCost(Object[] components, iInfuser infuser)
 	{
 		try
 		{
@@ -202,12 +202,12 @@ public class RecipesInfuser
 		}
 	}
 	
-	public static Predicate<IInfuser> getPredicate(int entry)
+	public static Predicate<iInfuser> getPredicate(int entry)
 	{
 		return conditions.get(entry);
 	}
 	
-	public static int findEntry(Object[] components, IInfuser infuser)
+	public static int findEntry(Object[] components, iInfuser infuser)
 	{
 		block0: for(int a = 0; a < componentList.size(); ++a)
 		{
@@ -262,7 +262,7 @@ public class RecipesInfuser
 		public ItemStack result;
 		public ItemStack[] components;
 		public ItemStack[] discoveries;
-		public Predicate<IInfuser> predicate;
+		public Predicate<iInfuser> predicate;
 		public int cost;
 		public int depletedShards;
 		
@@ -396,9 +396,9 @@ public class RecipesInfuser
 		private ItemStack[] components;
 		private int cost;
 		private boolean dark;
-		private Predicate<IInfuser> condition;
+		private Predicate<iInfuser> condition;
 		
-		public RecipeInfuserDummy(ItemStack result, ItemStack[] components, int cost, boolean dark, Predicate<IInfuser> condition)
+		public RecipeInfuserDummy(ItemStack result, ItemStack[] components, int cost, boolean dark, Predicate<iInfuser> condition)
 		{
 			this.result = result;
 			this.components = components;
@@ -417,7 +417,7 @@ public class RecipesInfuser
 			return cost;
 		}
 		
-		public Predicate<IInfuser> getCondition()
+		public Predicate<iInfuser> getCondition()
 		{
 			return condition;
 		}
@@ -439,7 +439,7 @@ public class RecipesInfuser
 			acceptor.accept(this);
 		}
 		
-		public void setCondition(Predicate<IInfuser> condition)
+		public void setCondition(Predicate<iInfuser> condition)
 		{
 			this.condition = condition;
 			acceptor.accept(this);

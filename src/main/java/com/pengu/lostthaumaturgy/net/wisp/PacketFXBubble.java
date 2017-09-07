@@ -1,5 +1,10 @@
 package com.pengu.lostthaumaturgy.net.wisp;
 
+import com.pengu.hammercore.net.packetAPI.iPacket;
+import com.pengu.hammercore.net.packetAPI.iPacketListener;
+import com.pengu.hammercore.proxy.ParticleProxy_Client;
+import com.pengu.lostthaumaturgy.client.fx.FXBubble;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.Vec3d;
@@ -7,12 +12,7 @@ import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import com.pengu.hammercore.net.packetAPI.IPacket;
-import com.pengu.hammercore.net.packetAPI.IPacketListener;
-import com.pengu.hammercore.proxy.ParticleProxy_Client;
-import com.pengu.lostthaumaturgy.client.fx.FXBubble;
-
-public class PacketFXBubble implements IPacket, IPacketListener<PacketFXBubble, IPacket>
+public class PacketFXBubble implements iPacket, iPacketListener<PacketFXBubble, iPacket>
 {
 	double x, y, z;
 	
@@ -28,7 +28,7 @@ public class PacketFXBubble implements IPacket, IPacketListener<PacketFXBubble, 
 	}
 	
 	@Override
-	public IPacket onArrived(PacketFXBubble packet, MessageContext context)
+	public iPacket onArrived(PacketFXBubble packet, MessageContext context)
 	{
 		if(context.side == Side.CLIENT)
 			packet.summon();

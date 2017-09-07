@@ -90,8 +90,6 @@ public class TESRVisPump<T extends TileVisPump> extends TESR<T>
 		blend.on();
 		
 		GL11.glPushMatrix();
-		GLRenderState.NORMALIZE.captureState();
-		GLRenderState.NORMALIZE.on();
 		GL11.glEnable(32826);
 		GL11.glBlendFunc(770, 771);
 		GL11.glColor4d(1.0F, 1.0F, 1.0F, 1.0F);
@@ -115,7 +113,6 @@ public class TESRVisPump<T extends TileVisPump> extends TESR<T>
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 		GL11.glPopMatrix();
 		
-		GLRenderState.NORMALIZE.reset();
 		blend.reset();
 	}
 }

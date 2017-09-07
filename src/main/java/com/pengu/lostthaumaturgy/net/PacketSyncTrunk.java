@@ -2,6 +2,11 @@ package com.pengu.lostthaumaturgy.net;
 
 import java.util.UUID;
 
+import com.pengu.hammercore.net.packetAPI.iPacket;
+import com.pengu.hammercore.net.packetAPI.iPacketListener;
+import com.pengu.lostthaumaturgy.client.gui.GuiTravelingTrunk;
+import com.pengu.lostthaumaturgy.core.entity.EntityTravelingTrunk;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.nbt.NBTTagCompound;
@@ -11,12 +16,7 @@ import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import com.pengu.hammercore.net.packetAPI.IPacket;
-import com.pengu.hammercore.net.packetAPI.IPacketListener;
-import com.pengu.lostthaumaturgy.client.gui.GuiTravelingTrunk;
-import com.pengu.lostthaumaturgy.core.entity.EntityTravelingTrunk;
-
-public class PacketSyncTrunk implements IPacket, IPacketListener<PacketSyncTrunk, IPacket>
+public class PacketSyncTrunk implements iPacket, iPacketListener<PacketSyncTrunk, iPacket>
 {
 	private UUID uuid;
 	private NBTTagCompound nbt;
@@ -51,7 +51,7 @@ public class PacketSyncTrunk implements IPacket, IPacketListener<PacketSyncTrunk
 	}
 	
 	@Override
-	public IPacket onArrived(PacketSyncTrunk packet, MessageContext context)
+	public iPacket onArrived(PacketSyncTrunk packet, MessageContext context)
 	{
 		if(context.side == Side.CLIENT)
 			packet.client();

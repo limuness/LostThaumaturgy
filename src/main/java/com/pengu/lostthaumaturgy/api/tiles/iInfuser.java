@@ -4,7 +4,7 @@ import javax.annotation.Nullable;
 
 import net.minecraft.entity.player.EntityPlayer;
 
-public interface IInfuser
+public interface iInfuser
 {
 	@Nullable
 	EntityPlayer getInitiator();

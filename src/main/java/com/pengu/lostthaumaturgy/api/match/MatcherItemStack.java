@@ -3,7 +3,7 @@ package com.pengu.lostthaumaturgy.api.match;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
-public class MatcherItemStack implements IMatcher<ItemStack>
+public class MatcherItemStack implements iMatcher<ItemStack>
 {
 	private ItemStack sample;
 	

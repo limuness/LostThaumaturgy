@@ -14,8 +14,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 import com.pengu.hammercore.HammerCore;
-import com.pengu.hammercore.api.ITileBlock;
-import com.pengu.hammercore.api.mhb.ICubeManager;
+import com.pengu.hammercore.api.iTileBlock;
+import com.pengu.hammercore.api.mhb.iCubeManager;
 import com.pengu.hammercore.common.utils.WorldUtil;
 import com.pengu.hammercore.vec.Cuboid6;
 import com.pengu.lostthaumaturgy.core.Info;
@@ -23,7 +23,7 @@ import com.pengu.lostthaumaturgy.core.block.def.BlockTraceableRendered;
 import com.pengu.lostthaumaturgy.core.tile.TileAdvancedVisValve;
 import com.pengu.lostthaumaturgy.core.tile.TileConduit;
 
-public class BlockAdvancedVisValve extends BlockTraceableRendered implements ITileEntityProvider, ITileBlock<TileAdvancedVisValve>, ICubeManager
+public class BlockAdvancedVisValve extends BlockTraceableRendered implements ITileEntityProvider, iTileBlock<TileAdvancedVisValve>, iCubeManager
 {
 	public BlockAdvancedVisValve()
 	{

@@ -34,7 +34,7 @@ import com.pengu.hammercore.common.inventory.InventoryNonTile;
 import com.pengu.hammercore.common.utils.ItemInsertionUtil;
 import com.pengu.hammercore.common.utils.WorldUtil;
 import com.pengu.hammercore.net.HCNetwork;
-import com.pengu.lostthaumaturgy.api.tiles.IUpgradable;
+import com.pengu.lostthaumaturgy.api.tiles.iUpgradable;
 import com.pengu.lostthaumaturgy.core.Info;
 import com.pengu.lostthaumaturgy.core.items.ItemUpgrade;
 import com.pengu.lostthaumaturgy.core.items.ItemWandReversal;
@@ -46,7 +46,7 @@ import com.pengu.lostthaumaturgy.inventory.ContainerTravelingTrunk;
 import com.pengu.lostthaumaturgy.net.PacketSyncEntity;
 import com.pengu.lostthaumaturgy.net.PacketSyncTrunk;
 
-public class EntityTravelingTrunk extends EntityAnimal implements IUpgradable
+public class EntityTravelingTrunk extends EntityAnimal implements iUpgradable
 {
 	public InventoryNonTile inventory = new InventoryNonTile(27);
 	public float lidrot;

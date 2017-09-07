@@ -1,5 +1,13 @@
 package com.pengu.lostthaumaturgy.core.items;
 
+import com.pengu.hammercore.utils.iGetter;
+import com.pengu.hammercore.utils.iRegisterListener;
+import com.pengu.lostthaumaturgy.LostThaumaturgy;
+import com.pengu.lostthaumaturgy.core.Info;
+import com.pengu.lostthaumaturgy.core.entity.EntityTravelingTrunk;
+import com.pengu.lostthaumaturgy.init.BlocksLT;
+import com.pengu.lostthaumaturgy.init.ItemsLT;
+
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
@@ -14,15 +22,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.oredict.OreDictionary;
 
-import com.pengu.hammercore.utils.IGetter;
-import com.pengu.hammercore.utils.IRegisterListener;
-import com.pengu.lostthaumaturgy.LostThaumaturgy;
-import com.pengu.lostthaumaturgy.core.Info;
-import com.pengu.lostthaumaturgy.core.entity.EntityTravelingTrunk;
-import com.pengu.lostthaumaturgy.init.BlocksLT;
-import com.pengu.lostthaumaturgy.init.ItemsLT;
-
-public class ItemMultiMaterial extends Item implements IRegisterListener
+public class ItemMultiMaterial extends Item implements iRegisterListener
 {
 	private static ItemMultiMaterial instance;
 	
@@ -91,7 +91,7 @@ public class ItemMultiMaterial extends Item implements IRegisterListener
 				for(String name : type.oredict)
 					if(!name.isEmpty())
 						OreDictionary.registerOre(name, type.stack());
-		
+					
 		OreDictionary.registerOre("logWood", BlocksLT.SILVERWOOD_LOG);
 		OreDictionary.registerOre("logWood", BlocksLT.GREATWOOD_LOG);
 		OreDictionary.registerOre("treeLeaves", BlocksLT.SILVERWOOD_LEAVES);
@@ -154,7 +154,7 @@ public class ItemMultiMaterial extends Item implements IRegisterListener
 		return false;
 	}
 	
-	public enum EnumMultiMaterialType implements IGetter<ItemStack>
+	public enum EnumMultiMaterialType implements iGetter<ItemStack>
 	{
 		VAPOROUS_CRYSTAL("crystalVis", "crystalVaporous"), // 0
 		AQUEOUS_CRYSTAL("crystalVis", "crystalAqueous"), // 1
@@ -221,8 +221,8 @@ public class ItemMultiMaterial extends Item implements IRegisterListener
 		ROD_GREATWOOD, // 62
 		ROD_SILVERWOOD, // 63
 		TALLOW, // 64
-		PRIMORDIAL_CRYSTAL("crystalVis", "crystalPrimordial"), //65
-		PRIMORDIAL_INGOT("ingotPrimordial") //66
+		PRIMORDIAL_CRYSTAL("crystalVis", "crystalPrimordial"), // 65
+		PRIMORDIAL_INGOT("ingotPrimordial") // 66
 		;
 		
 		private final String oredict[];
@@ -320,8 +320,9 @@ public class ItemMultiMaterial extends Item implements IRegisterListener
 			for(int id : ids)
 			{
 				String dict = OreDictionary.getOreName(id);
-				if(dict.equals(oredict))
-					return true;
+				for(String od : oredict)
+					if(dict.equals(od))
+						return true;
 			}
 			return false;
 		}

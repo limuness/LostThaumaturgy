@@ -2,6 +2,10 @@ package com.pengu.lostthaumaturgy.net.zap;
 
 import java.awt.Color;
 
+import com.pengu.hammercore.HammerCore;
+import com.pengu.hammercore.net.packetAPI.iPacket;
+import com.pengu.hammercore.net.packetAPI.iPacketListener;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.Vec3d;
@@ -9,11 +13,7 @@ import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import com.pengu.hammercore.HammerCore;
-import com.pengu.hammercore.net.packetAPI.IPacket;
-import com.pengu.hammercore.net.packetAPI.IPacketListener;
-
-public class PacketSpawnGeneratorZap implements IPacket, IPacketListener<PacketSpawnGeneratorZap, IPacket>
+public class PacketSpawnGeneratorZap implements iPacket, iPacketListener<PacketSpawnGeneratorZap, iPacket>
 {
 	public Vec3d start, end;
 	
@@ -28,7 +28,7 @@ public class PacketSpawnGeneratorZap implements IPacket, IPacketListener<PacketS
 	}
 	
 	@Override
-	public IPacket onArrived(PacketSpawnGeneratorZap packet, MessageContext context)
+	public iPacket onArrived(PacketSpawnGeneratorZap packet, MessageContext context)
 	{
 		if(context.side == Side.CLIENT)
 			packet.spawn();

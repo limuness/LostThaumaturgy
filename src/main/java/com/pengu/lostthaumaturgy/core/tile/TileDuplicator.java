@@ -16,8 +16,8 @@ import com.pengu.hammercore.net.HCNetwork;
 import com.pengu.hammercore.net.utils.NetPropertyBool;
 import com.pengu.hammercore.net.utils.NetPropertyNumber;
 import com.pengu.lostthaumaturgy.api.RecipesCrucible;
-import com.pengu.lostthaumaturgy.api.items.INotCloneable;
-import com.pengu.lostthaumaturgy.api.tiles.IUpgradable;
+import com.pengu.lostthaumaturgy.api.items.iNotCloneable;
+import com.pengu.lostthaumaturgy.api.tiles.iUpgradable;
 import com.pengu.lostthaumaturgy.api.tiles.TileVisUser;
 import com.pengu.lostthaumaturgy.client.gui.GuiDuplicator;
 import com.pengu.lostthaumaturgy.core.Info;
@@ -28,7 +28,7 @@ import com.pengu.lostthaumaturgy.init.ItemsLT;
 import com.pengu.lostthaumaturgy.inventory.ContainerDuplicator;
 import com.pengu.lostthaumaturgy.net.machine.PacketDuplicatorFinish;
 
-public class TileDuplicator extends TileVisUser implements IUpgradable
+public class TileDuplicator extends TileVisUser implements iUpgradable
 {
 	public static NonNullList<ItemStack> DUPLICATOR_BLACKLIST = NonNullList.<ItemStack> create();
 	public final InventoryNonTile inventory = new InventoryNonTile(10);
@@ -179,10 +179,10 @@ public class TileDuplicator extends TileVisUser implements IUpgradable
 			if(inventory.getStackInSlot(9).isItemEqual(stack))
 				return 0;
 		
-		if(inventory.getStackInSlot(9).getItem() instanceof INotCloneable)
+		if(inventory.getStackInSlot(9).getItem() instanceof iNotCloneable)
 			return 0;
 		
-		if(inventory.getStackInSlot(9).getItem() instanceof ItemBlock && ((ItemBlock) inventory.getStackInSlot(9).getItem()).getBlock() instanceof INotCloneable)
+		if(inventory.getStackInSlot(9).getItem() instanceof ItemBlock && ((ItemBlock) inventory.getStackInSlot(9).getItem()).getBlock() instanceof iNotCloneable)
 			return 0;
 		
 		if(inventory.getStackInSlot(9).isEmpty() || inventory.getStackInSlot(9).getRarity() != EnumRarity.COMMON)

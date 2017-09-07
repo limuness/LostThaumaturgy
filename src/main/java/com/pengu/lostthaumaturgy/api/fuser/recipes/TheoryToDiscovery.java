@@ -8,12 +8,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 
 import com.pengu.lostthaumaturgy.api.fuser.FuserInventory;
-import com.pengu.lostthaumaturgy.api.fuser.IFuserRecipe;
+import com.pengu.lostthaumaturgy.api.fuser.iFuserRecipe;
 import com.pengu.lostthaumaturgy.core.items.ItemResearch;
 import com.pengu.lostthaumaturgy.core.items.ItemWand;
 import com.pengu.lostthaumaturgy.core.items.ItemResearch.EnumResearchItemType;
 
-public class TheoryToDiscovery implements IFuserRecipe
+public class TheoryToDiscovery implements iFuserRecipe
 {
 	@Override
 	public boolean matches(FuserInventory inv, EntityPlayer player)

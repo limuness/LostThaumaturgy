@@ -17,14 +17,14 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-import com.pengu.hammercore.api.ITileBlock;
+import com.pengu.hammercore.api.iTileBlock;
 import com.pengu.hammercore.common.utils.WorldUtil;
 import com.pengu.lostthaumaturgy.core.Info;
 import com.pengu.lostthaumaturgy.core.block.def.BlockRendered;
 import com.pengu.lostthaumaturgy.core.tile.TileBellows;
 import com.pengu.lostthaumaturgy.core.tile.TileThaumiumBellows;
 
-public class BlockThaumiumBellows extends BlockRendered implements ITileBlock<TileThaumiumBellows>, ITileEntityProvider
+public class BlockThaumiumBellows extends BlockRendered implements iTileBlock<TileThaumiumBellows>, ITileEntityProvider
 {
 	public BlockThaumiumBellows()
 	{
