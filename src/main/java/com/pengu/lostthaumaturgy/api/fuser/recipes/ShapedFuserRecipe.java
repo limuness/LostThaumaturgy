@@ -47,6 +47,16 @@ public class ShapedFuserRecipe implements iFuserRecipe
 		this(new ItemStack(result), recipe);
 	}
 	
+	public int getWidth()
+	{
+		return width;
+	}
+	
+	public int getHeight()
+	{
+		return height;
+	}
+	
 	public ShapedFuserRecipe setVisUsage(float vis, float taint)
 	{
 		visUsage = vis;

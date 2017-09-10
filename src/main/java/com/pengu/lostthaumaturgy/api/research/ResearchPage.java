@@ -15,6 +15,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import com.pengu.lostthaumaturgy.api.RecipesInfuser;
 import com.pengu.lostthaumaturgy.api.RecipesInfuser.DarkInfuserRecipe;
 import com.pengu.lostthaumaturgy.api.RecipesInfuser.InfuserRecipe;
+import com.pengu.lostthaumaturgy.api.fuser.RecipesFuser;
 import com.pengu.lostthaumaturgy.api.fuser.iFuserRecipe;
 import com.pengu.lostthaumaturgy.api.research.client.iRenderExtension;
 
@@ -43,7 +44,6 @@ public class ResearchPage
 	public Object getRecipe()
 	{
 		if(type == PageType.NORMAL_CRAFTING)
-		{
 			if(recipe instanceof ItemStack[])
 			{
 				List<IRecipe> rs = new ArrayList<>();
@@ -52,13 +52,18 @@ public class ResearchPage
 				return rs.toArray(new IRecipe[0]);
 			} else if(recipe instanceof ItemStack)
 				return findRecipesFor((ItemStack) recipe).toArray(new IRecipe[0]);
-		}
 		
 		if(type == PageType.INFUSION_CRAFTING)
-		{
 			if(recipe == null || (recipe instanceof Object[] && ((Object[]) recipe).length == 0))
 				recipe = InfuserRecipe.asRecipes(RecipesInfuser.listRecipes().findRecipes(recipeOutput, false));
-		}
+		
+		if(type == PageType.DARK_INFUSION_CRAFTING)
+			if(recipe == null || (recipe instanceof Object[] && ((Object[]) recipe).length == 0))
+				recipe = InfuserRecipe.asRecipes(RecipesInfuser.listRecipes().findRecipes(recipeOutput, true));
+		
+		if(type == PageType.FUSER_CRAFTING)
+			if(recipe == null)
+				recipe = RecipesFuser.getInstance().findRecipes(recipeOutput);
 		
 		return recipe;
 	}
@@ -93,29 +98,6 @@ public class ResearchPage
 		this.text = text;
 	}
 	
-	public ResearchPage(ItemStack recipe, boolean unused)
-	{
-		this.text = null;
-		this.research = null;
-		this.image = null;
-		this.recipe = null;
-		this.recipeOutput = null;
-		this.type = ResearchPage.PageType.NORMAL_CRAFTING;
-		this.recipe = recipe;
-		this.recipeOutput = recipe;
-	}
-	
-	public ResearchPage(ItemStack[] recipe, boolean unused)
-	{
-		this.text = null;
-		this.research = null;
-		this.image = null;
-		this.recipe = null;
-		this.recipeOutput = null;
-		this.type = ResearchPage.PageType.NORMAL_CRAFTING;
-		this.recipe = recipe;
-	}
-	
 	public ResearchPage(iFuserRecipe[] recipe)
 	{
 		this.text = null;
@@ -123,7 +105,7 @@ public class ResearchPage
 		this.image = null;
 		this.recipe = null;
 		this.recipeOutput = null;
-		this.type = ResearchPage.PageType.ARCANE_CRAFTING;
+		this.type = ResearchPage.PageType.FUSER_CRAFTING;
 		this.recipe = recipe;
 	}
 	
@@ -156,7 +138,7 @@ public class ResearchPage
 		this.image = null;
 		this.recipe = null;
 		this.recipeOutput = null;
-		this.type = ResearchPage.PageType.ARCANE_CRAFTING;
+		this.type = ResearchPage.PageType.FUSER_CRAFTING;
 		this.recipe = recipe;
 		this.recipeOutput = recipe.getOutput();
 	}
@@ -173,15 +155,15 @@ public class ResearchPage
 		this.recipeOutput = FurnaceRecipes.instance().getSmeltingResult(input).copy();
 	}
 	
-	public ResearchPage(InfuserRecipe recipe, ItemStack output)
+	public ResearchPage(InfuserRecipe recipe)
 	{
 		this.text = null;
 		this.research = null;
 		this.image = null;
 		this.recipeOutput = null;
 		this.type = ResearchPage.PageType.INFUSION_CRAFTING;
-		this.recipe = null;
-		recipeOutput = output;
+		this.recipe = recipe;
+		this.recipeOutput = recipe.result.copy();
 	}
 	
 	public ResearchPage(DarkInfuserRecipe recipe)
@@ -206,6 +188,56 @@ public class ResearchPage
 		this.text = caption;
 	}
 	
+	public ResearchPage(PageType type, ItemStack item)
+	{
+		if(type == PageType.NORMAL_CRAFTING)
+		{
+			this.text = null;
+			this.research = null;
+			this.image = null;
+			this.type = type;
+			this.recipe = item;
+			this.recipeOutput = item;
+		} else if(type == PageType.INFUSION_CRAFTING)
+		{
+			this.text = null;
+			this.research = null;
+			this.image = null;
+			this.recipeOutput = null;
+			this.type = type;
+			this.recipe = null;
+			this.recipeOutput = item;
+		} else if(type == PageType.DARK_INFUSION_CRAFTING)
+		{
+			this.text = null;
+			this.research = null;
+			this.image = null;
+			this.recipeOutput = null;
+			this.type = type;
+			this.recipe = null;
+			this.recipeOutput = item;
+		} else if(type == PageType.SMELTING)
+		{
+			this.text = null;
+			this.research = null;
+			this.image = null;
+			this.recipe = null;
+			this.recipeOutput = null;
+			this.type = type;
+			this.recipe = item;
+			this.recipeOutput = FurnaceRecipes.instance().getSmeltingResult(item).copy();
+		} else if(type == PageType.FUSER_CRAFTING)
+		{
+			this.text = null;
+			this.research = null;
+			this.image = null;
+			this.recipeOutput = null;
+			this.type = type;
+			this.recipe = null;
+			this.recipeOutput = item;
+		}
+	}
+	
 	public String getTranslatedText()
 	{
 		String ret = "";
@@ -226,7 +258,7 @@ public class ResearchPage
 		        TEXT = new PageType("TEXT"), //
 		        TEXT_CONCEALED = new PageType("TEXT_CONCEALED"), //
 		        IMAGE = new PageType("IMAGE"), //
-		        ARCANE_CRAFTING = new PageType("ARCANE_CRAFTING"), //
+		        FUSER_CRAFTING = new PageType("ARCANE_CRAFTING"), //
 		        NORMAL_CRAFTING = new PageType("NORMAL_CRAFTING"), //
 		        INFUSION_CRAFTING = new PageType("INFUSION_CRAFTING"), //
 		        COMPOUND_CRAFTING = new PageType("COMPOUND_CRAFTING"), //
@@ -266,6 +298,8 @@ public class ResearchPage
 					render = (iRenderExtension) Class.forName(renderClass).newInstance();
 				} catch(Throwable err)
 				{
+					System.err.println("Unable to construct iRenderExtension");
+					err.printStackTrace();
 				}
 			}
 			

@@ -10,7 +10,6 @@ ELEMENTAL_SWORD = new Research(LTInfo.MOD_ID + ":elemental_sword", 40, Research.
 VIS_PURIFIER = new Research(LTInfo.MOD_ID + ":vis_purifier", 35, Research.CATEGORY_TAINTED).setIcon(new ItemStack(BlocksLT.VIS_PURIFIER)), //
 ADVANCED_VIS_VALVE = new Research(LTInfo.MOD_ID + ":advanced_vis_valve", 30, Research.CATEGORY_TAINTED).setIcon(new ItemStack(BlocksLT.ADVANCED_VIS_VALVE)), //
 CRYSTALLIZER = new Research(LTInfo.MOD_ID + ":crystallizer", 60, Research.CATEGORY_LOST_KNOWLEDGE).setIcon(new ItemStack(BlocksLT.CRYSTALLIZER)), //
-POTION_PURITY = new Research(LTInfo.MOD_ID + ":potion_purity", 55, Research.CATEGORY_TAINTED).setIcon(new ItemStack(ItemsLT.CUSTOM_POTION, 1, 2)), //
 CONCENTRATED_EVIL = new Research(LTInfo.MOD_ID + ":concentrated_evil", 60, Research.CATEGORY_TAINTED).setIcon(new ItemStack(ItemsLT.CONCENTRATED_EVIL)), //
 CONDUIT_SILVERWOOD = new Research(LTInfo.MOD_ID + ":conduit_silverwood", 40, Research.CATEGORY_LOST_KNOWLEDGE).setIcon(new ItemStack(BlocksLT.CONDUIT_SILVERWOOD)), //
 REPAIRER = new Research(LTInfo.MOD_ID + ":repairer", 50, Research.CATEGORY_LOST_KNOWLEDGE).setIcon(new ItemStack(BlocksLT.REPAIRER)), //
