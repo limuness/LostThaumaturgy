@@ -8,18 +8,18 @@ import net.minecraft.world.World;
 
 public class TaintRegistry
 {
-	private static final List<ITaintHandler> taintHandlers = new ArrayList<>();
+	private static final List<iTaintHandler> taintHandlers = new ArrayList<>();
 	
 	static
 	{
 		registerTaintHandler(new TaintHandlerLT());
 	}
 	
-	public static boolean registerTaintHandler(ITaintHandler handler)
+	public static boolean registerTaintHandler(iTaintHandler handler)
 	{
 		if(taintHandlers.contains(handler))
 			return false;
-		for(ITaintHandler h : taintHandlers)
+		for(iTaintHandler h : taintHandlers)
 			if(h.handlerId().equals(handler.handlerId()))
 				return false;
 		taintHandlers.add(handler);
@@ -28,7 +28,7 @@ public class TaintRegistry
 	
 	public static boolean canTaintBlock(World world, BlockPos pos)
 	{
-		for(ITaintHandler handler : taintHandlers)
+		for(iTaintHandler handler : taintHandlers)
 			if(handler.canTaintBlock(world, pos))
 				return true;
 		return false;
@@ -36,7 +36,7 @@ public class TaintRegistry
 	
 	public static boolean canCureBlock(World world, BlockPos pos)
 	{
-		for(ITaintHandler handler : taintHandlers)
+		for(iTaintHandler handler : taintHandlers)
 			if(handler.canCureBlock(world, pos))
 				return true;
 		return false;
@@ -44,7 +44,7 @@ public class TaintRegistry
 	
 	public static boolean taintBlock(World world, BlockPos pos)
 	{
-		for(ITaintHandler handler : taintHandlers)
+		for(iTaintHandler handler : taintHandlers)
 			if(handler.canTaintBlock(world, pos))
 			{
 				boolean tainted = handler.taintBlock(world, pos);
@@ -56,7 +56,7 @@ public class TaintRegistry
 	
 	public static boolean cureBlock(World world, BlockPos pos)
 	{
-		for(ITaintHandler handler : taintHandlers)
+		for(iTaintHandler handler : taintHandlers)
 			if(handler.canCureBlock(world, pos))
 			{
 				boolean cured = handler.cureBlock(world, pos);

@@ -344,6 +344,14 @@ lt.research_name.quicksilver_core=Quicksilver Core
 lt.research_text.quicksilver_core=Speed upgrade!
 lt.research_desc.quicksilver_core=The Quicksilver Core is an upgrade for some thaumic machines. It improves speed but in most cases, also increases vis usage.
 
+lt.research_name.stabilized_singularity=Stabilized Singularity
+lt.research_text.stabilized_singularity=Efficiency upgrade!
+lt.research_desc.stabilized_singularity=The Stabilized Singularity is an upgrade for some thaumic machines. It improves efficiency by decreasing vis usage.
+
+lt.research_name.concetrated_purity=Concentrated Purity
+lt.research_text.concetrated_purity=Purity upgrade!
+lt.research_desc.concetrated_purity=The Concentrated Purity is an upgrade for some thaumic devices. For example, vis filter can be used to dump vis instead of taint into thaumosphere.
+
 lt.research_name.totem_dawn=Totem of Dawn
 lt.research_text.totem_dawn=Attracting Vis
 lt.research_desc.totem_dawn=Nature provides mysterious silverwood trees that keep the nearby thaumosphere clean. But making it faster and more effective was impossible before. You found a way to purify the thaumosphere by placing a Totem of Dawn.

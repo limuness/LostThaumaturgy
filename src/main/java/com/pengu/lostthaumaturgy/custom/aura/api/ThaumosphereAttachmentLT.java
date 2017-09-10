@@ -3,14 +3,14 @@ package com.pengu.lostthaumaturgy.custom.aura.api;
 import java.util.Random;
 
 import com.pengu.lostthaumaturgy.LTConfigs;
-import com.pengu.lostthaumaturgy.custom.aura.AtmosphereChunk;
+import com.pengu.lostthaumaturgy.custom.aura.ThaumosphereChunk;
 
-final class AtmosphereAttachmentLT implements IAtmosphereAttachment
+final class ThaumosphereAttachmentLT implements iThaumosphereAttachment
 {
 	private Random rand = new Random();
 	
 	@Override
-	public void handle(AtmosphereChunk chunk)
+	public void handle(ThaumosphereChunk chunk)
 	{
 		chunk.monolithVibeCap = (short) Math.floor(Math.sqrt(chunk.monolithVibeCap));
 		chunk.monolithVibes = (short) Math.floor(Math.sqrt(chunk.monolithVibeCap));

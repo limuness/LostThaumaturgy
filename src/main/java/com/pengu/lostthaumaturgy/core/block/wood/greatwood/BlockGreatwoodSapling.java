@@ -22,8 +22,8 @@ import com.pengu.lostthaumaturgy.client.ClientAtmosphereChunk;
 import com.pengu.lostthaumaturgy.client.fx.FXWisp;
 import com.pengu.lostthaumaturgy.core.block.BlockPlant;
 import com.pengu.lostthaumaturgy.core.worldgen.features.FeatureGreatwood;
-import com.pengu.lostthaumaturgy.custom.aura.AtmosphereChunk;
-import com.pengu.lostthaumaturgy.custom.aura.AtmosphereTicker;
+import com.pengu.lostthaumaturgy.custom.aura.ThaumosphereChunk;
+import com.pengu.lostthaumaturgy.custom.aura.ThaumosphereManager;
 
 public class BlockGreatwoodSapling extends BlockPlant
 {
@@ -50,7 +50,7 @@ public class BlockGreatwoodSapling extends BlockPlant
 	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand)
 	{
 		worldIn.setBlockToAir(pos);
-		AtmosphereChunk aura = AtmosphereTicker.getAuraChunkFromBlockCoords(worldIn, pos);
+		ThaumosphereChunk aura = ThaumosphereManager.getAuraChunkFromBlockCoords(worldIn, pos);
 		if(rand.nextInt(9) == 0 && aura != null && aura.vis >= LTConfigs.aura_max / 3 && !worldIn.isRemote && new FeatureGreatwood().generate(worldIn, rand, pos))
 			aura.vis -= Math.sqrt(LTConfigs.aura_max / 3);
 		else
@@ -64,7 +64,7 @@ public class BlockGreatwoodSapling extends BlockPlant
 	public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand)
 	{
 		LTConfigs.updateAura();
-		AtmosphereChunk aura = ClientAtmosphereChunk.getClientChunk();
+		ThaumosphereChunk aura = ClientAtmosphereChunk.getClientChunk();
 		Chunk c = worldIn.getChunkFromBlockCoords(pos);
 		if(aura != null && aura.x == c.x && aura.z == c.z && rand.nextInt(63) == 0)
 		{

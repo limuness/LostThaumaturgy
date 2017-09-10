@@ -5,7 +5,7 @@ import java.util.Random;
 import com.pengu.hammercore.utils.ChunkUtils;
 import com.pengu.hammercore.world.gen.iWorldGenFeature;
 import com.pengu.lostthaumaturgy.core.block.monolith.BlockMonolithOpener;
-import com.pengu.lostthaumaturgy.custom.aura.AtmosphereTicker;
+import com.pengu.lostthaumaturgy.custom.aura.ThaumosphereManager;
 
 import net.minecraft.init.Biomes;
 import net.minecraft.init.Blocks;
@@ -41,11 +41,11 @@ public class WorldGenMonoliths implements iWorldGenFeature
 	public void generate(World world, BlockPos pos, Random rand)
 	{
 		pos = world.getHeight(ChunkUtils.getChunkPos(world.getChunkFromBlockCoords(pos), center)).down();
-		double dist = Math.sqrt(AtmosphereTicker.getDistanceSqToClosestMonolith(pos));
+		double dist = Math.sqrt(ThaumosphereManager.getDistanceSqToClosestMonolith(pos));
 		if(dist < 500 || pos.getY() < 40 || !world.getBlockState(pos).isSideSolid(world, pos, EnumFacing.UP))
 			return;
 		generateSurroundings(world, rand, pos);
-		AtmosphereTicker.addMonolith(pos);
+		ThaumosphereManager.addMonolith(pos);
 		BlockMonolithOpener.buildMonolith(world, pos);
 	}
 	

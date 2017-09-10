@@ -8,8 +8,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
 import com.pengu.lostthaumaturgy.core.Info;
-import com.pengu.lostthaumaturgy.custom.aura.AtmosphereChunk;
-import com.pengu.lostthaumaturgy.custom.aura.AtmosphereTicker;
+import com.pengu.lostthaumaturgy.custom.aura.ThaumosphereChunk;
+import com.pengu.lostthaumaturgy.custom.aura.ThaumosphereManager;
 import com.pengu.lostthaumaturgy.init.ItemMaterialsLT;
 
 public class ItemVoidArmor extends ItemArmor
@@ -30,7 +30,7 @@ public class ItemVoidArmor extends ItemArmor
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack)
 	{
-		AtmosphereChunk si = AtmosphereTicker.getAuraChunkFromBlockCoords(world, player.getPosition());
+		ThaumosphereChunk si = ThaumosphereManager.getAuraChunkFromBlockCoords(world, player.getPosition());
 		if(itemStack.getItemDamage() > 0 && player.ticksExisted % 60 == 0)
 		{
 			itemStack.setItemDamage(itemStack.getItemDamage() - 1);

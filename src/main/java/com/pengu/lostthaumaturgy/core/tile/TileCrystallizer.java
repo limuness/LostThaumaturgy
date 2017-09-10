@@ -9,8 +9,8 @@ import com.pengu.lostthaumaturgy.api.tiles.iUpgradable;
 import com.pengu.lostthaumaturgy.client.gui.GuiCrystallizer;
 import com.pengu.lostthaumaturgy.core.Info;
 import com.pengu.lostthaumaturgy.core.items.ItemMultiMaterial.EnumMultiMaterialType;
-import com.pengu.lostthaumaturgy.custom.aura.AtmosphereChunk;
-import com.pengu.lostthaumaturgy.custom.aura.AtmosphereTicker;
+import com.pengu.lostthaumaturgy.custom.aura.ThaumosphereChunk;
+import com.pengu.lostthaumaturgy.custom.aura.ThaumosphereManager;
 import com.pengu.lostthaumaturgy.init.ItemsLT;
 import com.pengu.lostthaumaturgy.inventory.ContainerCrystallizer;
 
@@ -62,7 +62,7 @@ public class TileCrystallizer extends TileVisUser implements iUpgradable, ISided
 		
 		super.tick();
 		
-		AtmosphereChunk ac;
+		ThaumosphereChunk ac;
 		
 		float crystalTime = this.crystalTime.get();
 		final float crystalTimeF = crystalTime;
@@ -79,7 +79,7 @@ public class TileCrystallizer extends TileVisUser implements iUpgradable, ISided
 			
 			if(sucked > 0)
 			{
-				AtmosphereChunk si = AtmosphereTicker.getAuraChunkFromBlockCoords(world, pos);
+				ThaumosphereChunk si = ThaumosphereManager.getAuraChunkFromBlockCoords(world, pos);
 				si.radiation += .0005F * sucked;
 			}
 		} else
@@ -93,9 +93,9 @@ public class TileCrystallizer extends TileVisUser implements iUpgradable, ISided
 		
 		if(crystalTime < 0 && !inventory.getStackInSlot(6).isEmpty() && EnumMultiMaterialType.isCrystal(inventory.getStackInSlot(6)))
 		{
-			addCrystal(AtmosphereTicker.getCrystalByBiome(world, pos, hasUpgrade(3) ? 3 : 0));
+			addCrystal(ThaumosphereManager.getCrystalByBiome(world, pos, hasUpgrade(3) ? 3 : 0));
 			crystalTime = 0;
-			ac = AtmosphereTicker.getAuraChunkFromBlockCoords(world, pos);
+			ac = ThaumosphereManager.getAuraChunkFromBlockCoords(world, pos);
 			if(ac != null)
 				ac.badVibes = (short) (ac.badVibes + 5);
 		}
@@ -105,7 +105,7 @@ public class TileCrystallizer extends TileVisUser implements iUpgradable, ISided
 		
 		if(boostDelay <= 0 || boostDelay == 10)
 		{
-			ac = AtmosphereTicker.getAuraChunkFromBlockCoords(world, pos);
+			ac = ThaumosphereManager.getAuraChunkFromBlockCoords(world, pos);
 			
 			if(ac != null && boost < 10 && ac.boost > 0)
 			{

@@ -10,8 +10,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 import com.pengu.lostthaumaturgy.api.blocks.iTaintedBlock;
-import com.pengu.lostthaumaturgy.custom.aura.AtmosphereChunk;
-import com.pengu.lostthaumaturgy.custom.aura.AtmosphereTicker;
+import com.pengu.lostthaumaturgy.custom.aura.ThaumosphereChunk;
+import com.pengu.lostthaumaturgy.custom.aura.ThaumosphereManager;
 
 public class BlockTaintedLog extends BlockLog implements iTaintedBlock
 {
@@ -46,7 +46,7 @@ public class BlockTaintedLog extends BlockLog implements iTaintedBlock
 	{
 		if(!worldIn.isRemote)
 		{
-			AtmosphereChunk ac = AtmosphereTicker.getAuraChunkFromBlockCoords(worldIn, pos);
+			ThaumosphereChunk ac = ThaumosphereManager.getAuraChunkFromBlockCoords(worldIn, pos);
 			if(ac != null)
 			{
 				if(ac.goodVibes > 0)

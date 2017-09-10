@@ -14,8 +14,8 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 import com.pengu.lostthaumaturgy.api.blocks.iTaintedBlock;
-import com.pengu.lostthaumaturgy.custom.aura.AtmosphereChunk;
-import com.pengu.lostthaumaturgy.custom.aura.AtmosphereTicker;
+import com.pengu.lostthaumaturgy.custom.aura.ThaumosphereChunk;
+import com.pengu.lostthaumaturgy.custom.aura.ThaumosphereManager;
 import com.pengu.lostthaumaturgy.init.BlocksLT;
 
 public class BlockTaintedPlant extends BlockPlant implements iTaintedBlock
@@ -39,7 +39,7 @@ public class BlockTaintedPlant extends BlockPlant implements iTaintedBlock
 		{
 			worldIn.setBlockToAir(pos);
 			
-			AtmosphereChunk si = AtmosphereTicker.getAuraChunkFromBlockCoords(worldIn, pos);
+			ThaumosphereChunk si = ThaumosphereManager.getAuraChunkFromBlockCoords(worldIn, pos);
 			si.taint += 5 + random.nextInt(20);
 			si.badVibes += 4 + random.nextInt(10);
 			
@@ -51,7 +51,7 @@ public class BlockTaintedPlant extends BlockPlant implements iTaintedBlock
 		else
 		{
 			worldIn.setBlockState(pos, getStateFromMeta(0));
-			AtmosphereChunk si = AtmosphereTicker.getAuraChunkFromBlockCoords(worldIn, pos);
+			ThaumosphereChunk si = ThaumosphereManager.getAuraChunkFromBlockCoords(worldIn, pos);
 			si.taint += 5 + random.nextInt(20);
 			si.badVibes += 4 + random.nextInt(10);
 		}

@@ -15,7 +15,7 @@ public class ResearchCategories
 	
 	public static ResearchCategoryList getResearchList(String key)
 	{
-		return (ResearchCategoryList) researchCategories.get(key);
+		return researchCategories.get(key);
 	}
 	
 	public static String getCategoryName(String key)
@@ -52,7 +52,12 @@ public class ResearchCategories
 			ResearchCategoryList rl = new ResearchCategoryList(icon, background);
 			researchCategories.put(key, rl);
 		}
-		
+	}
+	
+	public static void registerCategory(String key, ResearchCategoryList rl)
+	{
+		if(getResearchList(key) == null)
+			researchCategories.put(key, rl);
 	}
 	
 	public static void addResearch(ResearchItem ri)

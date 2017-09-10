@@ -12,8 +12,8 @@ import com.pengu.hammercore.net.HCNetwork;
 import com.pengu.hammercore.utils.WorldLocation;
 import com.pengu.lostthaumaturgy.api.seal.SealInstance;
 import com.pengu.lostthaumaturgy.core.tile.TileSeal;
-import com.pengu.lostthaumaturgy.custom.aura.AtmosphereChunk;
-import com.pengu.lostthaumaturgy.custom.aura.AtmosphereTicker;
+import com.pengu.lostthaumaturgy.custom.aura.ThaumosphereChunk;
+import com.pengu.lostthaumaturgy.custom.aura.ThaumosphereManager;
 import com.pengu.lostthaumaturgy.net.wisp.PacketFXWisp2;
 
 public class SealTillSoil extends SealInstance
@@ -63,7 +63,7 @@ public class SealTillSoil extends SealInstance
 				
 				if(l.getBlock() == Blocks.DIRT || l.getBlock() == Blocks.GRASS && up.getBlock().isAir(up.getState(), up.getWorld(), up.getPos()))
 				{
-					AtmosphereChunk chunk = AtmosphereTicker.getAuraChunkFromBlockCoords(l);
+					ThaumosphereChunk chunk = ThaumosphereManager.getAuraChunkFromBlockCoords(l);
 					
 					if(rand.nextInt(100) < 5)
 						++chunk.badVibes;

@@ -237,12 +237,12 @@ public class ResearchPage
 		private Object render;
 		private final String renderClass;
 		
-		private PageType(String var1)
+		public PageType(String var1)
 		{
 			this(var1, null);
 		}
 		
-		private PageType(String var1, String renderClass)
+		public PageType(String var1, String renderClass)
 		{
 			v1 = var1;
 			this.renderClass = renderClass;

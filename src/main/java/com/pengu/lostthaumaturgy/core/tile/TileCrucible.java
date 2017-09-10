@@ -25,8 +25,8 @@ import com.pengu.lostthaumaturgy.api.tiles.iConnection;
 import com.pengu.lostthaumaturgy.api.tiles.iThaumSlimeDrainable;
 import com.pengu.lostthaumaturgy.core.Info;
 import com.pengu.lostthaumaturgy.core.entity.EntityThaumSlime;
-import com.pengu.lostthaumaturgy.custom.aura.AtmosphereChunk;
-import com.pengu.lostthaumaturgy.custom.aura.AtmosphereTicker;
+import com.pengu.lostthaumaturgy.custom.aura.ThaumosphereChunk;
+import com.pengu.lostthaumaturgy.custom.aura.ThaumosphereManager;
 import com.pengu.lostthaumaturgy.net.wisp.PacketFXWisp2;
 
 public class TileCrucible extends TileSyncableTickable implements iConnection, iThaumSlimeDrainable
@@ -120,7 +120,7 @@ public class TileCrucible extends TileSyncableTickable implements iConnection, i
 			
 			if(overflowSplit >= 1.0f)
 			{
-				AtmosphereChunk ac = (AtmosphereChunk) AtmosphereTicker.getAuraChunkFromBlockCoords(world, pos);
+				ThaumosphereChunk ac = (ThaumosphereChunk) ThaumosphereManager.getAuraChunkFromBlockCoords(world, pos);
 				if(ac != null && taintedVis >= 1)
 				{
 					taintedVis -= 1;
@@ -193,7 +193,7 @@ public class TileCrucible extends TileSyncableTickable implements iConnection, i
 						// 0.05f));
 						// }
 						
-						AtmosphereChunk ac = AtmosphereTicker.getAuraChunkFromBlockCoords(world, pos);
+						ThaumosphereChunk ac = ThaumosphereManager.getAuraChunkFromBlockCoords(world, pos);
 						if(ac != null)
 						{
 							ac.badVibes = (short) ((float) ac.badVibes + currentItemCookValue / 10F);

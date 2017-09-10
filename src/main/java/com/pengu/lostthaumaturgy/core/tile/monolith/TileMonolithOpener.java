@@ -22,8 +22,8 @@ import com.pengu.lostthaumaturgy.api.event.FillVoidChestEvent;
 import com.pengu.lostthaumaturgy.core.Info;
 import com.pengu.lostthaumaturgy.core.block.monolith.BlockMonolithOpener;
 import com.pengu.lostthaumaturgy.core.tile.TileVoidChest;
-import com.pengu.lostthaumaturgy.custom.aura.AtmosphereChunk;
-import com.pengu.lostthaumaturgy.custom.aura.AtmosphereTicker;
+import com.pengu.lostthaumaturgy.custom.aura.ThaumosphereChunk;
+import com.pengu.lostthaumaturgy.custom.aura.ThaumosphereManager;
 import com.pengu.lostthaumaturgy.init.BlocksLT;
 import com.pengu.lostthaumaturgy.net.wisp.PacketMonolithWisp;
 
@@ -63,7 +63,7 @@ public class TileMonolithOpener extends TileSyncableTickable
 		
 		if(opened)
 		{
-			AtmosphereChunk si = AtmosphereTicker.getAuraChunkFromBlockCoords(world, pos);
+			ThaumosphereChunk si = ThaumosphereManager.getAuraChunkFromBlockCoords(world, pos);
 			if(si != null)
 			{
 				si.badVibes += 105;

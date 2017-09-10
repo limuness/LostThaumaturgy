@@ -3,8 +3,8 @@ package com.pengu.lostthaumaturgy.net;
 import com.pengu.hammercore.net.packetAPI.iPacket;
 import com.pengu.hammercore.net.packetAPI.iPacketListener;
 import com.pengu.lostthaumaturgy.LostThaumaturgy;
-import com.pengu.lostthaumaturgy.custom.aura.AtmosphereChunk;
-import com.pengu.lostthaumaturgy.custom.aura.AtmosphereTicker;
+import com.pengu.lostthaumaturgy.custom.aura.ThaumosphereChunk;
+import com.pengu.lostthaumaturgy.custom.aura.ThaumosphereManager;
 
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.NBTTagCompound;
@@ -16,13 +16,13 @@ public class PacketUpdateClientAura implements iPacket, iPacketListener<PacketUp
 {
 	public static BlockPos closestMonolith;
 	
-	public AtmosphereChunk chunk;
+	public ThaumosphereChunk chunk;
 	public BlockPos monolith;
 	
-	public PacketUpdateClientAura(AtmosphereChunk chunk, EntityPlayerMP mp)
+	public PacketUpdateClientAura(ThaumosphereChunk chunk, EntityPlayerMP mp)
 	{
 		this.chunk = chunk;
-		monolith = AtmosphereTicker.getClosestMonolithPos(mp.getPosition());
+		monolith = ThaumosphereManager.getClosestMonolithPos(mp.getPosition());
 	}
 	
 	public PacketUpdateClientAura()
@@ -41,7 +41,7 @@ public class PacketUpdateClientAura implements iPacket, iPacketListener<PacketUp
 	@Override
 	public void readFromNBT(NBTTagCompound nbt)
 	{
-		chunk = new AtmosphereChunk();
+		chunk = new ThaumosphereChunk();
 		chunk.deserializeNBT(nbt.getCompoundTag("Data"));
 		if(nbt.hasKey("p", NBT.TAG_LONG))
 			monolith = BlockPos.fromLong(nbt.getLong("p"));

@@ -9,8 +9,8 @@ import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-import com.pengu.lostthaumaturgy.custom.aura.AtmosphereChunk;
-import com.pengu.lostthaumaturgy.custom.aura.AtmosphereTicker;
+import com.pengu.lostthaumaturgy.custom.aura.ThaumosphereChunk;
+import com.pengu.lostthaumaturgy.custom.aura.ThaumosphereManager;
 
 public class BlockSilverwoodLog extends BlockLog
 {
@@ -45,7 +45,7 @@ public class BlockSilverwoodLog extends BlockLog
 	{
 		if(!worldIn.isRemote)
 		{
-			AtmosphereChunk ac = AtmosphereTicker.getAuraChunkFromBlockCoords(worldIn, pos);
+			ThaumosphereChunk ac = ThaumosphereManager.getAuraChunkFromBlockCoords(worldIn, pos);
 			if(ac != null)
 			{
 				if(ac.badVibes > 0)

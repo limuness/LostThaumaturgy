@@ -34,8 +34,8 @@ import com.pengu.lostthaumaturgy.core.block.def.BlockRendered;
 import com.pengu.lostthaumaturgy.core.items.ItemMultiMaterial.EnumMultiMaterialType;
 import com.pengu.lostthaumaturgy.core.tile.TileVoidChest;
 import com.pengu.lostthaumaturgy.core.tile.monolith.TileExtraRoom;
-import com.pengu.lostthaumaturgy.custom.aura.AtmosphereChunk;
-import com.pengu.lostthaumaturgy.custom.aura.AtmosphereTicker;
+import com.pengu.lostthaumaturgy.custom.aura.ThaumosphereChunk;
+import com.pengu.lostthaumaturgy.custom.aura.ThaumosphereManager;
 import com.pengu.lostthaumaturgy.init.BlocksLT;
 import com.pengu.lostthaumaturgy.net.wisp.PacketAreaWisp;
 
@@ -120,7 +120,7 @@ public class BlockExtraRoom extends BlockRendered implements iTileBlock<TileExtr
 			HammerCore.audioProxy.playSoundAt(worldIn, Info.MOD_ID + ":rumble", pos, 4F, 1F, SoundCategory.BLOCKS);
 			HCNetwork.getManager("particles").sendToAllAround(new PacketAreaWisp(180, new AxisAlignedBB(x1 + .5, y1 + 1.5, z1 + .5, x2 + 1.5, y2 + 1.5, z2 + 1.5), 2F, 5), getSyncPoint(worldIn, pos, 48));
 			
-			AtmosphereChunk si = AtmosphereTicker.getAuraChunkFromBlockCoords(worldIn, pos);
+			ThaumosphereChunk si = ThaumosphereManager.getAuraChunkFromBlockCoords(worldIn, pos);
 			if(si != null)
 				si.radiation += .25F;
 		}

@@ -15,7 +15,7 @@ import com.pengu.lostthaumaturgy.api.tiles.CapabilityVisConnection;
 import com.pengu.lostthaumaturgy.api.tiles.ConnectionManager;
 import com.pengu.lostthaumaturgy.api.tiles.iConnection;
 import com.pengu.lostthaumaturgy.core.Info;
-import com.pengu.lostthaumaturgy.custom.aura.AtmosphereTicker;
+import com.pengu.lostthaumaturgy.custom.aura.ThaumosphereManager;
 
 public class TileVisTank extends TileSyncableTickable implements iConnection, Predicate<EnumFacing>
 {
@@ -46,7 +46,7 @@ public class TileVisTank extends TileSyncableTickable implements iConnection, Pr
 			{
 				if(world.rand.nextInt(breakchance) == 123 && canBreak)
 				{
-					AtmosphereTicker.taintExplosion(world, pos.getX(), pos.getY(), pos.getZ());
+					ThaumosphereManager.taintExplosion(world, pos.getX(), pos.getY(), pos.getZ());
 					world.destroyBlock(pos, true);
 				} else if(world.rand.nextInt(breakchance / 8) == 42)
 					HammerCore.audioProxy.playSoundAt(world, Info.MOD_ID + ":creaking", pos, .75F, 1, SoundCategory.BLOCKS);

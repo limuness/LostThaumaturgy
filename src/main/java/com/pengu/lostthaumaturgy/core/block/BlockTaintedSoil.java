@@ -32,8 +32,8 @@ import com.pengu.lostthaumaturgy.api.blocks.iTaintedBlock;
 import com.pengu.lostthaumaturgy.api.event.TaintedSoilEvent;
 import com.pengu.lostthaumaturgy.api.event.TaintedSoilEvent.GetDrops;
 import com.pengu.lostthaumaturgy.core.tile.TileTaintedSoil;
-import com.pengu.lostthaumaturgy.custom.aura.AtmosphereChunk;
-import com.pengu.lostthaumaturgy.custom.aura.AtmosphereTicker;
+import com.pengu.lostthaumaturgy.custom.aura.ThaumosphereChunk;
+import com.pengu.lostthaumaturgy.custom.aura.ThaumosphereManager;
 import com.pengu.lostthaumaturgy.custom.aura.taint.TaintRegistry;
 import com.pengu.lostthaumaturgy.init.BlocksLT;
 
@@ -68,7 +68,7 @@ public class BlockTaintedSoil extends Block implements ITileEntityProvider, iTil
 			BlockSnapshot snapshot = soil.getSnapshot();
 			if(snapshot != null && snapshot.restore(true))
 			{
-				AtmosphereChunk si = AtmosphereTicker.getAuraChunkFromBlockCoords(world, pos);
+				ThaumosphereChunk si = ThaumosphereManager.getAuraChunkFromBlockCoords(world, pos);
 				si.taint += 3;
 				si.badVibes++;
 			}
@@ -76,7 +76,7 @@ public class BlockTaintedSoil extends Block implements ITileEntityProvider, iTil
 			if(world.getBlockState(pos.up()).getBlock() == BlocksLT.TAINTED_PLANT)
 			{
 				world.setBlockToAir(pos.up());
-				AtmosphereChunk si = AtmosphereTicker.getAuraChunkFromBlockCoords(world, pos);
+				ThaumosphereChunk si = ThaumosphereManager.getAuraChunkFromBlockCoords(world, pos);
 				si.taint += 5 + world.rand.nextInt(20);
 				si.badVibes += 4 + world.rand.nextInt(10);
 			}
@@ -103,12 +103,12 @@ public class BlockTaintedSoil extends Block implements ITileEntityProvider, iTil
 		if(up.getBlock() == BlocksLT.TAINTED_PLANT && BlocksLT.TAINTED_PLANT.getMetaFromState(up) == 1)
 		{
 			worldIn.setBlockState(pos.up(), BlocksLT.TAINTED_PLANT.getDefaultState());
-			AtmosphereChunk si = AtmosphereTicker.getAuraChunkFromBlockCoords(worldIn, pos);
+			ThaumosphereChunk si = ThaumosphereManager.getAuraChunkFromBlockCoords(worldIn, pos);
 			si.taint += 5 + random.nextInt(20);
 			si.badVibes += 4 + random.nextInt(10);
 		}
 		
-		AtmosphereChunk a = AtmosphereTicker.getAuraChunkFromBlockCoords(worldIn, pos);
+		ThaumosphereChunk a = ThaumosphereManager.getAuraChunkFromBlockCoords(worldIn, pos);
 		if(!a.isTainted() || random.nextInt(75) == 0)
 		{
 			cleanSoil(worldIn, pos);

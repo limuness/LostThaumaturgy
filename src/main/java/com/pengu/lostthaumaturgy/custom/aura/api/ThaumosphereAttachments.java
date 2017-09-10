@@ -4,22 +4,22 @@ import java.nio.ByteBuffer;
 
 import org.apache.commons.lang3.ArrayUtils;
 
-import com.pengu.lostthaumaturgy.custom.aura.AtmosphereChunk;
+import com.pengu.lostthaumaturgy.custom.aura.ThaumosphereChunk;
 
-public class AtmosphereAttachments
+public class ThaumosphereAttachments
 {
-	private static IAtmosphereAttachment[] attachments = new IAtmosphereAttachment[0];
+	private static iThaumosphereAttachment[] attachments = new iThaumosphereAttachment[0];
 	
 	{
-		registerAttachment(new AtmosphereAttachmentLT());
+		registerAttachment(new ThaumosphereAttachmentLT());
 	}
 	
-	public static void registerAttachment(IAtmosphereAttachment attachment)
+	public static void registerAttachment(iThaumosphereAttachment attachment)
 	{
 		attachments = ArrayUtils.add(attachments, attachment);
 	}
 	
-	public static void attach(AtmosphereChunk chunk)
+	public static void attach(ThaumosphereChunk chunk)
 	{
 		for(int i = 0; i < attachments.length; ++i)
 			attachments[i].handle(chunk);

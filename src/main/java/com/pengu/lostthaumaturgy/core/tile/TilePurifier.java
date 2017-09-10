@@ -8,8 +8,8 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumFacing.Axis;
 
 import com.pengu.lostthaumaturgy.core.block.BlockPurifier;
-import com.pengu.lostthaumaturgy.custom.aura.AtmosphereChunk;
-import com.pengu.lostthaumaturgy.custom.aura.AtmosphereTicker;
+import com.pengu.lostthaumaturgy.custom.aura.ThaumosphereChunk;
+import com.pengu.lostthaumaturgy.custom.aura.ThaumosphereManager;
 
 public class TilePurifier extends TileConduit
 {
@@ -53,7 +53,7 @@ public class TilePurifier extends TileConduit
 		if(taintedVis > 0.01F)
 		{
 			taintedVis -= 0.01F;
-			AtmosphereChunk si = AtmosphereTicker.getAuraChunkFromBlockCoords(world, pos);
+			ThaumosphereChunk si = ThaumosphereManager.getAuraChunkFromBlockCoords(world, pos);
 			if(si != null)
 				si.radiation += .000001F;
 			sync();

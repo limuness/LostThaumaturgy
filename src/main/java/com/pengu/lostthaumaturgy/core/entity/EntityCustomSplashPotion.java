@@ -12,8 +12,8 @@ import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
 
 import com.pengu.hammercore.math.MathHelper;
 import com.pengu.hammercore.net.HCNetwork;
-import com.pengu.lostthaumaturgy.custom.aura.AtmosphereChunk;
-import com.pengu.lostthaumaturgy.custom.aura.AtmosphereTicker;
+import com.pengu.lostthaumaturgy.custom.aura.ThaumosphereChunk;
+import com.pengu.lostthaumaturgy.custom.aura.ThaumosphereManager;
 import com.pengu.lostthaumaturgy.net.wisp.PacketFXWisp2;
 import com.pengu.lostthaumaturgy.net.wisp.PacketFXWisp3;
 
@@ -77,7 +77,7 @@ public class EntityCustomSplashPotion extends EntityThrowable
 				z = pos.getZ();
 			}
 			
-			AtmosphereChunk ac = AtmosphereTicker.getAuraChunkFromBlockCoords(world, getPosition());
+			ThaumosphereChunk ac = ThaumosphereManager.getAuraChunkFromBlockCoords(world, getPosition());
 			
 			if(type == 0 && ac != null)
 				ac.vis += 150;
@@ -95,7 +95,7 @@ public class EntityCustomSplashPotion extends EntityThrowable
 						{
 							if(yy2 < 0 || getDistance((double) xx, (double) yy2, (double) zz) > 3)
 								continue;
-							AtmosphereTicker.increaseTaintedPlants(world, xx, yy2, zz);
+							ThaumosphereManager.increaseTaintedPlants(world, xx, yy2, zz);
 						}
 			} else if(type == 2)
 			{
@@ -111,7 +111,7 @@ public class EntityCustomSplashPotion extends EntityThrowable
 						{
 							if(yy3 < 0 || getDistance((double) xx, (double) yy3, (double) zz) > 4.0)
 								continue;
-							AtmosphereTicker.decreaseTaintedPlants(world, xx, yy3, zz);
+							ThaumosphereManager.decreaseTaintedPlants(world, xx, yy3, zz);
 						}
 			} else if(type == 3)
 			{

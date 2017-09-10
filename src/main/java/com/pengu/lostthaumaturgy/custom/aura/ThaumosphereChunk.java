@@ -2,19 +2,22 @@ package com.pengu.lostthaumaturgy.custom.aura;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-
-import net.minecraft.nbt.NBTTagByteArray;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
-import net.minecraft.world.World;
-import net.minecraftforge.common.util.Constants.NBT;
-import net.minecraftforge.common.util.INBTSerializable;
+import java.util.Map;
 
 import com.pengu.hammercore.utils.IndexedMap;
 import com.pengu.lostthaumaturgy.LTConfigs;
 
-public class AtmosphereChunk implements Serializable, INBTSerializable<NBTTagCompound>
+import net.minecraft.nbt.NBTTagByteArray;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
+import net.minecraftforge.common.util.Constants.NBT;
+import net.minecraftforge.common.util.INBTSerializable;
+
+public class ThaumosphereChunk implements Serializable, INBTSerializable<NBTTagCompound>
 {
 	public static final String VAR_DISPERSE = "LT_DisperseAura";
 	
@@ -36,6 +39,31 @@ public class AtmosphereChunk implements Serializable, INBTSerializable<NBTTagCom
 	public float radiation = 6.000F;
 	public float previousRadiation = radiation;
 	public float primordialNodeStrength = 0;
+	public final Map<String, String> warded = new HashMap<>();
+	
+	public boolean isWarded(BlockPos pos)
+	{
+		String pos2 = pos.getX() + "|" + pos.getY() + "|" + pos.getZ();
+		return warded.containsKey(pos2);
+	}
+	
+	public String getWarder(BlockPos pos)
+	{
+		String pos2 = pos.getX() + "|" + pos.getY() + "|" + pos.getZ();
+		return warded.get(pos2);
+	}
+	
+	public UnwardResult removeWard(BlockPos pos)
+	{
+		String pos2 = pos.getX() + "|" + pos.getY() + "|" + pos.getZ();
+		return new UnwardResult(pos, this, warded.remove(pos2));
+	}
+	
+	public boolean ward(BlockPos pos, String warder)
+	{
+		String pos2 = pos.getX() + "|" + pos.getY() + "|" + pos.getZ();
+		return warded.putIfAbsent(pos2, warder) == null;
+	}
 	
 	public List<byte[]> getVar(String name)
 	{

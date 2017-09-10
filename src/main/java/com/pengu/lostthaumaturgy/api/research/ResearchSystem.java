@@ -6,6 +6,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.UUID;
 
+import com.google.common.base.Charsets;
+import com.mojang.authlib.GameProfile;
+import com.pengu.hammercore.annotations.MCFBus;
+import com.pengu.hammercore.net.HCNetwork;
+import com.pengu.lostthaumaturgy.LostThaumaturgy;
+import com.pengu.lostthaumaturgy.api.research.client.ClientResearchData;
+import com.pengu.lostthaumaturgy.net.PacketUpdateClientRD;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.server.MinecraftServer;
@@ -16,13 +24,6 @@ import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedOutEvent;
-
-import com.google.common.base.Charsets;
-import com.mojang.authlib.GameProfile;
-import com.pengu.hammercore.annotations.MCFBus;
-import com.pengu.hammercore.net.HCNetwork;
-import com.pengu.lostthaumaturgy.LostThaumaturgy;
-import com.pengu.lostthaumaturgy.net.PacketUpdateClientRD;
 
 @MCFBus
 public class ResearchSystem
@@ -115,6 +116,9 @@ public class ResearchSystem
 	
 	public static void setResearchCompleted(EntityPlayer player, ResearchItem res, boolean isCompleted)
 	{
+		if(player.world.isRemote)
+			return;
+		
 		ArrayList<String> researches = COMPLETED.getOrDefault(player.getName(), new ArrayList<>());
 		COMPLETED.put(player.getName(), researches);
 		
@@ -126,10 +130,18 @@ public class ResearchSystem
 	
 	public static boolean isResearchCompleted(EntityPlayer player, ResearchItem res)
 	{
+		return isResearchCompleted(player, res.key);
+	}
+	
+	public static boolean isResearchCompleted(EntityPlayer player, String res)
+	{
+		if(player.world.isRemote)
+			return ClientResearchData.isResearchCompleted(res);
+		
 		if(res == null)
 			return true;
 		ArrayList<String> researches = COMPLETED.getOrDefault(player.getName(), new ArrayList<>());
 		COMPLETED.put(player.getName(), researches);
-		return researches != null && researches.contains(res.key);
+		return researches != null && researches.contains(res);
 	}
 }

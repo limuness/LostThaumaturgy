@@ -16,8 +16,8 @@ import com.pengu.lostthaumaturgy.client.fx.FXWisp;
 import com.pengu.lostthaumaturgy.core.Info;
 import com.pengu.lostthaumaturgy.core.block.def.BlockRendered;
 import com.pengu.lostthaumaturgy.core.tile.TileCrystalOre;
-import com.pengu.lostthaumaturgy.custom.aura.AtmosphereChunk;
-import com.pengu.lostthaumaturgy.custom.aura.AtmosphereTicker;
+import com.pengu.lostthaumaturgy.custom.aura.ThaumosphereChunk;
+import com.pengu.lostthaumaturgy.custom.aura.ThaumosphereManager;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
@@ -157,7 +157,7 @@ public class BlockOreCrystal extends BlockRendered implements iTileBlock<TileCry
 		if(world.isRemote)
 			return;
 		TileCrystalOre ore = WorldUtil.cast(world.getTileEntity(pos), TileCrystalOre.class);
-		AtmosphereChunk ac = AtmosphereTicker.getAuraChunkFromBlockCoords(world, pos);
+		ThaumosphereChunk ac = ThaumosphereManager.getAuraChunkFromBlockCoords(world, pos);
 		if(ac != null && ore != null)
 		{
 			short q2 = ore.crystals.get();

@@ -24,7 +24,7 @@ import com.pengu.hammercore.client.utils.RenderUtil;
 import com.pengu.lostthaumaturgy.LTConfigs;
 import com.pengu.lostthaumaturgy.api.tiles.iConnection;
 import com.pengu.lostthaumaturgy.core.Info;
-import com.pengu.lostthaumaturgy.custom.aura.AtmosphereChunk;
+import com.pengu.lostthaumaturgy.custom.aura.ThaumosphereChunk;
 
 public class HudDetector extends Gui
 {
@@ -42,7 +42,7 @@ public class HudDetector extends Gui
 	public DecimalFormat radFormat = new DecimalFormat("#0.000");
 	private static final List<String> tooltip = new ArrayList<>();
 	
-	public void render(boolean vis, boolean taint, boolean radiation, AtmosphereChunk aura, boolean isGoggles)
+	public void render(boolean vis, boolean taint, boolean radiation, ThaumosphereChunk aura, boolean isGoggles)
 	{
 		LTConfigs.updateAura();
 		

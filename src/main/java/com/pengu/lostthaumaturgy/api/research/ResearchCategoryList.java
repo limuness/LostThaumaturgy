@@ -2,6 +2,8 @@ package com.pengu.lostthaumaturgy.api.research;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 
 public class ResearchCategoryList
@@ -18,5 +20,10 @@ public class ResearchCategoryList
 	{
 		this.icon = icon;
 		this.background = background;
+	}
+	
+	public boolean isVisibleTo(EntityPlayer player)
+	{
+		return true;
 	}
 }

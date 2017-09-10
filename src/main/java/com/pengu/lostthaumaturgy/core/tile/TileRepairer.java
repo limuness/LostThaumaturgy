@@ -16,8 +16,8 @@ import com.pengu.lostthaumaturgy.api.tiles.iUpgradable;
 import com.pengu.lostthaumaturgy.api.tiles.TileVisUser;
 import com.pengu.lostthaumaturgy.client.gui.GuiRepairer;
 import com.pengu.lostthaumaturgy.core.items.ItemUpgrade;
-import com.pengu.lostthaumaturgy.custom.aura.AtmosphereChunk;
-import com.pengu.lostthaumaturgy.custom.aura.AtmosphereTicker;
+import com.pengu.lostthaumaturgy.custom.aura.ThaumosphereChunk;
+import com.pengu.lostthaumaturgy.custom.aura.ThaumosphereManager;
 import com.pengu.lostthaumaturgy.init.ItemsLT;
 import com.pengu.lostthaumaturgy.init.SoundEventsLT;
 import com.pengu.lostthaumaturgy.inventory.ContainerRepairer;
@@ -58,7 +58,7 @@ public class TileRepairer extends TileVisUser implements iUpgradable, ISidedInve
 	{
 		super.tick();
 		
-		AtmosphereChunk ac = AtmosphereTicker.getAuraChunkFromBlockCoords(loc);
+		ThaumosphereChunk ac = ThaumosphereManager.getAuraChunkFromBlockCoords(loc);
 		worked = false;
 		
 		if(world.isRemote)

@@ -12,8 +12,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
 
 import com.pengu.hammercore.net.HCNetwork;
-import com.pengu.lostthaumaturgy.custom.aura.AtmosphereChunk;
-import com.pengu.lostthaumaturgy.custom.aura.AtmosphereTicker;
+import com.pengu.lostthaumaturgy.custom.aura.ThaumosphereChunk;
+import com.pengu.lostthaumaturgy.custom.aura.ThaumosphereManager;
 import com.pengu.lostthaumaturgy.net.wisp.PacketFXWisp2;
 
 public class BlockTotem extends Block
@@ -41,7 +41,7 @@ public class BlockTotem extends Block
 	@Override
 	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random random)
 	{
-		AtmosphereChunk si = AtmosphereTicker.getAuraChunkFromBlockCoords(worldIn, pos);
+		ThaumosphereChunk si = ThaumosphereManager.getAuraChunkFromBlockCoords(worldIn, pos);
 		
 		if(si != null)
 		{
@@ -70,9 +70,9 @@ public class BlockTotem extends Block
 						if(sq >= 1 && random.nextInt(sq + 1) == 0)
 						{
 							if(good)
-								AtmosphereTicker.decreaseTaintedPlants(worldIn, x + pos.getX(), y + pos.getY(), z + pos.getZ());
+								ThaumosphereManager.decreaseTaintedPlants(worldIn, x + pos.getX(), y + pos.getY(), z + pos.getZ());
 							else
-								AtmosphereTicker.increaseTaintedPlants(worldIn, x + pos.getX(), y + pos.getY(), z + pos.getZ());
+								ThaumosphereManager.increaseTaintedPlants(worldIn, x + pos.getX(), y + pos.getY(), z + pos.getZ());
 						}
 					}
 		}

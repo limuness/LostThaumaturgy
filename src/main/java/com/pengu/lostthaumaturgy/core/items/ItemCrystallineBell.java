@@ -18,8 +18,8 @@ import com.pengu.hammercore.common.utils.WorldUtil;
 import com.pengu.lostthaumaturgy.api.items.iVisRepairable;
 import com.pengu.lostthaumaturgy.core.block.BlockOreCrystal;
 import com.pengu.lostthaumaturgy.core.tile.TileCrystalOre;
-import com.pengu.lostthaumaturgy.custom.aura.AtmosphereChunk;
-import com.pengu.lostthaumaturgy.custom.aura.AtmosphereTicker;
+import com.pengu.lostthaumaturgy.custom.aura.ThaumosphereChunk;
+import com.pengu.lostthaumaturgy.custom.aura.ThaumosphereManager;
 
 public class ItemCrystallineBell extends Item implements iVisRepairable
 {
@@ -72,7 +72,7 @@ public class ItemCrystallineBell extends Item implements iVisRepairable
 			
 			if(ore.crystals.get() == 0)
 			{
-				AtmosphereChunk ac = AtmosphereTicker.getAuraChunkFromBlockCoords(worldIn, pos);
+				ThaumosphereChunk ac = ThaumosphereManager.getAuraChunkFromBlockCoords(worldIn, pos);
 				
 				if(ac != null)
 				{

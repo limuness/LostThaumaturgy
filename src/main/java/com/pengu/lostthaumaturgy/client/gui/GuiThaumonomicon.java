@@ -451,7 +451,8 @@ public class GuiThaumonomicon extends GuiScreen
 		{
 			Object var99 = var34.next();
 			ResearchCategoryList fr = ResearchCategories.getResearchList((String) var99);
-			if(!((String) var99).equals("eldritch") || ResearchManager.isResearchComplete(this.player, "eldritch_minor"))
+			
+			if(fr.isVisibleTo(mc.player))
 			{
 				GL11.glPushMatrix();
 				if(var49 == 9)
@@ -590,7 +591,7 @@ public class GuiThaumonomicon extends GuiScreen
 			{
 				Object obj = i$.next();
 				ResearchCategoryList rcl = ResearchCategories.getResearchList((String) obj);
-				if(!((String) obj).equals("eldritch") || ResearchManager.isResearchComplete(this.player, "eldritch_minor"))
+				if(rcl.isVisibleTo(mc.player))
 				{
 					if(count == 9)
 					{
@@ -811,7 +812,7 @@ public class GuiThaumonomicon extends GuiScreen
 				swop = true;
 			}
 			ResearchCategoryList rcl = ResearchCategories.getResearchList(obj);
-			if(obj.equals("eldritch") && !ResearchManager.isResearchComplete(this.player, "eldritch_minor"))
+			if(!rcl.isVisibleTo(mc.player))
 				continue;
 			int mposx = mx - (var4 - 24 + (swop ? 280 : 0));
 			int mposy = my - (var5 + count * 24);

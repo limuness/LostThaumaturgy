@@ -16,8 +16,8 @@ import com.pengu.hammercore.proxy.ParticleProxy_Client;
 import com.pengu.lostthaumaturgy.client.fx.FXWisp;
 import com.pengu.lostthaumaturgy.core.items.ItemMultiMaterial.EnumMultiMaterialType;
 import com.pengu.lostthaumaturgy.core.tile.TileCrystalOre;
-import com.pengu.lostthaumaturgy.custom.aura.AtmosphereChunk;
-import com.pengu.lostthaumaturgy.custom.aura.AtmosphereTicker;
+import com.pengu.lostthaumaturgy.custom.aura.ThaumosphereChunk;
+import com.pengu.lostthaumaturgy.custom.aura.ThaumosphereManager;
 
 public class BlockDepletedOreCrystal extends BlockOreCrystal
 {
@@ -41,7 +41,7 @@ public class BlockDepletedOreCrystal extends BlockOreCrystal
 			return;
 		
 		TileCrystalOre ore = WorldUtil.cast(world.getTileEntity(pos), TileCrystalOre.class);
-		AtmosphereChunk ac = AtmosphereTicker.getAuraChunkFromBlockCoords(world, pos);
+		ThaumosphereChunk ac = ThaumosphereManager.getAuraChunkFromBlockCoords(world, pos);
 		
 		short q2 = ore.crystals.get();
 		

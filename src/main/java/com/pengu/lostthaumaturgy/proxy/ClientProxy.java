@@ -167,7 +167,7 @@ import com.pengu.lostthaumaturgy.core.tile.monolith.TileExtraRoom;
 import com.pengu.lostthaumaturgy.core.tile.monolith.TileMonolith;
 import com.pengu.lostthaumaturgy.core.tile.monolith.TileMonolithOpener;
 import com.pengu.lostthaumaturgy.core.utils.UtilsFX;
-import com.pengu.lostthaumaturgy.custom.aura.AtmosphereChunk;
+import com.pengu.lostthaumaturgy.custom.aura.ThaumosphereChunk;
 import com.pengu.lostthaumaturgy.init.BlocksLT;
 import com.pengu.lostthaumaturgy.init.ItemsLT;
 
@@ -176,7 +176,7 @@ public class ClientProxy extends CommonProxy
 	private static int penguSkinId;
 	
 	@Override
-	public void updateClientAuraChunk(AtmosphereChunk chunk)
+	public void updateClientAuraChunk(ThaumosphereChunk chunk)
 	{
 		ClientAtmosphereChunk.setClientChunk(chunk);
 	}

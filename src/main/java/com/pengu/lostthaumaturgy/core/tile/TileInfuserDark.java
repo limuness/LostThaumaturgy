@@ -15,8 +15,8 @@ import com.pengu.lostthaumaturgy.api.RecipesInfuser;
 import com.pengu.lostthaumaturgy.client.gui.GuiInfuserDark;
 import com.pengu.lostthaumaturgy.core.Info;
 import com.pengu.lostthaumaturgy.core.items.ItemUpgrade;
-import com.pengu.lostthaumaturgy.custom.aura.AtmosphereChunk;
-import com.pengu.lostthaumaturgy.custom.aura.AtmosphereTicker;
+import com.pengu.lostthaumaturgy.custom.aura.ThaumosphereChunk;
+import com.pengu.lostthaumaturgy.custom.aura.ThaumosphereManager;
 import com.pengu.lostthaumaturgy.init.ItemsLT;
 import com.pengu.lostthaumaturgy.inventory.ContainerInfuserDark;
 import com.pengu.lostthaumaturgy.net.PacketSmallGreenFlameFX;
@@ -73,7 +73,7 @@ public class TileInfuserDark extends TileInfuser
 			{
 				HammerCore.audioProxy.playSoundAt(world, Info.MOD_ID + ":dark_infuser", pos, .2F, 1F, SoundCategory.BLOCKS);
 				soundDelay = 62;
-				AtmosphereChunk ac = AtmosphereTicker.getAuraChunkFromBlockCoords(world, pos);
+				ThaumosphereChunk ac = ThaumosphereManager.getAuraChunkFromBlockCoords(world, pos);
 				if(ac != null)
 					ac.badVibes = (short) (ac.badVibes + 2);
 			}
@@ -104,7 +104,7 @@ public class TileInfuserDark extends TileInfuser
 			}
 			if(sucked > 0)
 			{
-				AtmosphereChunk si = AtmosphereTicker.getAuraChunkFromBlockCoords(world, pos);
+				ThaumosphereChunk si = ThaumosphereManager.getAuraChunkFromBlockCoords(world, pos);
 				si.radiation += .0005F * sucked;
 				sync();
 			}

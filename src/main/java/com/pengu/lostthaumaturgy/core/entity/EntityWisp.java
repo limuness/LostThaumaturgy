@@ -38,8 +38,8 @@ import com.pengu.hammercore.net.HCNetwork;
 import com.pengu.lostthaumaturgy.LTConfigs;
 import com.pengu.lostthaumaturgy.core.Info;
 import com.pengu.lostthaumaturgy.core.items.ItemMultiMaterial.EnumMultiMaterialType;
-import com.pengu.lostthaumaturgy.custom.aura.AtmosphereChunk;
-import com.pengu.lostthaumaturgy.custom.aura.AtmosphereTicker;
+import com.pengu.lostthaumaturgy.custom.aura.ThaumosphereChunk;
+import com.pengu.lostthaumaturgy.custom.aura.ThaumosphereManager;
 import com.pengu.lostthaumaturgy.init.ItemsLT;
 import com.pengu.lostthaumaturgy.init.SoundEventsLT;
 import com.pengu.lostthaumaturgy.net.wisp.PacketFXWisp1;
@@ -183,18 +183,18 @@ public class EntityWisp extends EntityFlying implements IMob
 			int type = 0;
 			
 			Biome bid = world.getBiome(getPosition());
-			AtmosphereChunk ac = AtmosphereTicker.getAuraChunkFromBlockCoords(world, getPosition());
+			ThaumosphereChunk ac = ThaumosphereManager.getAuraChunkFromBlockCoords(world, getPosition());
 			
-			if(AtmosphereTicker.BIOME_EARTH.contains(bid))
+			if(ThaumosphereManager.BIOME_EARTH.contains(bid))
 				type = 3;
 			
-			if(AtmosphereTicker.BIOME_WATER.contains(bid) || world.canSnowAt(getPosition(), true) || world.isRaining())
+			if(ThaumosphereManager.BIOME_WATER.contains(bid) || world.canSnowAt(getPosition(), true) || world.isRaining())
 				type = 2;
 			
-			if(AtmosphereTicker.BIOME_AIR.contains(bid) || world.canSnowAt(getPosition(), true) || world.isRaining())
+			if(ThaumosphereManager.BIOME_AIR.contains(bid) || world.canSnowAt(getPosition(), true) || world.isRaining())
 				type = 1;
 			
-			if(AtmosphereTicker.BIOME_FIRE.contains(bid) || AtmosphereTicker.BIOME_FIREFLOWER.contains(bid) || nearLava())
+			if(ThaumosphereManager.BIOME_FIRE.contains(bid) || ThaumosphereManager.BIOME_FIREFLOWER.contains(bid) || nearLava())
 			{
 				isImmuneToFire = true;
 				type = 4;

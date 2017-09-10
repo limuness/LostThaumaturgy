@@ -30,6 +30,11 @@ public class ClientResearchData
 	
 	public static boolean isResearchCompleted(ResearchItem res)
 	{
-		return COMPLETED.contains(res.key);
+		return isResearchCompleted(res.key);
+	}
+	
+	public static boolean isResearchCompleted(String res)
+	{
+		return COMPLETED.contains(res);
 	}
 }

@@ -10,8 +10,8 @@ import net.minecraftforge.fml.common.IWorldGenerator;
 
 import com.pengu.hammercore.utils.ChunkUtils;
 import com.pengu.lostthaumaturgy.core.worldgen.features.FeatureGreatwood;
-import com.pengu.lostthaumaturgy.custom.aura.AtmosphereChunk;
-import com.pengu.lostthaumaturgy.custom.aura.AtmosphereTicker;
+import com.pengu.lostthaumaturgy.custom.aura.ThaumosphereChunk;
+import com.pengu.lostthaumaturgy.custom.aura.ThaumosphereManager;
 
 public class WorldGenGreatwood implements IWorldGenerator
 {
@@ -40,7 +40,7 @@ public class WorldGenGreatwood implements IWorldGenerator
 		if(random.nextInt(250) < 40)
 			for(int i = 0; i < random.nextInt(2); i++)
 			{
-				AtmosphereChunk si = AtmosphereTicker.getAuraChunkFromChunkCoords(world, chunkX, chunkZ);
+				ThaumosphereChunk si = ThaumosphereManager.getAuraChunkFromChunkCoords(world, chunkX, chunkZ);
 				
 				BlockPos pos = world.getHeight(ChunkUtils.getChunkPos(chunkX, chunkZ, random.nextInt(16), 255, random.nextInt(16)));
 				
@@ -54,7 +54,7 @@ public class WorldGenGreatwood implements IWorldGenerator
 						for(int z = -2; z < 3; ++z)
 						{
 							double distance = Math.sqrt(x * x + z * z);
-							si = AtmosphereTicker.getAuraChunkFromChunkCoords(world, chunkX + x, chunkZ + z);
+							si = ThaumosphereManager.getAuraChunkFromChunkCoords(world, chunkX + x, chunkZ + z);
 							if(si != null)
 								si.vis = (short) Math.max(4000 + random.nextInt(500) + random.nextInt(1500) / distance, si.vis);
 						}

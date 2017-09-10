@@ -33,7 +33,7 @@ import com.pengu.lostthaumaturgy.core.worldgen.WorldGenGreatwood;
 import com.pengu.lostthaumaturgy.core.worldgen.WorldGenLostArtifacts;
 import com.pengu.lostthaumaturgy.core.worldgen.WorldGenMonoliths;
 import com.pengu.lostthaumaturgy.core.worldgen.WorldGenSilverwood;
-import com.pengu.lostthaumaturgy.custom.aura.AtmosphereTicker;
+import com.pengu.lostthaumaturgy.custom.aura.ThaumosphereManager;
 import com.pengu.lostthaumaturgy.init.BlocksLT;
 import com.pengu.lostthaumaturgy.init.EntitiesLT;
 import com.pengu.lostthaumaturgy.init.FuelHandlerLT;
@@ -246,14 +246,14 @@ public class LostThaumaturgy
 	public void serverStarted(FMLServerStartedEvent evt)
 	{
 		RecipesCrucible.reloadRecipes();
-		AtmosphereTicker.LoadAuraData();
+		ThaumosphereManager.LoadAuraData();
 	}
 	
 	@EventHandler
 	public void serverStop(FMLServerStoppedEvent evt)
 	{
-		AtmosphereTicker.AuraHM.clear();
-		AtmosphereTicker.loadedAuras = false;
+		ThaumosphereManager.AuraHM.clear();
+		ThaumosphereManager.loadedAuras = false;
 		ResearchSystem.COMPLETED.clear();
 	}
 }

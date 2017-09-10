@@ -3,7 +3,7 @@ package com.pengu.lostthaumaturgy.custom.aura.taint;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public interface ITaintHandler
+public interface iTaintHandler
 {
 	/** Taint process */
 	boolean canTaintBlock(World world, BlockPos pos);

@@ -7,12 +7,12 @@ import net.minecraftforge.fml.relauncher.Side;
 
 import com.pengu.hammercore.net.HCNetwork;
 import com.pengu.lostthaumaturgy.core.emote.EmoteData;
-import com.pengu.lostthaumaturgy.custom.aura.AtmosphereChunk;
+import com.pengu.lostthaumaturgy.custom.aura.ThaumosphereChunk;
 import com.pengu.lostthaumaturgy.net.PacketEmote;
 
 public class CommonProxy
 {
-	public void updateClientAuraChunk(AtmosphereChunk chunk)
+	public void updateClientAuraChunk(ThaumosphereChunk chunk)
 	{
 	}
 	

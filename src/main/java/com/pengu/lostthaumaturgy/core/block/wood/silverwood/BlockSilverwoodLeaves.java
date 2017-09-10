@@ -18,8 +18,8 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 import com.pengu.lostthaumaturgy.core.items.ItemMultiMaterial.EnumMultiMaterialType;
-import com.pengu.lostthaumaturgy.custom.aura.AtmosphereChunk;
-import com.pengu.lostthaumaturgy.custom.aura.AtmosphereTicker;
+import com.pengu.lostthaumaturgy.custom.aura.ThaumosphereChunk;
+import com.pengu.lostthaumaturgy.custom.aura.ThaumosphereManager;
 import com.pengu.lostthaumaturgy.init.ItemsLT;
 
 public class BlockSilverwoodLeaves extends BlockLeaves
@@ -73,7 +73,7 @@ public class BlockSilverwoodLeaves extends BlockLeaves
 	{
 		if(!worldIn.isRemote)
 		{
-			AtmosphereChunk chunk = AtmosphereTicker.getAuraChunkFromBlockCoords(worldIn, pos);
+			ThaumosphereChunk chunk = ThaumosphereManager.getAuraChunkFromBlockCoords(worldIn, pos);
 			if(chunk != null && chunk.badVibes > 0)
 				chunk.badVibes--;
 		}

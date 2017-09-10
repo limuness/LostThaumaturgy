@@ -39,8 +39,8 @@ import com.pengu.lostthaumaturgy.core.Info;
 import com.pengu.lostthaumaturgy.core.items.ItemUpgrade;
 import com.pengu.lostthaumaturgy.core.items.ItemWandReversal;
 import com.pengu.lostthaumaturgy.core.items.ItemMultiMaterial.EnumMultiMaterialType;
-import com.pengu.lostthaumaturgy.custom.aura.AtmosphereChunk;
-import com.pengu.lostthaumaturgy.custom.aura.AtmosphereTicker;
+import com.pengu.lostthaumaturgy.custom.aura.ThaumosphereChunk;
+import com.pengu.lostthaumaturgy.custom.aura.ThaumosphereManager;
 import com.pengu.lostthaumaturgy.init.ItemsLT;
 import com.pengu.lostthaumaturgy.inventory.ContainerTravelingTrunk;
 import com.pengu.lostthaumaturgy.net.PacketSyncEntity;
@@ -266,7 +266,7 @@ public class EntityTravelingTrunk extends EntityAnimal implements iUpgradable
 						showHeartsOrSmokeFX(false);
 						setAttackTarget(null);
 						angerLevel = 0;
-						AtmosphereChunk si = AtmosphereTicker.getAuraChunkFromBlockCoords(world, getPosition());
+						ThaumosphereChunk si = ThaumosphereManager.getAuraChunkFromBlockCoords(world, getPosition());
 						if(si != null)
 							si.badVibes += 5;
 						break tp;

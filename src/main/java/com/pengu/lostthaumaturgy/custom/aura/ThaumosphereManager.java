@@ -51,7 +51,7 @@ import com.pengu.lostthaumaturgy.api.event.AuraEvent;
 import com.pengu.lostthaumaturgy.api.research.ResearchSystem;
 import com.pengu.lostthaumaturgy.api.tiles.iConnection;
 import com.pengu.lostthaumaturgy.core.Info;
-import com.pengu.lostthaumaturgy.custom.aura.api.AtmosphereAttachments;
+import com.pengu.lostthaumaturgy.custom.aura.api.ThaumosphereAttachments;
 import com.pengu.lostthaumaturgy.custom.aura.taint.TaintRegistry;
 import com.pengu.lostthaumaturgy.init.BlocksLT;
 import com.pengu.lostthaumaturgy.net.PacketReloadCR;
@@ -61,7 +61,7 @@ import com.pengu.lostthaumaturgy.net.wisp.PacketFXWisp_AuraTicker_spillTaint;
 import com.pengu.lostthaumaturgy.net.wisp.PacketFXWisp_AuraTicker_taintExplosion;
 
 @MCFBus
-public class AtmosphereTicker
+public class ThaumosphereManager
 {
 	public static boolean loadedAuras = false;
 	public static ArrayList<Biome> BIOME_MAGIC = new ArrayList();
@@ -146,7 +146,7 @@ public class AtmosphereTicker
 	
 	public short margin = (short) ((float) LTConfigs.aura_max / 7.5f);
 	
-	public static HashMap<String, AtmosphereChunk> AuraHM = new HashMap<>();
+	public static HashMap<String, ThaumosphereChunk> AuraHM = new HashMap<>();
 	public static ArrayList<Long> Monoliths = new ArrayList<Long>();
 	
 	public static void addMonolith(BlockPos pos)
@@ -238,7 +238,7 @@ public class AtmosphereTicker
 			EntityPlayer player = evt.player;
 			EntityPlayerMP mp = WorldUtil.cast(player, EntityPlayerMP.class);
 			
-			AtmosphereChunk chunk = getAuraChunkFromBlockCoords(player.world, player.getPosition());
+			ThaumosphereChunk chunk = getAuraChunkFromBlockCoords(player.world, player.getPosition());
 			if(mp != null && !player.world.isRemote && chunk != null)
 			{
 				boolean changedChunks = false;
@@ -272,17 +272,17 @@ public class AtmosphereTicker
 		int c4 = 1;
 		int c5 = darkAmount;
 		Biome bio = world.getBiome(pos);
-		if(AtmosphereTicker.BIOME_MAGIC.contains(bio))
+		if(ThaumosphereManager.BIOME_MAGIC.contains(bio))
 			++c0;
-		if(AtmosphereTicker.BIOME_AIR.contains(bio))
+		if(ThaumosphereManager.BIOME_AIR.contains(bio))
 			++c1;
-		if(AtmosphereTicker.BIOME_WATER.contains(bio))
+		if(ThaumosphereManager.BIOME_WATER.contains(bio))
 			++c2;
-		if(AtmosphereTicker.BIOME_EARTH.contains(bio))
+		if(ThaumosphereManager.BIOME_EARTH.contains(bio))
 			++c3;
-		if(AtmosphereTicker.BIOME_FIRE.contains(bio))
+		if(ThaumosphereManager.BIOME_FIRE.contains(bio))
 			++c4;
-		if(darkAmount > 0 && AtmosphereTicker.BIOME_TAINT.contains(bio))
+		if(darkAmount > 0 && ThaumosphereManager.BIOME_TAINT.contains(bio))
 			++c5;
 		if((type = world.rand.nextInt(c0 + c1 + c2 + c3 + c4 + c5)) < c0)
 			type = 0;
@@ -299,25 +299,25 @@ public class AtmosphereTicker
 		return type;
 	}
 	
-	public static AtmosphereChunk getAuraChunkFromBlockCoords(WorldLocation loc)
+	public static ThaumosphereChunk getAuraChunkFromBlockCoords(WorldLocation loc)
 	{
 		return getAuraChunkFromBlockCoords(loc.getWorld(), loc.getPos());
 	}
 	
-	public static AtmosphereChunk getAuraChunkFromBlockCoords(World world, BlockPos pos)
+	public static ThaumosphereChunk getAuraChunkFromBlockCoords(World world, BlockPos pos)
 	{
 		Chunk c = world.getChunkFromBlockCoords(pos);
 		return getAuraChunkFromChunkCoords(world, c.x, c.z);
 	}
 	
-	public static AtmosphereChunk getAuraChunkFromBlockCoords(World world, int x, int z)
+	public static ThaumosphereChunk getAuraChunkFromBlockCoords(World world, int x, int z)
 	{
 		return getAuraChunkFromBlockCoords(world, new BlockPos(x, 0, z));
 	}
 	
-	public static AtmosphereChunk getAuraChunkFromChunkCoords(World world, int chunkX, int chunkZ)
+	public static ThaumosphereChunk getAuraChunkFromChunkCoords(World world, int chunkX, int chunkZ)
 	{
-		AtmosphereChunk chunk = AuraHM.get(asKey(chunkX, chunkZ, world.provider.getDimension()));
+		ThaumosphereChunk chunk = AuraHM.get(asKey(chunkX, chunkZ, world.provider.getDimension()));
 		if(chunk == null)
 		{
 			GenerateAura(world, new SecureRandom(), chunkX, chunkZ);
@@ -326,7 +326,7 @@ public class AtmosphereTicker
 		return chunk;
 	}
 	
-	public static AtmosphereChunk getAuraChunkFromChunkCoords_NoGen(World world, int chunkX, int chunkZ)
+	public static ThaumosphereChunk getAuraChunkFromChunkCoords_NoGen(World world, int chunkX, int chunkZ)
 	{
 		return AuraHM.get(asKey(chunkX, chunkZ, world.provider.getDimension()));
 	}
@@ -336,11 +336,11 @@ public class AtmosphereTicker
 		if(world.isRemote)
 			return;
 		
-		Collection<AtmosphereChunk> c = AuraHM.values();
+		Collection<ThaumosphereChunk> c = AuraHM.values();
 		boolean noupdates = true;
 		/** Prevent thousands of chunk updates, 4K is the most */
 		int counter = Math.min(AuraHM.size() / 200, 4096);
-		for(AtmosphereChunk ac2 : c)
+		for(ThaumosphereChunk ac2 : c)
 		{
 			ac2.world = world;
 			if(ac2.updated || ac2.dimension != world.provider.getDimension())
@@ -352,7 +352,7 @@ public class AtmosphereTicker
 			ac2.previousTaint = ac2.taint;
 			ac2.previousRadiation = ac2.radiation;
 			
-			AtmosphereAttachments.attach(ac2);
+			ThaumosphereAttachments.attach(ac2);
 			noupdates = false;
 			ac2.updated = true;
 			
@@ -413,7 +413,7 @@ public class AtmosphereTicker
 				}
 				}
 				
-				AtmosphereChunk nc = getAuraChunkFromChunkCoords_NoGen(world, auraX, auraZ);
+				ThaumosphereChunk nc = getAuraChunkFromChunkCoords_NoGen(world, auraX, auraZ);
 				
 				if(nc == null)
 					continue;
@@ -511,7 +511,7 @@ public class AtmosphereTicker
 		
 		if(noupdates && AuraHM.size() > 0)
 		{
-			for(AtmosphereChunk ac2 : c)
+			for(ThaumosphereChunk ac2 : c)
 			{
 				if(ac2.dimension != world.provider.getDimension())
 					continue;
@@ -520,7 +520,7 @@ public class AtmosphereTicker
 		}
 	}
 	
-	public static void equalizeRadiation(AtmosphereChunk a, AtmosphereChunk b)
+	public static void equalizeRadiation(ThaumosphereChunk a, ThaumosphereChunk b)
 	{
 		float diff = Math.abs(a.radiation - b.radiation);
 		float maxShare = .0001F;
@@ -581,7 +581,7 @@ public class AtmosphereTicker
 		}
 		if(extraTaint)
 			auraTaint = (short) ((double) auraTaint * 1.5);
-		AtmosphereChunk ac = new AtmosphereChunk();
+		ThaumosphereChunk ac = new ThaumosphereChunk();
 		ac.vis = auraStrength;
 		ac.taint = auraTaint;
 		ac.x = x;
@@ -626,8 +626,8 @@ public class AtmosphereTicker
 			HashMap loaded = (HashMap) in.readObject();
 			ArrayList monoliths = (ArrayList) in.readObject();
 			in.close();
-			AtmosphereTicker.AuraHM = loaded;
-			AtmosphereTicker.Monoliths = monoliths;
+			ThaumosphereManager.AuraHM = loaded;
+			ThaumosphereManager.Monoliths = monoliths;
 			LostThaumaturgy.LOG.info("Loaded " + AuraHM.size() + " aura chunks.");
 		} catch(FileNotFoundException e)
 		{
@@ -640,8 +640,8 @@ public class AtmosphereTicker
 				HashMap loaded = (HashMap) in.readObject();
 				ArrayList monoliths = (ArrayList) in.readObject();
 				in.close();
-				AtmosphereTicker.AuraHM = loaded;
-				AtmosphereTicker.Monoliths = monoliths;
+				ThaumosphereManager.AuraHM = loaded;
+				ThaumosphereManager.Monoliths = monoliths;
 				LostThaumaturgy.LOG.info("Converted " + AuraHM.size() + " legacy auras.");
 			} catch(Exception e2)
 			{
@@ -677,7 +677,7 @@ public class AtmosphereTicker
 			
 			Chunk c = world.getChunkFromBlockCoords(new BlockPos(x, 0, z));
 			
-			AtmosphereChunk ac = AuraHM.get(asKey(x, z, world.provider.getDimension()));
+			ThaumosphereChunk ac = AuraHM.get(asKey(x, z, world.provider.getDimension()));
 			
 			if(ac == null || (float) ac.taint >= (float) auraTaint * 0.8f)
 				continue;
@@ -686,7 +686,7 @@ public class AtmosphereTicker
 		}
 	}
 	
-	public static boolean taintifyChunk(World world, AtmosphereChunk ac)
+	public static boolean taintifyChunk(World world, ThaumosphereChunk ac)
 	{
 		int z;
 		int x = (ac.x << 4) + world.rand.nextInt(16);
@@ -696,7 +696,7 @@ public class AtmosphereTicker
 		return false;
 	}
 	
-	public static boolean purifyChunk(World world, AtmosphereChunk ac)
+	public static boolean purifyChunk(World world, ThaumosphereChunk ac)
 	{
 		int z;
 		int x = (ac.x << 4) + world.rand.nextInt(16);
@@ -784,7 +784,7 @@ public class AtmosphereTicker
 		
 		Chunk c = world.getChunkFromBlockCoords(new BlockPos(x, y, z));
 		short taint = 0;
-		AtmosphereChunk ac = (AtmosphereChunk) AuraHM.get(asKey(c.x, c.z, world.provider.getDimension()));
+		ThaumosphereChunk ac = (ThaumosphereChunk) AuraHM.get(asKey(c.x, c.z, world.provider.getDimension()));
 		if(ac != null)
 			taint = ac.taint;
 		for(int xx = -1; xx <= 1; ++xx)
@@ -829,7 +829,7 @@ public class AtmosphereTicker
 		{
 			int at = (int) Math.ceil(ic.getTaintedVis() * 3);
 			Chunk c = world.getChunkFromBlockCoords(pos);
-			AtmosphereChunk ac = (AtmosphereChunk) AuraHM.get(asKey(c.x, c.z, world.provider.getDimension()));
+			ThaumosphereChunk ac = (ThaumosphereChunk) AuraHM.get(asKey(c.x, c.z, world.provider.getDimension()));
 			if(ac != null)
 			{
 				ac.taint += at;
@@ -908,10 +908,10 @@ public class AtmosphereTicker
 	
 	private static int chunkBuffer;
 	
-	public static void AddAuraToList(AtmosphereChunk ac)
+	public static void AddAuraToList(ThaumosphereChunk ac)
 	{
 		LoadAuraData();
-		AtmosphereChunk current = (AtmosphereChunk) AuraHM.get(asKey(ac.x, ac.z, ac.dimension));
+		ThaumosphereChunk current = (ThaumosphereChunk) AuraHM.get(asKey(ac.x, ac.z, ac.dimension));
 		if(current == null)
 		{
 			AuraHM.put(asKey(ac.x, ac.z, ac.dimension), ac);
@@ -930,7 +930,7 @@ public class AtmosphereTicker
 	
 	public static boolean decreaseClosestAura(World world, double posX, double posZ, int i)
 	{
-		AtmosphereChunk si = getAuraChunkFromBlockCoords(world, (int) posX, (int) posZ);
+		ThaumosphereChunk si = getAuraChunkFromBlockCoords(world, (int) posX, (int) posZ);
 		if(si.vis >= i)
 		{
 			si.vis -= i;

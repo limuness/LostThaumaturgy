@@ -48,8 +48,8 @@ import com.pengu.lostthaumaturgy.core.items.ItemUpgrade;
 import com.pengu.lostthaumaturgy.core.items.ItemMultiMaterial.EnumMultiMaterialType;
 import com.pengu.lostthaumaturgy.core.items.tools.axe.ItemAxeElemental;
 import com.pengu.lostthaumaturgy.core.tile.TileTaintedSoil;
-import com.pengu.lostthaumaturgy.custom.aura.AtmosphereChunk;
-import com.pengu.lostthaumaturgy.custom.aura.AtmosphereTicker;
+import com.pengu.lostthaumaturgy.custom.aura.ThaumosphereChunk;
+import com.pengu.lostthaumaturgy.custom.aura.ThaumosphereManager;
 import com.pengu.lostthaumaturgy.init.ItemsLT;
 
 @MCFBus
@@ -117,7 +117,7 @@ public class InteractionEvents
 				upgradable.dropUpgrade(e.getPlayer());
 		}
 		
-		AtmosphereTicker.spillTaint(e.getWorld(), e.getPos());
+		ThaumosphereManager.spillTaint(e.getWorld(), e.getPos());
 	}
 	
 	@SubscribeEvent
@@ -159,7 +159,7 @@ public class InteractionEvents
 			return;
 		String id = player.getGameProfile().getName();
 		
-		AtmosphereChunk chunk = AtmosphereTicker.getAuraChunkFromBlockCoords(player.world, player.getPosition());
+		ThaumosphereChunk chunk = ThaumosphereManager.getAuraChunkFromBlockCoords(player.world, player.getPosition());
 		
 		if(!player.world.isRemote && chunk.isTainted())
 		{
